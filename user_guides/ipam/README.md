@@ -6,6 +6,8 @@ This diagram demonstrates the IPAM solution
 
 ![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ipam/diagrams/2021-04-26_14-13-25.png)
 
+![video](https://www.youtube.com/watch?v=s9iUZoRqYQs)
+
 ## Prerequisites
 
 * Recommend AS3 version 3.26 [repo](https://github.com/F5Networks/f5-appsvcs-extension/releases/tag/v3.26.0)
