@@ -4,7 +4,7 @@ The F5 IPAM Controller is a Docker container that allocates IP addresses from an
 
 This diagram demonstrates the IPAM solution
 
-![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ipam/diagrams/2021-04-26_13-45-15.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ipam/diagrams/2021-04-26_14-13-25.png)
 
 ## Prerequisites
 
