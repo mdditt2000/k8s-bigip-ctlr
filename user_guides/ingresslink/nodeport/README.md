@@ -152,6 +152,8 @@ NAME                             READY   STATUS    RESTARTS   AGE
 nginx-ingress-744d95cb86-xk2vx   1/1     Running   0          16s
 ```
 
+nginx-config [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/ingresslink/nodeport/nginx-config)
+
 **Step 4**
 
 ### Create an IngressLink Resource
