@@ -24,7 +24,7 @@ Minimum version to use IngressLink:
 
 * Recommend AS3 version 3.25 [repo](https://github.com/F5Networks/f5-appsvcs-extension/releases/tag/v3.25.0)
 * CIS 2.4 private build [repo](https://github.com/F5Networks/k8s-bigip-ctlr/releases/tag/v2.4.0)
-* NGINX+ IC [repo](coming)
+* NGINX+ IC [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/ingresslink/clusterip/nginx-config)
 * Product Documentation [documentation](https://clouddocs.f5.com/containers/latest/userguide/ingresslink/)
 
 ## Configure F5 IngressLink with Kubernetes
