@@ -7,7 +7,7 @@ The F5 IPAM Controller is a Docker container that allocates IP addresses from an
 * Recommend AS3 version 3.26 [repo](https://github.com/F5Networks/f5-appsvcs-extension/releases/tag/v3.26.0)
 * CIS 2.4 [repo](https://github.com/F5Networks/k8s-bigip-ctlr/releases/tag/v2.4.0)
 * F5 IPAM Controller [repo](https://github.com/F5Networks/f5-ipam-controller/releases/tag/v0.1.2)
-* Github [documentation](https://github.com/F5Networks/f5-ipam-controller#readme)
+* CloudDocs [documentation](https://clouddocs.f5.com/containers/latest/userguide/ipam/)
 
 ## Setup Options
 
@@ -28,7 +28,7 @@ In CIS 2.4 the F5 IPAM Controller can:
 
 **Note** The idea here is that you specify the ip-range label in the virtualserver CRD, or using Type LB. 
 
-## F5 CIS Configuration Options for IPAM Deployment defining the CIDR network label in the VirtualServer CRD
+## F5 CIS Configuration Options for IPAM Deployment
 
 ### Step 1
 
@@ -60,7 +60,7 @@ Deploy CIS
 kubectl create -f f5-cluster-deployment.yaml
 ```
 
-cis-deployment [repo](https://github.com/F5Networks/k8s-bigip-ctlr/tree/master/docs/_static/user_guides/ipam/cis-deployment/f5-cluster-deployment.yaml)
+cis-deployment [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ipam/cis-deployment/f5-cluster-deployment.yaml)
 
 ## F5 IPAM Deploy Configuration Options
 
@@ -90,6 +90,8 @@ kubectl create -f f5-ipam-rbac.yaml
 kubectl create -f f5-ipam-schema.yaml
 kubectl create -f f5-ipam-deployment.yaml
 ```
+ipam-deployment [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/ipam/ipam-deployment)
+
 ## Logging output when deploying the F5 IPAM Controller
 
 ```
@@ -136,9 +138,6 @@ I0420 17:10:47.903745       1 shared_informer.go:247] Caches are synced for F5 I
 2021/04/20 17:12:35 [DEBUG] Enqueueing on Update: kube-system/ipam.192.168.200.60.k8s
 2021/04/20 17:12:35 [DEBUG] Processing Key: &{0xc00055a840 0xc000154160 Update}
 ```
-
-ipam-deployment [repo](https://github.com/F5Networks/k8s-bigip-ctlr/tree/master/docs/_static/user_guides/ipam/crd/big-ip-60-cluster/ipam-deployment/f5-ipam-deployment.yaml)
-
 
 ## Configuring CIS CRD to work with F5 IPAM Controller for the following hosts
 
@@ -195,7 +194,7 @@ spec:
     servicePort: 80
 ```
 
-Deploy the CRD and updated schema
+Deploy the CRD and CRD schema
 
 ```
 kubectl create -f customresourcedefinitions.yaml
@@ -203,7 +202,7 @@ kubectl create -f vs-mysite.yaml
 kubectl create -f vs-myapp.yaml
 ```
 
-crd-example [repo](https://github.com/F5Networks/k8s-bigip-ctlr/tree/master/docs/_static/user_guides/ipam/crd/big-ip-60-cluster/crd-example)
+crd-example [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/ipam/crd-example)
 
 ## Logging output when the virtualserver is created
 
