@@ -2,6 +2,10 @@
 
 The F5 IPAM Controller is a Docker container that allocates IP addresses from an static list for hostnames. The F5 IPAM Controller watches CRD resources and consumes the hostnames within each resource.
 
+This diagram demonstrates the IPAM solution
+
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ipam/diagrams/2021-04-26_13-45-15.png)
+
 ## Prerequisites
 
 * Recommend AS3 version 3.26 [repo](https://github.com/F5Networks/f5-appsvcs-extension/releases/tag/v3.26.0)
