@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: f5-demo-production
+  name: f5-demo-production
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: f5-demo-production
+  template:
+    metadata:
+      labels:
+        app: f5-demo-production
+    spec:
+      containers:
+      - env:
+        - name: service_name
+          value: f5-demo-production
+        image: f5devcentral/f5-demo-httpd
+        imagePullPolicy: Always
+        name: f5-demo-production
+        ports:
+        - containerPort: 80
+          protocol: TCP
