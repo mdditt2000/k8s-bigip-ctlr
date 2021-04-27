@@ -4,7 +4,7 @@ A service of type LoadBalancer is the simplest and the fastest way to expose a s
 
 Services of type LoadBalancer are natively supported in Kubernetes deployments. When you create a service of type LoadBalancer, Kubernetes spins up a service in integration with F5 IPAM Controller which allocates an IP address from the ip-range specified by the ipamlabel. Using CIS with services configured for type LoadBalancer, BIG-IP can load balance the incoming traffic to the Kubernetes cluster without having to create any ingress resource. CIS will manage the public IP addresses for the application using the F5 IPAM Controller. This cloud like simplification of load balancer resources could significantly reduce your operational expenses.
 
-![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.4/servicetypelb/diagram/2021-04-27_10-11-10.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/servicetypelb/diagram/2021-04-27_10-11-10.png)
 
 Demo on YouTube [video]()
 
@@ -106,8 +106,8 @@ kubectl create -f f5-cluster-deployment.yaml
 kubectl create -f customresourcedefinitions.yaml
 ```
 
-* cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.4/servicetypelb/cis-deployment/f5-cluster-deployment.yaml)
-* crd-schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.4/servicetypelb/crd-schema/customresourcedefinitions.yaml)
+* cis-deployment [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/servicetypelb/cis-deployment/f5-cluster-deployment.yaml)
+* crd-schema [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/servicetypelb/crd-schema/customresourcedefinitions.yaml)
 
 ## F5 IPAM Deployment Configuration
 
@@ -184,7 +184,7 @@ I0420 17:10:47.903745       1 shared_informer.go:247] Caches are synced for F5 I
 2021/04/20 17:12:35 [DEBUG] Processing Key: &{0xc00055a840 0xc000154160 Update}
 ```
 
-ipam-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.4/servicetypelb/ipam-deployment/f5-ipam-deployment.yaml)
+ipam-deployment [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/servicetypelb/ipam-deployment)
 
 
 ## Create the Service Type LoadBalancer Service
@@ -198,7 +198,7 @@ kubectl create -f f5-demo-test-service.yaml
 kubectl create -f f5-demo-production-service.yaml
 ```
 
-pod-deployments [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.4/servicetypelb/pod-deployment)
+pod-deployments [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/servicetypelb/pod-deployment)
 
 ## Logging output when the IPAM controller when the services are created
 
@@ -296,4 +296,4 @@ f5-demo-test         LoadBalancer   10.96.155.107   10.192.75.113   80:30164/TCP
 ```
 CIS will add the EXTERNAL-IP to the BIG-IP as you can see in the diagram
 
-![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.4/servicetypelb/diagram/2021-04-27_14-15-10.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/servicetypelb/diagram/2021-04-27_14-15-10.png)
