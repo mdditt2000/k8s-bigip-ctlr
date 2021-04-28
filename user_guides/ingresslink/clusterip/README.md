@@ -8,6 +8,8 @@ This architecture diagram demonstrates the IngressLink solution
 
 ![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ingresslink/clusterip/diagram/2021-03-01_15-41-39.png)
 
+Demo on YouTube [video](https://www.youtube.com/watch?v=Ieq9rzelpUk)
+
 On this page you’ll find:
 
 * Links to the GitHub repositories for all the requisite software
