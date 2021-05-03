@@ -21,4 +21,4 @@ spec:
       name: https
   selector:
     app: nginx-ingress
-  type: ClusterIP
+  type: NodePort
