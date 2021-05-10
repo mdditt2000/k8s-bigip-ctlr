@@ -8,7 +8,7 @@ In this user-guide, each cluster runs a full copy of the application. This simpl
 
 ![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-cluster/diagrams/2021-05-10_12-07-00.png)
 
-Demo on YouTube [video](https://www.youtube.com/)
+Demo on YouTube [video](https://youtu.be/VimGK5PPViE)
 
 ### Environment parameters
 
