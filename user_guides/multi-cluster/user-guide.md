@@ -6,7 +6,7 @@ Today, organizations are increasingly deploying multiple Kubernetes clusters. De
 
 In this user-guide, each cluster runs a full copy of the application. This simple but powerful approach enables an application to be graduated from dev to prod. Future user-guides will focus on multiple availability zones using health-aware global load balancing. Diagram below represents the two clusters in the user-guide. 
 
-![diagram](https://github.com/mdditt2000/kubernetes-1-21/blob/main/cis%202.4/multi-cluster/diagrams/2021-05-10_12-07-00.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-cluster/diagrams/2021-05-10_12-07-00.png)
 
 Demo on YouTube [video](https://www.youtube.com/)
 
@@ -80,21 +80,21 @@ annotations:
 
 Tunnel profile fl-vxlan configuration for vxlan-tunnel-dev
 
-![vxlan-tunnel](https://github.com/mdditt2000/kubernetes-1-21/blob/main/cis%202.4/multi-cluster/diagrams/2021-05-10_12-11-17.png)
+![vxlan-tunnel](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-cluster/diagrams/2021-05-10_12-11-17.png)
 
 Self-IPs configuration for vxlan-tunnel-dev
 
-![self-ip](https://github.com/mdditt2000/kubernetes-1-21/blob/main/cis%202.4/multi-cluster/diagrams/2021-05-10_12-28-33.png)
+![self-ip](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-cluster/diagrams/2021-05-10_12-28-33.png)
 
 ### Example of vxlan tunnels and Self-IPs for the vxlan-tunnel-prod
 
 Tunnel profile fl-vxlan configuration for vxlan-tunnel-prod
 
-![vxlan-tunnel](https://github.com/mdditt2000/kubernetes-1-21/blob/main/cis%202.4/multi-cluster/diagrams/2021-05-10_12-11-53.png)
+![vxlan-tunnel](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-cluster/diagrams/2021-05-10_12-11-53.png)
 
 Self-IPs configuration for vxlan-tunnel-prod
 
-![self-ip](https://github.com/mdditt2000/kubernetes-1-21/blob/main/cis%202.4/multi-cluster/diagrams/2021-05-10_12-27-39.png)
+![self-ip](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-cluster/diagrams/2021-05-10_12-27-39.png)
 
 ### Create BIG-IP Node required Tunnel: vxlan-tunnel-dev and vxlan-tunnel-prod
 
@@ -189,10 +189,10 @@ spec:
 ```
 
 dev-cluster
-* f5-bigip-dev-node.yaml [repo](https://github.com/mdditt2000/kubernetes-1-21/blob/main/cis%202.4/multi-cluster/dev-cluster/cis/cis-deployment/f5-bigip-dev-node.yaml)
+* f5-bigip-dev-node.yaml [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-cluster/dev-cluster/cis/cis-deployment/f5-bigip-dev-node.yaml)
 
 prod-cluster
-* f5-bigip-prod-node.yaml [repo](https://github.com/mdditt2000/kubernetes-1-21/blob/main/cis%202.4/multi-cluster/prod-cluster/cis/cis-deployment/f5-bigip-prod-node.yaml)
+* f5-bigip-prod-node.yaml [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-cluster/prod-cluster/cis/cis-deployment/f5-bigip-prod-node.yaml)
 
 
 ## Deploy CIS for each BIG-IP for dev-cluster and prod-cluster
@@ -240,10 +240,10 @@ Configuration options available in the CIS controller for the prod-cluster
 ```
 
 dev-cluster
-* f5-cis-deployment.yaml [repo](https://github.com/mdditt2000/kubernetes-1-21/blob/main/cis%202.4/multi-cluster/dev-cluster/cis/cis-deployment/f5-cis-deployment.yaml)
+* f5-cis-deployment.yaml [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-cluster/dev-cluster/cis/cis-deployment/f5-cis-deployment.yaml)
 
 prod-cluster
-* f5-cis-deployment.yaml [repo](https://github.com/mdditt2000/kubernetes-1-21/blob/main/cis%202.4/multi-cluster/prod-cluster/cis/cis-deployment/f5-cis-deployment.yaml)
+* f5-cis-deployment.yaml [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-cluster/prod-cluster/cis/cis-deployment/f5-cis-deployment.yaml)
 
 ## CIS Configuration Options using IPAM for the Dev and Prod Cluster
 
@@ -264,10 +264,10 @@ kubectl create -f f5-ipam-deployment.yaml
 ```
 
 dev-cluster
-* f5-ipam-deployment [repo](https://github.com/mdditt2000/kubernetes-1-21/blob/main/cis%202.4/multi-cluster/dev-cluster/ipam/f5-ipam-deployment.yaml)
+* f5-ipam-deployment [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-cluster/dev-cluster/ipam/f5-ipam-deployment.yaml)
 
 prod-cluster
-* f5-cis-deployment.yaml [repo](https://github.com/mdditt2000/kubernetes-1-21/blob/main/cis%202.4/multi-cluster/prod-cluster/ipam/f5-ipam-deployment.yaml)
+* f5-cis-deployment.yaml [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-cluster/prod-cluster/ipam/f5-ipam-deployment.yaml)
 
 ## Configuring CIS CRD for the Dev Cluster based on the Hostname
 
@@ -305,7 +305,7 @@ kubectl create -f customresourcedefinitions.yaml
 kubectl create -f vs-dev.yaml
 ```
 
-crd-resource [repo](https://github.com/mdditt2000/kubernetes-1-21/tree/main/cis%202.4/multi-cluster/dev-cluster/cis/crd-resource)
+crd-resource [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/multi-cluster/dev-cluster/cis/crd-resource)
 
 ## Configuring CIS CRD for the Prod Cluster based on the Hostname
 
@@ -343,7 +343,7 @@ kubectl create -f customresourcedefinitions.yaml
 kubectl create -f vs-prod.yaml
 ```
 
-crd-resource [repo](https://github.com/mdditt2000/kubernetes-1-21/tree/main/cis%202.4/multi-cluster/prod-cluster/cis/crd-resource)
+crd-resource [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/multi-cluster/prod-cluster/cis/crd-resource)
 
 **Note** For more information on F5 CIS and IPAM please review my user-guide and demo at [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ipam/README.md)
 
