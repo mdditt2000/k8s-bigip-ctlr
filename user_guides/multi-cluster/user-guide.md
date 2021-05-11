@@ -1,4 +1,4 @@
-# Multi-Cluster Kubernetes using Container Ingress Services (CIS) and BIG-IP
+# Multi-Cluster Kubernetes using Container Ingress Services (CIS) and BIG-IP using Flannel
 
 Today, organizations are increasingly deploying multiple Kubernetes clusters. Deploying multiple Kubernetes clusters can improve availability, isolation and scalability. This user-guide documents how CIS can automate BIP-IP to provide Edge Ingress services for a dev to prod Kubernetes cluster.
 
