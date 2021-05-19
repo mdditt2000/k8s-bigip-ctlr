@@ -1,6 +1,6 @@
-# Kubernetes User Guide with BIG-IP High Availability (HA) Configuration
+# User Guide with CIS and BIG-IP (HA) Configuration using Kubernetes Flannel Network Fabric
 
-This user-guide is created to document integration of CIS and BIGIP in a HA cluster. Diagram below displays a BIG-IP HA cluster. Each BIG-IP has a dedicated CIS instance 
+This user-guide is created to document integration of CIS and BIGIP in a HA cluster using Flannel Network Fabric. Diagram below displays a BIG-IP HA cluster. Each BIG-IP has a dedicated CIS instance 
 
 ![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/k8s-ha/diagrams/2021-05-19_11-19-07.png)
 
