@@ -1,6 +1,10 @@
 # Kubernetes User Guide with BIG-IP High Availability (HA) Configuration
 
-This page is created to document K8S 1.20 with integration of CIS and BIGIP in a HA cluster 
+This user-guide is created to document integration of CIS and BIGIP in a HA cluster. Diagram below displays a BIG-IP HA cluster. Each BIG-IP has a dedicated CIS instance 
+
+![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/k8s-ha/diagrams/2021-05-19_11-19-07.png)
+
+Demo on YouTube [video](https://www.youtube.com/watch?v=Ieq9rzelpUk)
 
 # Note
 
