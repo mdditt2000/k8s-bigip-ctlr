@@ -4,7 +4,7 @@ This user-guide is created to document integration of CIS and BIGIP in a HA clus
 
 ![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/k8s-ha/diagrams/2021-05-19_11-19-07.png)
 
-Demo on YouTube [video](https://www.youtube.com/watch?v=Ieq9rzelpUk)
+Demo on YouTube [video](https://www.youtube.com/watch?v=nXvRpBv8V_8)
 
 # Note
 
