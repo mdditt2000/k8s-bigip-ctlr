@@ -212,9 +212,9 @@ Add BIG-IP and CIS job_name to the config-map.yaml so it applies the configurati
 * basic_auth: - credentials for Prometheus to authenticate to the BIG-IP
 * static_configs: - Contains one or more targets for this prometheus job
 
-Check the targets Prometheus dashboard to make sure Prometheus is able to pull BIG-IP
+Check the targets Prometheus dashboard to make sure Prometheus is able to pull BIG-IP and CIS
 
-![Image of Target](https://github.com/mdditt2000/prometheus/blob/master/diagrams/2020-05-12_14-52-08.png)
+![Image of Target](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/prometheus/diagrams/2021-06-03_15-09-19.png)
 
 There are many metrics available to graph or monitor. Example below virtualServers current connections. Use the label to graph the metric desired.
 ```
@@ -226,4 +226,4 @@ f5_clientside_curConns{virtualServers="/k8s_AS3/Shared/ingress_10_192_75_108_80"
 ```
 Graph displaying concurrent connection
 
-![Image of graph](https://github.com/mdditt2000/prometheus/blob/master/diagrams/2020-05-12_16-08-21.png)
+![Image of graph](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/prometheus/diagrams/2020-05-12_16-08-21.png)
