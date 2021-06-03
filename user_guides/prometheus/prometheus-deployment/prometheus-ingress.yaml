@@ -8,13 +8,6 @@ metadata:
     virtual-server.f5.com/clientssl: '[ { "hosts": [ "prometheus.f5demo.com" ], "bigIpProfile": "/Common/clientssl" } ]'
     virtual-server.f5.com/https-port: "443"
     ingress.kubernetes.io/ssl-redirect: "true"
-    virtual-server.f5.com/health: |
-        '[{
-          "path": "/",
-          "send": "HTTP GET /",
-          "interval": 5,
-          "timeout": 10
-        }]'
 spec:
   rules:
   - host: prometheus.f5demo.com
