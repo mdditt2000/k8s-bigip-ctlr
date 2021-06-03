@@ -4,7 +4,7 @@ Prometheus is an open source monitoring framework. This user-guide covers setup 
 
 ![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/prometheus/diagrams/2021-06-03_14-03-16.png)
 
-Demo on YouTube [video](https://www.youtube.com/watch?v=IEAzvkRjWAE)
+Demo on YouTube [video](https://www.youtube.com/watch?v=efN4fXWjkUo)
 
 ## How to Setup Prometheus Monitoring On Kubernetes Cluster
 
