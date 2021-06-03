@@ -1,0 +1,19 @@
+{
+    "class": "Telemetry",
+    "My_Poller": {
+        "class": "Telemetry_System_Poller",
+        "interval": 0
+    },
+    "My_System": {
+        "class": "Telemetry_System",
+        "enable": "true",
+        "systemPoller": [
+            "My_Poller"
+        ]
+    },
+    "metrics": {
+        "class": "Telemetry_Pull_Consumer",
+        "type": "Prometheus",
+        "systemPoller": "My_Poller"
+    }
+}

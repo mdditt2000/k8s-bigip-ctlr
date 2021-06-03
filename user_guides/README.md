@@ -8,3 +8,4 @@ For guides on using CIS with Kubernetes and OpenShift see:
 * [F5 IngressLink](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/ingresslink)
 * [Multi-Cluster Kubernetes using Flannel](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-cluster/user-guide.md)
 * [BIG-IP HA using Flannel](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/k8s-ha/README.md)
+* [BIG-IP Metrics from Prometheus](missing)

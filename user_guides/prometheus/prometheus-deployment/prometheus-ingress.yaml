@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: prometheus-ui
+  namespace: monitoring
+  annotations:
+    virtual-server.f5.com/ip: "10.192.75.107"
+    virtual-server.f5.com/clientssl: '[ { "hosts": [ "prometheus.f5demo.com" ], "bigIpProfile": "/Common/clientssl" } ]'
+    virtual-server.f5.com/https-port: "443"
+    ingress.kubernetes.io/ssl-redirect: "true"
+    virtual-server.f5.com/health: |
+        '[{
+          "path": "/",
+          "send": "HTTP GET /",
+          "interval": 5,
+          "timeout": 10
+        }]'
+spec:
+  rules:
+  - host: prometheus.f5demo.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: prometheus-service
+            port:
+              number: 8080
