@@ -6,11 +6,11 @@ HubMode expands on current ConfigMap implementation in CIS using the AS3 API. On
  
 Looking at the diagram below, we see the current Kubernetes personas (left in the picture) and “introduction of Operators” (the right), where different personas are responsible for configuration of the platform. Infrastructure Provider responsible for Ingress "ConfigMap" while Cluster Operator and or Application Developers responsible for Pod Deployments/Services. These personas are mostly working in different projects and or namespaces. CIS maps perfectly to both personas with the introduction on HubMode using ConfigMaps. With HubMode CIS can better assist NetOps transform from imperative to declarative using AS3 declarations, no matter of the mode. 
 
-![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.5/hubMode/diagram/2021-06-07_12-13-34.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/hubmode/diagram/2021-06-07_12-13-34.png)
 
 CIS maps perfectly to both roles. With HubMode CIS can better assist NetOps transform from imperative to declarative using AS3 declarations, no matter of the mode. In this example the Infrastructure Provider is creating the ConfigMap in the default namespace while the Application Developers is creating the Pod Deployments/Services in n1 namespace. Using HubMode, CIS will detect the associated endpoints using the service discovery labels regards of the namespace. This is consistent with CIS 1.x. 
 
-![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.5/hubMode/diagram/2021-06-07_13-28-57.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/hubmode/diagram/2021-06-07_13-28-57.png)
 
 Demo on YouTube [video]()
 
@@ -31,7 +31,7 @@ args:
   - "--manage-configmaps=true"
 ```
 
-* cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.5/hubMode/cis-deployment)
+* cis-deployment [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/hubmode/cis-deployment)
 
 ConfigMap for A1 and A2. ConfigMap applied in namespace default. Add the **hubMode: "true"** label
 
@@ -110,7 +110,7 @@ data:
     }
 ```
 
-* configmap [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.5/hubMode/configmap)
+* configmap [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/hubmode/configmap/vs-configmap.yaml)
 
 Service for endpoint A1 and A2 with the appropriate service discovery labels for CIS
 
@@ -156,4 +156,4 @@ spec:
     app: f5-hello-world
 ```
 
-* pod-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.5/hubMode/pod-deployment)
+* pod-deployment [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/hubmode/pod-deployment)
