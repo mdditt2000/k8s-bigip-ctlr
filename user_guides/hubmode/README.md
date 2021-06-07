@@ -12,7 +12,7 @@ CIS maps perfectly to both roles. With HubMode CIS can better assist NetOps tran
 
 ![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/hubmode/diagram/2021-06-07_13-28-57.png)
 
-Demo on YouTube [video]()
+Demo on YouTube [video](https://www.youtube.com/watch?v=-HLcHH_vQJE)
 
 ## Example files from the diagram:
 
