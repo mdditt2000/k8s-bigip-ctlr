@@ -22,31 +22,31 @@ Locate the F5 Container Ingress Services Operator in OpenShift OperatorHub as sh
 
 Select the Operator to Install. In this example I am installing the latest Operator 1.7.0. Select the Install tab as shown in the diagram
 
-![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/diagrams/2021-06-10_13-20-27.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/operator/diagrams/2021-06-10_13-20-27.png)
 
 ### Step 3
 
 Install the Operator and provide the installation mode, installed namespaces and approval strategy. In this user-guide and demo I am using the defaults
 
-![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/diagrams/2021-06-10_13-47-45.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/operator/diagrams/2021-06-10_13-47-45.png)
 
 Operator will take a few minutes to install
 
-![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/diagrams/2021-06-10_13-50-10.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/operator/diagrams/2021-06-10_13-50-10.png)
 
 Once installed select the View Operator tab
 
-![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/diagrams/2021-06-10_13-51-02.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/operator/diagrams/2021-06-10_13-51-02.png)
 
 ### Step 4
 
 Now that the operator is installed you can create an instance of CIS. This will deploy CIS in OpenShift
 
-![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/diagrams/2021-06-14_14-07-36.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/operator/diagrams/2021-06-14_14-07-36.png)
 
 Note that currently some fields may not be represented in form so its best to use the "YAML View" for full control of object creation. Select the "YAML View"
 
-![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/diagrams/2021-06-14_14-14-41.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/operator/diagrams/2021-06-14_14-14-41.png)
 
 ### Step 5
 
@@ -90,16 +90,16 @@ spec:
 
 Select the Create tab
 
-![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/diagrams/2021-06-14_14-38-24.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/operator/diagrams/2021-06-14_14-38-24.png)
 
 ### Step 6
 
 Validate CIS deployment. Select Workloads/Deployments 
 
-![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/diagrams/2021-06-14_14-42-54.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/operator/diagrams/2021-06-14_14-42-54.png)
 
 Select the **f5-bigip-ctlr-operator** to see more details on the CIS deployment. Also validate the CIS deployment image
 
-![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/diagrams/2021-06-14_14-45-08.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/operator/diagrams/2021-06-14_14-45-08.png)
 
 CIS deployment is ready to receive OpenShift Routes! 
