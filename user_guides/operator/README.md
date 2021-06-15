@@ -4,7 +4,7 @@
 
 In OpenShift, CIS can be installed manually using a a yaml deployment manifest or using the Operator in OpenShift. The CIS Operator is a packaged deployment of CIS and will use Helm Charts to create the deployment. This user-guide provide additional information and examples when using the CIS Operator in OpenShift.
 
-Demo on YouTube [video](https://www.youtube.com/watch?v=-HLcHH_vQJE)
+Demo on YouTube [video](https://youtu.be/hhC-u-ehOuw)
 
 ### Prerequisites
 
