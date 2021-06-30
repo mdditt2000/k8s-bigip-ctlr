@@ -4,7 +4,7 @@ This user guide is create to document OpenShift 4.7 integration of CIS and stand
 
 ![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-7/standalone/diagram/2021-06-30_13-40-08.png)
 
-Demo on YouTube [video](https://www.youtube.com/watch?v=-HLcHH_vQJE)
+Demo on YouTube [video](https://youtu.be/-HS-6lpBhyk)
 
 ## Environment parameters
 

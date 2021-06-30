@@ -11,3 +11,4 @@ For guides on using CIS with Kubernetes and OpenShift see:
 * [BIG-IP Metrics from Prometheus](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/prometheus/README.md)
 * [ConfigMap HubMode](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/hubmode/README.md)
 * [OpenShift Operator](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/operator#readme)
+* [OpenShift 4.7 for Standalone BIG-IP using OpenShift SDN](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-7/standalone/README.md)
