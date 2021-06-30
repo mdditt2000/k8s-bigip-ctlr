@@ -2,7 +2,7 @@
 
 This user guide is create to document OpenShift 4.7 integration of CIS and standalone BIG-IP. This user guide provides configuration for a standalone BIG-IP configuration using OpenShift SDN
 
-![diagram](https://github.com/mdditt2000/openshift-4-7/blob/master/standalone/diagram/2021-06-30_13-40-08.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-7/standalone/diagram/2021-06-30_13-40-08.png)
 
 Demo on YouTube [video](https://www.youtube.com/watch?v=-HLcHH_vQJE)
 
@@ -29,7 +29,7 @@ https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/usergui
 (tmos)# create net tunnels tunnel openshift_vxlan key 0 profile vxlan-mp local-address 10.192.125.60
 ```
 
-![diagram](https://github.com/mdditt2000/openshift-4-7/blob/master/standalone/diagram/2021-06-29_15-42-04.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-7/standalone/diagram/2021-06-29_15-42-04.png)
 
 ### Step 2:
 
@@ -49,7 +49,7 @@ ocp-pm-bwmmz-worker-lws6s   ocp-pm-bwmmz-worker-lws6s   10.192.75.235   10.131.0
 ocp-pm-bwmmz-worker-qdhgx   ocp-pm-bwmmz-worker-qdhgx   10.192.75.233   10.128.2.0/23
 
 ```
-f5-openshift-hostsubnet.yaml [repo](https://github.com/mdditt2000/openshift-4-7/blob/master/standalone/cis/f5-openshift-hostsubnet.yaml)
+f5-openshift-hostsubnet.yaml [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-7/standalone/cis/f5-openshift-hostsubnet.yaml)
 
 ### Step 3:
 
@@ -57,7 +57,7 @@ f5-openshift-hostsubnet.yaml [repo](https://github.com/mdditt2000/openshift-4-7/
 
 Subnet from the **f5-server** hostsubnet create above. Used .60 to be consistent with Big-IP internal interface
 
-![diagram](https://github.com/mdditt2000/openshift-4-7/blob/master/standalone/diagram/2021-06-30_09-42-15.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-7/standalone/diagram/2021-06-30_09-42-15.png)
 
 ## Create a new partition on your BIG-IP system
 
@@ -171,11 +171,11 @@ Deploy demo app in OpenShift. This could be done using the OpenShift UI or CLI. 
 deployment.apps/f5-demo created
 service/f5-demo created
 ```
-demo-app [repo](https://github.com/mdditt2000/openshift-4-7/tree/master/standalone/demo-app)
+demo-app [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/openshift-4-7/standalone/demo-app)
 
 You can validate the demo app install via the OpenShift UI
 
-![diagram](https://github.com/mdditt2000/openshift-4-7/blob/master/standalone/diagram/2021-06-30_11-39-52.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-7/standalone/diagram/2021-06-30_11-39-52.png)
 
 ## Create Route for Ingress traffic to Demo App
 
@@ -188,12 +188,12 @@ Create basic route for Ingress traffic from BIG-IP to Demo App
 route.route.openshift.io/f5-demo-route-basic created
 ```
 
-f5-demo-route-basic [repo](https://github.com/mdditt2000/openshift-4-7/tree/master/standalone/route)
+f5-demo-route-basic [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-7/standalone/route/f5-demo-route-basic.yaml)
 
 Validate the route via the OpenShift UI under the Networking/Routes
 
-![diagram](https://github.com/mdditt2000/openshift-4-7/blob/master/standalone/diagram/2021-06-30_13-59-43.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-7/standalone/diagram/2021-06-30_13-59-43.png)
 
 Validate the route via the BIG-IP
 
-![diagram](https://github.com/mdditt2000/openshift-4-7/blob/master/standalone/diagram/2021-06-30_14-00-53.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-7/standalone/diagram/2021-06-30_14-00-53.png)
