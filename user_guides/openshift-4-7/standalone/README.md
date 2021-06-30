@@ -57,7 +57,7 @@ f5-openshift-hostsubnet.yaml [repo](https://github.com/mdditt2000/k8s-bigip-ctlr
 
 Subnet from the **f5-server** hostsubnet create above. Used .60 to be consistent with Big-IP internal interface
 
-![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-7/standalone/diagram/2021-06-30_09-42-15.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-7/standalone/diagram/2021-06-30_14-38-24.png)
 
 ## Create a new partition on your BIG-IP system
 
