@@ -37,9 +37,9 @@ On bigip-02 create the VXLAN tunnel
 ```
 ![diagram](https://github.com/mdditt2000/openshift-4-7/blob/master/cluster/diagram/2021-07-06_13-08-24.png)
 
-### Step 2: Create a new OpenShift HostSubnet
+### Step 2: Create a new OpenShift HostSubnets
 
-Create a host subnet for the BIP-IP. This will provide the subnet for creating the tunnel self-IP
+Create the hostsubnets for the BIP-IP. This will provide the subnet for creating the tunnel self-IP
 
     oc create -f f5-openshift-hostsubnet-01.yaml
     oc create -f f5-openshift-hostsubnet-02.yaml
@@ -61,9 +61,9 @@ ocp-pm-bwmmz-worker-qdhgx   ocp-pm-bwmmz-worker-qdhgx   10.192.75.233   10.128.2
 
 f5-openshift-hostsubnet.yaml [repo](https://github.com/mdditt2000/openshift-4-7/tree/master/cluster/cis)
 
-### Step 3: Create a self IP in the VXLAN
+### Step 3: Create the self IPs for the VXLAN CNI
 
-Create a self IP address in the VXLAN on each device. The subnet mask you assign to the self IP must match the one that the OpenShift SDN assigns to nodes. **Note** that is a /14 by default. Be sure to specify a floating traffic group (for example, traffic-group-1). Otherwise, the self IP will use the BIG-IP system’s default
+Create the self IP address for the VXLAN CNI on each BIG-IP. The subnet mask you assign to the self IP must match the one that the OpenShift SDN assigns to nodes. **Note** that is a /14 by default. Be sure to specify a floating traffic group (for example, traffic-group-1). Otherwise, the self IP will use the BIG-IP system’s default
 
 On bigip-01 create the self IP from hostsubnets **f5-server-01**
 ```
