@@ -15,7 +15,7 @@ Demo on YouTube [video]()
 
 ## Prerequisite
 
-Since CIS is using the AS3 declarative API we need the AS3 extension installed on BIG-IP. Follow the link to install AS3
+CIS uses the AS3 declarative API. AS3 extension installation on BIG-IP is required. Follow the link to install AS3
  
 * Install AS3 on BIG-IP
 https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/installation.html
