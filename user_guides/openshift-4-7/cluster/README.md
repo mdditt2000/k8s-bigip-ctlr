@@ -20,7 +20,7 @@ CIS uses the AS3 declarative API. AS3 extension installation on BIG-IP is requir
 * Install AS3 on BIG-IP
 https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/installation.html
 
-### Step 1: Create a VXLAN profile and tunnel
+### Step 1: Create the VXLAN profile and tunnels
 
 On bigip-01 create the VXLAN profile and tunnel
 
