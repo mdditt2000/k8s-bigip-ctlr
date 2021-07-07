@@ -2,7 +2,7 @@
 
 This user guide is created to document OpenShift 4.7 integration with a BIG-IP cluster using CIS. This user guide provides the configuration for a BIG-IP cluster using **OpenShift SDN**. BIG-IP cluster is pre-configured using **manual with incremental sync**
 
-![diagram](https://github.com/mdditt2000/openshift-4-7/blob/master/cluster/diagram/2021-07-06_13-18-55.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-7/cluster/diagram/2021-07-06_13-18-55.png)
 
 Demo on YouTube [video]()
 
@@ -28,14 +28,14 @@ On bigip-01 create the VXLAN profile and tunnel
 (tmos)# create net tunnels vxlan vxlan-mp flooding-type multipoint
 (tmos)# create net tunnels tunnel openshift_vxlan key 0 profile vxlan-mp local-address 10.192.125.62 secondary-address 10.192.125.60 traffic-group traffic-group-1
 ```
-![diagram](https://github.com/mdditt2000/openshift-4-7/blob/master/cluster/diagram/2021-07-06_13-07-43.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-7/cluster/diagram/2021-07-06_13-07-43.png)
 
 On bigip-02 create the VXLAN tunnel
 
 ```
 (tmos)# create net tunnels tunnel openshift_vxlan key 0 profile vxlan-mp local-address 10.192.125.62 secondary-address 10.192.125.61 traffic-group traffic-group-1
 ```
-![diagram](https://github.com/mdditt2000/openshift-4-7/blob/master/cluster/diagram/2021-07-06_13-08-24.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-7/cluster/diagram/2021-07-06_13-08-24.png)
 
 ### Step 2: Create a new OpenShift HostSubnets
 
@@ -59,7 +59,7 @@ ocp-pm-bwmmz-worker-lws6s   ocp-pm-bwmmz-worker-lws6s   10.192.75.235   10.131.0
 ocp-pm-bwmmz-worker-qdhgx   ocp-pm-bwmmz-worker-qdhgx   10.192.75.233   10.128.2.0/23
 ```
 
-f5-openshift-hostsubnet.yaml [repo](https://github.com/mdditt2000/openshift-4-7/tree/master/cluster/cis)
+f5-openshift-hostsubnet.yaml [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/openshift-4-7/cluster/cis)
 
 ### Step 3: Create the self IPs for the VXLAN CNI
 
@@ -69,19 +69,19 @@ On bigip-01 create the self IP from hostsubnets **f5-server-01**
 ```
 (tmos)# create net self 10.129.4.60/14 allow-service all vlan openshift_vxlan
 ```
-![diagram](https://github.com/mdditt2000/openshift-4-7/blob/master/cluster/diagram/2021-07-06_13-49-15.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-7/cluster/diagram/2021-07-06_13-49-15.png)
 
 On bigip-02 create the self IP from hostsubnets **f5-server-02**
 ```
 (tmos)# create net self 10.130.4.61/14 allow-service all vlan openshift_vxlan
 ```
-![diagram](https://github.com/mdditt2000/openshift-4-7/blob/master/cluster/diagram/2021-07-06_13-50-21.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-7/cluster/diagram/2021-07-06_13-50-21.png)
 
 On the active BIG-IP, create a floating IP address in the subnet assigned by the OpenShift SDN from from hostsubnets **f5-server-float**
 ```
 (tmos)# create net self 10.131.4.62/14 allow-service default traffic-group traffic-group-1 vlan openshift_vxlan
 ```
-![diagram](https://github.com/mdditt2000/openshift-4-7/blob/master/cluster/diagram/2021-07-06_14-12-10.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-7/cluster/diagram/2021-07-06_14-12-10.png)
 
 ### Step 4: Create a new partition on your BIG-IP system
 
@@ -108,7 +108,7 @@ Create both bigip-01 and bigip-02 yaml deployment manifests
 
 ### Step 6: Validate CIS deployment. Select Workloads/Deployments
 
-![diagram](https://github.com/mdditt2000/openshift-4-7/blob/master/cluster/diagram/2021-07-07_15-30-56.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-7/cluster/diagram/2021-07-07_15-30-56.png)
 
 ### Step 10: Installing the Demo App in OpenShift
 
@@ -119,7 +119,7 @@ Deploy demo app in OpenShift. This could be done using the OpenShift UI or CLI. 
 deployment.apps/f5-demo created
 service/f5-demo created
 ```
-demo-app [repo](https://github.com/mdditt2000/openshift-4-7/tree/master/standalone/demo-app)
+demo-app [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/openshift-4-7/cluster/demo-app)
 
 You can validate the demo app install via the OpenShift UI
 
@@ -136,7 +136,7 @@ Create basic route for Ingress traffic from BIG-IP to Demo App
 route.route.openshift.io/f5-demo-route-basic created
 ```
 
-f5-demo-route-basic [repo](https://github.com/mdditt2000/openshift-4-7/tree/master/standalone/route)
+f5-demo-route-basic [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/openshift-4-7/cluster/route)
 
 Validate the route via the OpenShift UI under the Networking/Routes
 
