@@ -1,6 +1,6 @@
 # OpenShift 4.7 and F5 Container Ingress Services (CIS) User-Guide for BIG-IP Cluster
 
-This user guide is create to document OpenShift 4.7 integration of CIS and BIG-IP cluster. This user guide provides configuration for a BIG-IP cluster configuration using OpenShift SDN. BIG-IP cluster is pre-configured using **manual with incremental sync**
+This user guide is created to document OpenShift 4.7 integration a BIG-IP cluster using CIS. This user guide provides configuration for a BIG-IP cluster configuration using OpenShift SDN. BIG-IP cluster is pre-configured using **manual with incremental sync**
 
 ![diagram](https://github.com/mdditt2000/openshift-4-7/blob/master/cluster/diagram/2021-07-06_13-18-55.png)
 
