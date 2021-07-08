@@ -4,7 +4,7 @@ This user guide is created to document OpenShift 4.7 integration with a BIG-IP c
 
 ![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-7/cluster/diagram/2021-07-06_13-18-55.png)
 
-Demo on YouTube [video]()
+Demo on YouTube [video](https://youtu.be/ygqqEJ59c4k)
 
 ## Environment parameters
 
