@@ -11,7 +11,7 @@ Demo on YouTube [video](https://www.youtube.com/watch?v=s9iUZoRqYQs)
 ## Prerequisites
 
 * Recommend AS3 version 3.26 [repo](https://github.com/F5Networks/f5-appsvcs-extension/releases/tag/v3.26.0)
-* CIS 2.4 [repo](https://github.com/F5Networks/k8s-bigip-ctlr/releases/tag/v2.4.0)
+* CIS 2.5 [repo](https://github.com/F5Networks/k8s-bigip-ctlr/releases/tag/v2.4.0)
 * F5 IPAM Controller [repo](https://github.com/F5Networks/f5-ipam-controller/releases/tag/v0.1.2)
 * CloudDocs [documentation](https://clouddocs.f5.com/containers/latest/userguide/ipam/)
 
