@@ -4,7 +4,9 @@
 
 The F5 IPAM Controller is deployed in Kubernetes working with CIS to allocates IP addresses from Infoblox network ranges. The F5 IPAM Controller watches orchestration-specific CRD resources and consumes the hostnames within each resource. The F5 IPAM Controller integrates with Infoblox WAPI via the RESTful web API to allowcate the virtual server IP addresses as shown below in the diagram.
 
-![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.5/ipam-infoblox/diagram/2021-07-13_13-46-41.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ipam-infoblox/diagram/2021-07-13_13-46-41.png)
+
+Demo on YouTube [video](coming soon)
 
 ## Prerequisites
 
@@ -57,7 +59,7 @@ Deploy CIS
 kubectl create -f f5-cluster-deployment.yaml
 ```
 
-cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.5/ipam-infoblox/cis-deployment/f5-cluster-deployment.yaml)
+cis-deployment [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ipam-infoblox/cis-deployment/f5-cluster-deployment.yaml)
 
 ## Step 2: F5 IPAM Deploy Configuration Options
 
@@ -91,7 +93,7 @@ kubectl create -f f5-ipam-ctlr-clusterrole.yaml
 kubectl create -f f5-ipam-schema.yaml
 kubectl create -f f5-ipam-deployment.yaml
 ```
-ipam-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.5/ipam-infoblox/ipam-deployment)
+ipam-deployment [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/ipam-infoblox/ipam-deployment)
 
 ## Logging output when deploying the F5 IPAM Controller
 
@@ -112,7 +114,6 @@ I0713 17:39:40.322244       1 shared_informer.go:247] Caches are synced for F5 I
 2021/07/13 17:39:40 [DEBUG] Starting Custom Resource Worker
 2021/07/13 17:39:40 [DEBUG] Starting Response Worker
 ```
-
 
 ## Step 3: Configuring CRD to work with F5 IPAM Controller for the following hosts
 
@@ -175,7 +176,7 @@ kubectl create -f vs-mysite.yaml
 kubectl create -f vs-myapp.yaml
 ```
 
-crd-example [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.5/ipam-infoblox/crd-example)
+crd-example [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/ipam-infoblox/crd-example)
 
 ## Logging output from the VirtualServer
 
@@ -192,11 +193,11 @@ Hostname: myapp.f5demo.com      Key:    CIDR:   IPAMLabel: Production   IPAddr: 
 ```
 ipamLabel: Production Infoblox setup
 
-![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.5/ipam-infoblox/diagram/2021-07-13_12-58-46.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ipam-infoblox/diagram/2021-07-13_12-58-46.png)
 
 ipam status for CRD 
 
-![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.5/ipam-infoblox/diagram/2021-07-13_13-30-21.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ipam-infoblox/diagram/2021-07-13_13-30-21.png)
 
 **mysite.f5demo.com**
 
@@ -211,10 +212,10 @@ Hostname: mysite.f5demo.com     Key:    CIDR:   IPAMLabel: Test IPAddr: 10.192.7
 ```
 ipamLabel: Test Infoblox setup
 
-![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.5/ipam-infoblox/diagram/2021-07-13_13-27-21.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ipam-infoblox/diagram/2021-07-13_13-27-21.png)
 
 ipam status for CRD 
 
-![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.5/ipam-infoblox/diagram/2021-07-13_13-33-27.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ipam-infoblox/diagram/2021-07-13_13-33-27.png)
 
 
