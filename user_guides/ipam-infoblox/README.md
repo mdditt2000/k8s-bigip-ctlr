@@ -6,7 +6,7 @@ The F5 IPAM Controller is deployed in Kubernetes working with CIS to allocates I
 
 ![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ipam-infoblox/diagram/2021-07-13_13-46-41.png)
 
-Demo on YouTube [video](coming soon)
+Demo on YouTube [video](https://youtu.be/Z7fLfiaMAdc)
 
 ## Prerequisites
 
@@ -14,7 +14,7 @@ Demo on YouTube [video](coming soon)
 * CIS 2.5 [repo](https://github.com/F5Networks/k8s-bigip-ctlr/releases/tag/v2.5.0)
 * F5 IPAM Controller [repo](https://github.com/F5Networks/f5-ipam-controller/releases/tag/v0.1.2)
 * Github [documentation](https://github.com/F5Networks/f5-ipam-controller/blob/main/README.md)
-* Infoblox Github [documentation](https://www.infoblox.com/products/ipam-dhcp/)
+* Infoblox [documentation](https://www.infoblox.com/products/ipam-dhcp/)
 
 ## Setup Options
 
