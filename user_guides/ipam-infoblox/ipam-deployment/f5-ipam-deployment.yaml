@@ -38,7 +38,7 @@ spec:
 
         command:
         - /app/bin/f5-ipam-controller
-        image: amit49g/f5-ipam-ctlr:v1.4.1
+        image: f5networks/f5-ipam-controller:0.1.4
         imagePullPolicy: IfNotPresent
         name: f5-ipam-controller
       serviceAccount: ipam-ctlr
