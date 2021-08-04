@@ -1,0 +1,42 @@
+# cat install-config.yaml
+apiVersion: v1
+baseDomain: f5demo.com
+compute:
+- architecture: amd64
+  hyperthreading: Enabled
+  name: worker
+  platform: {}
+  replicas: 3
+controlPlane:
+  architecture: amd64
+  hyperthreading: Enabled
+  name: master
+  platform: {}
+  replicas: 3
+metadata:
+  creationTimestamp: null
+  name: ocp-pm
+networking:
+  clusterNetwork:
+  - cidr: 10.128.0.0/14
+    hostPrefix: 23
+  machineNetwork:
+  - cidr: 10.0.0.0/16
+  networkType: OVNKubernetes
+  serviceNetwork:
+  - 172.30.0.0/16
+platform:
+  vsphere:
+    apiVIP: 10.192.125.101
+    cluster: OCP-PM
+    datacenter: PME-LAB
+    defaultDatastore: datastore1 (3)
+    ingressVIP: 10.192.125.102
+    network: VM Network
+    password: secret
+    username: administrator@f5demo.com
+    vCenter: vcsa7-pme.f5demo.com
+publish: External
+pullSecret: removed
+#
+
