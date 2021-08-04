@@ -2,13 +2,13 @@
 
 This user guide is create to document OpenShift 4.8 integration of CIS and standalone BIG-IP using OVN-Kubernetes advanced networking. This user guide provides configuration for a standalone BIG-IP with **OVN-Kubernetes hybrid overlay feature(VxLAN)**. OVN-Kubernetes hybrid overlay uses the GENEVE protocol for EAST/WEST traffic within the OpenShift Cluster and VxLAN tunnels to network BIG-IP devices.
 
-![diagram](https://github.com/mdditt2000/openshift-4-7/blob/master/standalone-ovn/diagram/2021-08-03_23-17-10.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-8/standalone-ovn-k8s-hybrid/diagram/2021-08-03_23-17-10.png)
 
 Demo on YouTube [video]()
 
 RedHat documents the installation of **OVN-K8S advanced networking** in the [specifying advanced network configuration sections](https://docs.openshift.com/container-platform/4.8/installing/installing_vsphere/installing-vsphere-installer-provisioned-network-customizations.html#modifying-nwoperator-config-startup_installing-vsphere-installer-provisioned-network-customizations) of the install process. Based on the following note from RedHat, its very important to follow the installation of OVN-Kubernetes Hybrid Overlay Feature when installing OpenShift. Modification, migration cannot be applied once OpenShift is already installed.
 
-![diagram](https://github.com/mdditt2000/openshift-4-7/blob/master/standalone-ovn/diagram/2021-08-03_13-12-08.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-8/standalone-ovn-k8s-hybrid/diagram/2021-08-03_13-12-08.png)
 
 ### Prerequisites
 
@@ -36,7 +36,7 @@ INFO Connecting to vCenter vcsa7-pme.f5demo.com
 ? Pull Secret [? for help] ......
 INFO Install-Config created in: ipi
 ```
-install-config.yaml.yaml [repo](https://github.com/mdditt2000/openshift-4-7/blob/master/standalone-ovn/openshift/install-config.yaml)
+install-config.yaml.yaml [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-8/standalone-ovn-k8s-hybrid/openshift/install-config.yaml)
 
 **Step 2:** Create manifests
 
@@ -77,7 +77,7 @@ spec:
 
 # cp cluster-network-03-config.yaml /openshift/ipi/manifests/
 ```
-cluster-network-03-config.yaml [repo](https://github.com/mdditt2000/openshift-4-7/blob/master/standalone-ovn/openshift/cluster-network-03-config.yaml)
+cluster-network-03-config.yaml [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-8/standalone-ovn-k8s-hybrid/openshift/cluster-network-03-config.yaml)
 
 **Step 4:** Create Cluster
 
@@ -155,13 +155,13 @@ spec:
 
     (tmos)# create net tunnels vxlan vxlan-mp flooding-type multipoint
 
-![diagram](https://github.com/mdditt2000/openshift-4-7/blob/master/standalone-ovn/diagram/2021-08-03_14-18-36.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-8/standalone-ovn-k8s-hybrid/diagram/2021-08-03_14-18-36.png)
 
     (tmos)# create net tunnels tunnel openshift_vxlan key 4097 profile vxlan-mp local-address 10.192.125.60
 
 **Note:** OpenShift uses 4097(VNI) for VxLAN communication
 
-![diagram](https://github.com/mdditt2000/openshift-4-7/blob/master/standalone-ovn/diagram/2021-08-03_14-20-34.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-8/standalone-ovn-k8s-hybrid/diagram/2021-08-03_14-20-34.png)
 
 ### Step 2: Create self-ip for CNI
 
@@ -169,11 +169,11 @@ spec:
 
 **Note:** Use self IP range (10.142.2.60/12) which supernets the OpenShift cluster network i.e 10.128.0.0/14 to differentiate the VxLAN and GENEVE communication.
 
-![diagram](https://github.com/mdditt2000/openshift-4-7/blob/master/standalone-ovn/diagram/2021-08-03_14-39-20.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-8/standalone-ovn-k8s-hybrid/diagram/2021-08-03_14-39-20.png)
 
 Diagram of all the BIG-IP self-ip addresses
 
-![diagram](https://github.com/mdditt2000/openshift-4-7/blob/master/standalone-ovn/diagram/2021-08-03_14-40-06.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-8/standalone-ovn-k8s-hybrid/diagram/2021-08-03_14-40-06.png)
 
 ## Create a partition on BIG-IP for CIS to manage
 
@@ -202,7 +202,7 @@ Create f5-bigip-deployment manifests
 # oc adm policy add-cluster-role-to-user cluster-admin -z bigip-ctlr -n kube-system
 ```
 
-cis-deployment [repo](https://github.com/mdditt2000/openshift-4-7/tree/master/standalone-ovn/cis)
+cis-deployment [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/openshift-4-8/standalone-ovn-k8s-hybrid/cis)
 
 ## Add OVN-Kubernetes advanced networking CNI specific annotations
 
@@ -222,7 +222,7 @@ metadata:
 
     # oc apply -f ocp-exgw.yaml
 
-ocp-exgw.yaml [repo](https://github.com/mdditt2000/openshift-4-7/blob/master/standalone-ovn/openshift/ocp-exgw.yaml)
+ocp-exgw.yaml [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-8/standalone-ovn-k8s-hybrid/openshift/ocp-exgw.yaml)
 
 ## Installing the Demo App in OpenShift and validate the OVN-Kubernetes advanced networking annotations
 
@@ -338,12 +338,12 @@ Create basic route for Ingress traffic from BIG-IP to Demo App
     # oc create -f f5-demo-route-basic.yaml
 
 
-f5-demo-route-basic [repo](https://github.com/mdditt2000/openshift-4-7/tree/master/standalone/route)
+f5-demo-route-basic [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-8/standalone-ovn-k8s-hybrid/route/f5-demo-route-basic.yaml)
 
 Validate the route via the OpenShift UI under the Networking/Routes
 
-![diagram](https://github.com/mdditt2000/openshift-4-7/blob/master/standalone/diagram/2021-06-30_13-59-43.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-7/standalone/diagram/2021-06-30_13-59-43.png)
 
 Validate the route via the BIG-IP
 
-![diagram](https://github.com/mdditt2000/openshift-4-7/blob/master/standalone-ovn/diagram/2021-08-03_22-39-35.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-8/standalone-ovn-k8s-hybrid/diagram/2021-08-03_22-39-35.png)
