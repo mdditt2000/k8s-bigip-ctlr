@@ -2,7 +2,7 @@
 
 This user guide is create to document OpenShift 4.8 integration of CIS and Cluster BIG-IP using OVN-Kubernetes advanced networking. This user guide provides configuration for a Cluster BIG-IP with **OVN-Kubernetes hybrid overlay feature(VxLAN)**. OVN-Kubernetes hybrid overlay uses the GENEVE protocol for EAST/WEST traffic within the OpenShift Cluster and VxLAN tunnels to network BIG-IP devices.
 
-![diagram]()
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-8/cluster-ovn-hybird/diagram/2021-08-06_16-00-42.png)
 
 Demo on YouTube [video]()
 
