@@ -8,7 +8,7 @@ Demo on YouTube [video]()
 
 RedHat documents the installation of **OVN-K8S advanced networking** in the [specifying advanced network configuration sections](https://docs.openshift.com/container-platform/4.8/installing/installing_vsphere/installing-vsphere-installer-provisioned-network-customizations.html#modifying-nwoperator-config-startup_installing-vsphere-installer-provisioned-network-customizations) of the install process. Based on the following note from RedHat, its very important to follow the installation of OVN-Kubernetes Hybrid Overlay Feature when installing OpenShift. Modification, migration cannot be applied once OpenShift is already installed.
 
-![diagram](https://github.com/mdditt2000/openshift-4-7/blob/master/standalone-ovn/diagram/2021-08-03_13-12-08.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-8/cluster-ovn-hybird/diagram/2021-08-03_13-12-08.png)
 
 ### Prerequisites
 
@@ -77,7 +77,7 @@ spec:
 
 # cp cluster-network-03-config.yaml /openshift/ipi/manifests/
 ```
-cluster-network-03-config.yaml [repo](https://github.com/mdditt2000/openshift-4-7/blob/master/standalone-ovn/openshift/cluster-network-03-config.yaml)
+cluster-network-03-config.yaml [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-8/cluster-ovn-hybird/openshift/cluster-network-03-config.yaml)
 
 **Step 4:** Create Cluster
 
@@ -157,7 +157,7 @@ spec:
 
     (tmos)# create net tunnels vxlan vxlan-mp flooding-type multipoint
 
-![diagram](https://github.com/mdditt2000/openshift-4-7/blob/master/cluster-ovn/diagram/2021-08-03_14-18-36.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-8/cluster-ovn-hybird/diagram/2021-08-03_14-18-36.png)
 
 * **bigip-01**
 
@@ -165,7 +165,7 @@ spec:
 
 **Note:** OpenShift uses 4097(VNI) for VxLAN communication
 
-![diagram](https://github.com/mdditt2000/openshift-4-7/blob/master/cluster-ovn/diagram/2021-08-06_14-06-18.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-8/cluster-ovn-hybird/diagram/2021-08-06_14-06-18.png)
 
 * **bigip-02**
 
@@ -173,7 +173,7 @@ spec:
 
 **Note:** OpenShift uses 4097(VNI) for VxLAN communication
 
-![diagram](https://github.com/mdditt2000/openshift-4-7/blob/master/cluster-ovn/diagram/2021-08-06_14-06-50.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-8/cluster-ovn-hybird/diagram/2021-08-06_14-06-50.png)
 
 ### Step 2: Create self-ip for CNI IP Addresses on the BIG-IP devices
 
@@ -183,7 +183,7 @@ spec:
 
 **Note:** Use self IP range (10.142.2.60/12) which supernets the OpenShift cluster network i.e 10.128.0.0/14 to differentiate the VxLAN and GENEVE communication
 
-![diagram](https://github.com/mdditt2000/openshift-4-7/blob/master/cluster-ovn/diagram/2021-08-06_14-20-14.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-8/cluster-ovn-hybird/diagram/2021-08-06_14-20-14.png)
 
 * **bigip-02**
 
@@ -191,7 +191,7 @@ spec:
 
 **Note:** Use self IP range (10.142.4.61/12) which supernets the OpenShift cluster network i.e 10.128.0.0/14 to differentiate the VxLAN and GENEVE communication
 
-![diagram](https://github.com/mdditt2000/openshift-4-7/blob/master/cluster-ovn/diagram/2021-08-06_14-20-46.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-8/cluster-ovn-hybird/diagram/2021-08-06_14-20-46.png)
 
 Diagram of all the BIG-IP self-ip addresses on the BIG-IP devices
 
@@ -203,17 +203,17 @@ On the active device, create floating IP in the network which supernets the Open
 
     (tmos)# create net self 10.142.6.60/12 allow-service all traffic-group traffic-group-1 vlan openshift_vxlan
 
-![diagram](https://github.com/mdditt2000/openshift-4-7/blob/master/cluster-ovn/diagram/2021-08-06_14-33-20.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-8/cluster-ovn-hybird/diagram/2021-08-06_14-33-20.png)
 
 Diagram of self-ip addresses on the BIG-IP devices
 
 * **bigip-01**
 
-![diagram](https://github.com/mdditt2000/openshift-4-7/blob/master/cluster-ovn/diagram/2021-08-06_14-35-28.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-8/cluster-ovn-hybird/diagram/2021-08-06_14-35-28.png)
 
 * **bigip-02**
 
-![diagram](https://github.com/mdditt2000/openshift-4-7/blob/master/cluster-ovn/diagram/2021-08-06_14-35-55.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-8/cluster-ovn-hybird/diagram/2021-08-06_14-35-55.png)
 
 ## Create a partition on BIG-IP for CIS to manage
 
@@ -247,7 +247,7 @@ cis-deployment [repo](https://github.com/mdditt2000/openshift-4-7/tree/master/cl
 
 Validate that both CIS POD are running. You can use the OpenShift dashboard to view the deployments
 
-![diagram](https://github.com/mdditt2000/openshift-4-7/blob/master/cluster-ovn/diagram/2021-08-06_14-51-12.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-8/cluster-ovn-hybird/diagram/2021-08-06_14-51-12.png)
 
 ## Add OVN-Kubernetes advanced networking CNI specific annotations
 
@@ -267,7 +267,7 @@ metadata:
 
     # oc apply -f ocp-exgw.yaml
 
-ocp-exgw.yaml [repo](https://github.com/mdditt2000/openshift-4-7/blob/master/cluster-ovn/openshift/ocp-exgw.yaml)
+ocp-exgw.yaml [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-8/cluster-ovn-hybird/openshift/ocp-exgw.yaml)
 
 ## Installing the Demo App in OpenShift and validate the OVN-Kubernetes advanced networking annotations
 
@@ -335,7 +335,7 @@ Create basic route for Ingress traffic from BIG-IP to Demo App
 
     # oc create -f f5-demo-route-basic.yaml
 
-f5-demo-route-basic [repo](https://github.com/mdditt2000/openshift-4-7/blob/master/cluster-ovn/route/f5-demo-route-basic.yaml)
+f5-demo-route-basic [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/openshift-4-8/cluster-ovn-hybird/route)
 
 Validate the route via the OpenShift UI under the Networking/Routes
 
@@ -343,4 +343,4 @@ Validate the route via the OpenShift UI under the Networking/Routes
 
 Validate the route via the BIG-IP
 
-![diagram](https://github.com/mdditt2000/openshift-4-7/blob/master/standalone-ovn/diagram/2021-08-03_22-39-35.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-8/cluster-ovn-hybird/diagram/2021-08-06_15-35-49.png)
