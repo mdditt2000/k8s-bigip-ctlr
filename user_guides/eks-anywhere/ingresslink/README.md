@@ -6,7 +6,7 @@ The F5 IngressLink is addressing modern app delivery at scale/large. IngressLink
 
 F5 IngressLink was the first true integration between BIG-IP and NGINX technologies. F5 IngressLink was built to support customers with modern, container application workloads that use both BIG-IP Container Ingress Services and NGINX Ingress Controller for Kubernetes. It’s an elegant control plane solution that offers a unified method of working with both technologies from a single interface—offering the best of BIG-IP and NGINX and fostering better collaboration across NetOps and DevOps teams. The diagram below demonstrates this use-case.
 
-![architecture](https://github.com/mdditt2000/eks-anywhere/blob/main/user-guides/ingresslink/diagram/2021-08-17_12-08-07.png)
+![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/eks-anywhere/ingresslink/diagram/2021-08-17_12-08-07.png)
 
 Demo on YouTube [video]()
 
@@ -22,7 +22,7 @@ Validated versions to use IngressLink:
 
 * Recommend AS3 version 3.30.0 [repo](https://github.com/F5Networks/f5-appsvcs-extension/releases/tag/v3.30.0)
 * CIS 2.5.1 [repo](https://github.com/F5Networks/k8s-bigip-ctlr/releases/tag/v2.5.1)
-* NGINX+ IC [repo](https://github.com/mdditt2000/eks-anywhere/tree/main/user-guides/ingresslink/nginx-config)
+* NGINX+ IC [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/eks-anywhere/ingresslink/nginx-config)
 * Product Documentation [documentation](https://clouddocs.f5.com/containers/latest/userguide/ingresslink/)
 
 ## Configure F5 IngressLink with Kubernetes
@@ -39,7 +39,7 @@ Proxy Protocol is required by NGINX to provide the applications PODs with the or
 * In the Name field, type name as "Proxy_Protocol_iRule".
 * In the Definition field, Copy the definition from "Proxy_Protocol_iRule" file. Click Finished.
 
-proxy_protocol_iRule [repo](https://github.com/mdditt2000/eks-anywhere/blob/main/user-guides/ingresslink/big-ip/proxy-protocal/irule)
+proxy_protocol_iRule [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/eks-anywhere/ingresslink/big-ip/proxy-protocal/irule)
 
 **Step 2**
 
@@ -61,7 +61,7 @@ Create CIS IngressLink Custom Resource definition schema as follows:
 
     kubectl create -f customresourcedefinition.yaml
 
-cis-crd-schema [repo](https://github.com/mdditt2000/eks-anywhere/blob/main/user-guides/ingresslink/cis/cis-crd-schema/customresourcedefinition.yaml)
+cis-crd-schema [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/eks-anywhere/ingresslink/cis/cis-crd-schema/customresourcedefinition.yaml)
 
 Update the bigip address, partition and other details(image, imagePullSecrets, etc) in CIS deployment file and Install CIS Controller in ClusterIP mode as follows:
 
@@ -77,7 +77,7 @@ Update the bigip address, partition and other details(image, imagePullSecrets, e
 kubectl create -f f5-cis-deployment.yaml
 ```
 
-cis-deployment [repo](https://github.com/mdditt2000/eks-anywhere/blob/main/user-guides/ingresslink/cis/cis-deployment/f5-cis-deployment.yaml)
+cis-deployment [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/eks-anywhere/ingresslink/cis/cis-deployment/f5-cis-deployment.yaml)
 
 Use the commands below to validate that CIS is running
 
@@ -101,7 +101,7 @@ Create NGINX IC custom resource definitions for VirtualServer and VirtualServerR
     kubectl apply -f k8s.nginx.org_transportservers.yaml
     kubectl apply -f k8s.nginx.org_policies.yaml
 
-crd-schema [repo](https://github.com/mdditt2000/eks-anywhere/tree/main/user-guides/ingresslink/nginx-config/crd-schema)
+crd-schema [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/eks-anywhere/ingresslink/nginx-config/crd-schema)
 
 Create a namespace and a service account for the Ingress controller:
    
@@ -151,7 +151,7 @@ nginx-ingress-7fc84bb9-fp49c   1/1     Running   0          6d22h
 nginx-ingress-7fc84bb9-gc4lj   1/1     Running   0          6d22h
 ```
 
-nginx-config [repo](https://github.com/mdditt2000/eks-anywhere/tree/main/user-guides/ingresslink/nginx-config)
+nginx-config [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/eks-anywhere/ingresslink/nginx-config)
 
 **Step 4**
 
@@ -163,7 +163,7 @@ Update the ip-address in IngressLink resource and iRule which is created in Step
 
 Note: The name of the app label selector in IngressLink resource should match the labels of the nginx-ingress service created in step-3.
 
-crd-resource [repo](https://github.com/mdditt2000/eks-anywhere/blob/main/user-guides/ingresslink/cis/crd-resource/vs-ingresslink.yaml)
+crd-resource [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/eks-anywhere/ingresslink/cis/crd-resource/vs-ingresslink.yaml)
 
 **Step 5**
 
@@ -183,7 +183,7 @@ Create an Ingress resource:
 ```
 kubectl create -f cafe-ingress.yaml
 ```
-cafe application [repo](https://github.com/mdditt2000/eks-anywhere/tree/main/user-guides/ingresslink/ingress-example)
+cafe application [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/eks-anywhere/ingresslink/ingress-example)
 
 **Step 6**
 
@@ -194,11 +194,11 @@ certificate and the --resolve option to set the Host header of a request with ``
     
 To get coffee:
 
-![coffee](https://github.com/mdditt2000/eks-anywhere/blob/main/user-guides/ingresslink/diagram/2021-08-17_12-39-25.png)
+![coffee](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/eks-anywhere/ingresslink/diagram/2021-08-17_12-39-25.png)
 
 If your prefer tea:
 
-![tea](https://github.com/mdditt2000/eks-anywhere/blob/main/user-guides/ingresslink/diagram/2021-08-17_12-39-01.png)
+![tea](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/eks-anywhere/ingresslink/diagram/2021-08-17_12-39-01.png)
 
 As you can see, the Ingress Controller reported the BIG-IP IP address (configured in IngressLink resource) in the ADDRESS field of the Ingress status.
 
@@ -213,19 +213,19 @@ eks-cluster-md-0-6cd695b8f4-7jj5q   Ready    <none>                 7d14h   v1.2
 ```
 To view the IngressLink virtual server:
 
-![virtual server list](https://github.com/mdditt2000/eks-anywhere/blob/main/user-guides/ingresslink/diagram/2021-08-17_12-53-53.png)
+![virtual server list](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/eks-anywhere/ingresslink/diagram/2021-08-17_12-53-53.png)
 
 To view the IngressLink pool members:
 
-![pool members](https://github.com/mdditt2000/eks-anywhere/blob/main/user-guides/ingresslink/diagram/2021-08-17_12-54-23.png)
+![pool members](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/eks-anywhere/ingresslink/diagram/2021-08-17_12-54-23.png)
 
 To view the IngressLink pool:
 
-![pool list](https://github.com/mdditt2000/eks-anywhere/blob/main/user-guides/ingresslink/diagram/2021-08-17_12-54-47.png)
+![pool list](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/eks-anywhere/ingresslink/diagram/2021-08-17_12-54-47.png)
 
 To view the IngressLink pool members for port 443:
 
-![pool members 443](https://github.com/mdditt2000/eks-anywhere/blob/main/user-guides/ingresslink/diagram/2021-08-17_12-55-08.png)
+![pool members 443](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/eks-anywhere/ingresslink/diagram/2021-08-17_12-55-08.png)
 
 To view the IngressLink pool members for 192.168.200.26:
 
