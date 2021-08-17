@@ -16,3 +16,4 @@ For guides on using CIS with Kubernetes and OpenShift see:
 * [OpenShift 4.7 for BIG-IP Cluster using OpenShift SDN](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-7/cluster/README.md)
 * [OpenShift 4.8 for Standalone BIG-IP using OVN-Kubernetes Hybrid Overlay](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-8/standalone-ovn-k8s-hybrid/README.md)
 * [OpenShift 4.8 for Cluster BIG-IP Devices using OVN-Kubernetes Hybrid Overlay](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-8/cluster-ovn-hybird/README.md)
+* [EKS Anywhere](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/eks-anywhere/README.md)
