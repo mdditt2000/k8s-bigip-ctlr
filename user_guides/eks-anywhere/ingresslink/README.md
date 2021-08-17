@@ -8,7 +8,7 @@ F5 IngressLink was the first true integration between BIG-IP and NGINX technolog
 
 ![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/eks-anywhere/ingresslink/diagram/2021-08-17_12-08-07.png)
 
-Demo on YouTube [video]()
+Demo on YouTube [video](https://www.youtube.com/watch?v=jY_HrpHcFtc)
 
 On this page you’ll find:
 
