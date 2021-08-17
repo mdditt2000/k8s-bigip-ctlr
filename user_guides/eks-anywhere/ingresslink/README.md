@@ -229,7 +229,7 @@ To view the IngressLink pool members for port 443:
 
 To view the IngressLink pool members for 192.168.200.26:
 
-![pool members 192.168.200.26](https://github.com/mdditt2000/eks-anywhere/blob/main/user-guides/ingresslink/diagram/2021-08-17_12-55-34.png)
+![pool members 192.168.200.26](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/eks-anywhere/ingresslink/diagram/2021-08-17_13-27-07.png)
 
 **Step 8**
 
