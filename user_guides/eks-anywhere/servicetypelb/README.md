@@ -6,7 +6,7 @@ A service of type LoadBalancer is the simplest and the fastest way to expose a s
 
 Services of type LoadBalancer are natively supported in Kubernetes deployments. When you create a service of type LoadBalancer, Kubernetes spins up a service in integration with F5 IPAM Controller which allocates an IP address from the ip-range specified by the ipamlabel. Using CIS with services configured for type LoadBalancer, BIG-IP can load balance the incoming traffic to the Kubernetes cluster without having to create any ingress resource. CIS will manage the public IP addresses for the application using the F5 IPAM Controller. This cloud like simplification of load balancer resources could significantly reduce your operational expenses.
 
-![diagram](https://github.com/mdditt2000/eks-anywhere/blob/main/user-guides/type-lb/diagrams/2021-08-17_16-44-33.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/eks-anywhere/servicetypelb/diagrams/2021-08-17_16-44-33.png)
 
 Demo on YouTube [video]()
 
@@ -106,8 +106,8 @@ kubectl create -f f5-cluster-deployment.yaml
 kubectl create -f customresourcedefinitions.yaml
 ```
 
-* cis-deployment [repo](https://github.com/mdditt2000/eks-anywhere/blob/main/user-guides/type-lb/cis-deployment/f5-cluster-deployment.yaml)
-* crd-schema [repo](https://github.com/mdditt2000/eks-anywhere/blob/main/user-guides/type-lb/cis-deployment/customresourcedefinitions.yaml)
+* cis-deployment [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/eks-anywhere/servicetypelb/cis-deployment/f5-cluster-deployment.yaml)
+* crd-schema [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/eks-anywhere/servicetypelb/cis-deployment/customresourcedefinitions.yaml)
 
 ## F5 IPAM Deployment Configuration
 
@@ -159,7 +159,7 @@ I0817 23:05:35.593236       1 shared_informer.go:247] Caches are synced for F5 I
 2021/08/17 23:05:35 [DEBUG] Starting Response Worker
 ```
 
-ipam-deployment [repo](https://github.com/mdditt2000/eks-anywhere/tree/main/user-guides/type-lb/ipam-deployment)
+ipam-deployment [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/eks-anywhere/servicetypelb/ipam-deployment)
 
 
 ## Create the Service Type LoadBalancer Service
@@ -173,7 +173,7 @@ kubectl create -f f5-demo-deployment.yaml
 kubectl create -f f5-demo-service.yaml
 ```
 
-pod-deployments [repo](https://github.com/mdditt2000/eks-anywhere/tree/main/user-guides/type-lb/pod-deployment)
+pod-deployments [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/eks-anywhere/servicetypelb/pod-deployment)
 
 ## Logging output when the IPAM controller when the services are created
 
@@ -247,4 +247,4 @@ NAME         TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)        AGE
 f5-demo      LoadBalancer   10.107.224.128   192.168.15.45   80:31913/TCP   46m
 ```
 
-![diagram](https://github.com/mdditt2000/eks-anywhere/blob/main/user-guides/type-lb/diagrams/2021-08-18_11-01-50.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/eks-anywhere/servicetypelb/diagrams/2021-08-18_11-01-50.png)
