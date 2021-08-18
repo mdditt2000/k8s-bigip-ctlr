@@ -165,7 +165,7 @@ ipam-deployment [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/us
 
 ### Step 3
 
-Create the pod deployments and services for the test and production application
+Create the pod deployments and services for the test application
 
 ```
 kubectl create -f f5-demo-deployment.yaml
