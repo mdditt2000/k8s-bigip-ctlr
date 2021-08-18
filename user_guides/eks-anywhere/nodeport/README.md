@@ -74,3 +74,8 @@ crd-example [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_g
 Validate the virtual server configuration on the BIG-IP and connectivity to virtual server
 
 ![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/eks-anywhere/nodeport/diagram/2021-08-18_16-11-08.png)
+
+Connect to the external IP
+
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/eks-anywhere/nodeport/diagram/2021-08-18_16-36-04.png)
+
