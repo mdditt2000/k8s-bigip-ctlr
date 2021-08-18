@@ -10,8 +10,6 @@ NodePort is great, but it has a few limitations. Ports available to NodePort are
 
 ![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/eks-anywhere/nodeport/diagram/2021-08-18_16-06-49.png)
 
-Demo on YouTube [video]()
-
 ## Prerequisites
 
 * Recommend AS3 version 3.30.0 [repo](https://github.com/F5Networks/f5-appsvcs-extension/releases/tag/v3.30.0)
