@@ -6,9 +6,9 @@ Amazon EKS Anywhere (EKS-A) is a Kubernetes installer based on and used by Amazo
 
 NodePort is named quite literally like many other functional components within Kubernetes. It is an open port on every worker node in the cluster that has a pod for that service. When traffic is received on that open port, it directs it to a specific port on the ClusterIP for the service it is representing. In a single-node cluster this is very straight forward. In a multi-node cluster the internal routing can get more complicated. In that case its best using an F5 BIG-IP load balancer so you can spread traffic out across all the nodes and be able to handle failures a bit easier.
 
-NodePort is great, but it has a few limitations. Ports available to NodePort are in the 30,000 to 32,767 range. [Source](https://platform9.com/blog/understanding-kubernetes-loadbalancer-vs-nodeport-vs-ingress/)
+NodePort is great, but it has a few limitations. Ports available to NodePort are in the 30,000 to 32,767 range
 
-![diagram](https://github.com/mdditt2000/eks-anywhere/blob/main/user-guides/nodeport/diagram/2021-08-18_16-06-49.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/eks-anywhere/nodeport/diagram/2021-08-18_16-06-49.png)
 
 Demo on YouTube [video]()
 
@@ -45,7 +45,7 @@ kubectl create clusterrolebinding k8s-bigip-ctlr-clusteradmin --clusterrole=clus
 kubectl create -f f5-cluster-deployment.yaml
 ```
 
-* cis-deployment [repo](https://github.com/mdditt2000/eks-anywhere/blob/main/user-guides/nodeport/cis-deployment/f5-cluster-deployment.yaml)
+* cis-deployment [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/eks-anywhere/nodeport/cis-deployment/f5-cluster-deployment.yaml)
 
 ### Step 2 Create the APP Service and Deployment
 
@@ -56,7 +56,7 @@ kubectl create -f f5-demo-test-service.yaml
 kubectl create -f f5-demo-production-service.yaml
 ```
 
-pod-deployments [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/servicetypelb/pod-deployment)
+pod-deployments [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/eks-anywhere/nodeport/pod-deployment)
 
 ### Step 3 Create the CRD and Schema
 
@@ -67,10 +67,10 @@ kubectl create -f customresourcedefinitions.yaml
 kubectl create -f vs-myapp.yaml
 ```
 
-pod-deployments [repo](https://github.com/mdditt2000/eks-anywhere/tree/main/user-guides/nodeport/crd-example)
+crd-example [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/eks-anywhere/nodeport/crd-example)
 
 ### Step 4 Validate virtual server connectivity 
 
 Validate the virtual server configuration on the BIG-IP and connectivity to virtual server
 
-![diagram](https://github.com/mdditt2000/eks-anywhere/blob/main/user-guides/nodeport/diagram/2021-08-18_16-11-08.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/eks-anywhere/nodeport/diagram/2021-08-18_16-11-08.png)
