@@ -1,6 +1,6 @@
 # F5 CIS Service Type LoadBalancer deployed in EKS Anywhere
 
-Amazon EKS Anywhere (EKS-A) is a Kubernetes installer based on and used by Amazon Elastic Kubernetes Service (EKS) to create reliable and secure Kubernetes clusters. This user-guide is created to document and validate F5 BIG-IP and F5 CIS + NGINX integration with Amazon EKS Anywhere. More information on [EKS Anywhere](https://aws.amazon.com/eks/eks-anywhere/)
+Amazon EKS Anywhere (EKS-A) is a Kubernetes installer based on and used by Amazon Elastic Kubernetes Service (EKS) to create reliable and secure Kubernetes clusters. This user-guide is created to document and validate F5 BIG-IP and F5 CIS integration with Amazon EKS Anywhere. More information on [EKS Anywhere](https://aws.amazon.com/eks/eks-anywhere/)
 
 A service of type LoadBalancer is the simplest and the fastest way to expose a service inside a EKS Anywhere cluster to the external world. All you need to-do is specify the service type as type=LoadBalancer in the service definition.
 
