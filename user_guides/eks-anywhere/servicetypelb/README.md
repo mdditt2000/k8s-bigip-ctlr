@@ -8,7 +8,7 @@ Services of type LoadBalancer are natively supported in Kubernetes deployments. 
 
 ![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/eks-anywhere/servicetypelb/diagrams/2021-08-17_16-44-33.png)
 
-Demo on YouTube [video](https://www.youtube.com/watch?v=Qo8DBqvvEsA)
+Demo on YouTube [video](https://youtu.be/eF_jxCuCS5Q)
 
 Looking at the diagram, the following events occur:
 
