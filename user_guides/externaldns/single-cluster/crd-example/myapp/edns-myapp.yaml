@@ -1,0 +1,21 @@
+apiVersion: "cis.f5.com/v1"
+kind: ExternalDNS
+metadata:
+  name: edns-myapp
+  labels:
+    f5cr: "true"
+spec:
+  domainName: myapp.f5demo.com
+  dnsRecordType: A
+  loadBalanceMethod: round-robin
+  pools:
+  - name: myapp.f5demo.com
+    dnsRecordType: A
+    loadBalanceMethod: round-robin
+    dataServerName: /Common/big-ip-60-cluster
+    monitor:
+      type: http
+      send: "GET / HTTP/1.1\r\nHost: myapp.f5demo.com\r\n"
+      recv: ""
+      interval: 10
+      timeout: 10
