@@ -98,7 +98,7 @@ kubectl create -f vs-myapp.yaml
 kubectl create -f vs-mysite.yaml
 kubectl create -f customresourcedefinitions.yml
 ```
-crd-resources [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/externaldns/single-cluster/crd-example
+crd-resources [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/externaldns/single-cluster/crd-example)
 
 Validate both **virtualservers** crd's are created
 
