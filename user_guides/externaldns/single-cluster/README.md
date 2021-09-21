@@ -2,7 +2,7 @@
 
 ExternalDNS allows user to control DNS records dynamically via Kubernetes CRD resources in a DNS provider-agnostic way. This user-guide documents using F5 CIS with BIG-IP LTM and DNS on the same device for a single cluster as shown in the diagram
 
-![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_10-24-26.png)
+![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/single-cluster/diagram/2021-09-17_10-24-26.png)
 
 ## Prerequisites
 
@@ -51,7 +51,7 @@ kubectl create -f f5-bigip-node.yaml
 ```
 **Note** f5-bigip-node is required for Flannel
 
-cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/edns/cis-deployment)
+cis-deployment [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/externaldns/single-cluster/cis-deployment)
 
 ## Step 2: Deploy F5 Demo App 
 
@@ -61,7 +61,7 @@ Deploy the test F5 demo deployment and service. This is a simple application on 
 kubectl create -f pod-deployment
 ```
 
-pod-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/edns/pod-deployment)
+pod-deployment [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/externaldns/single-cluster/pod-deployment)
 
 ## Step 3: Create the VirtualServers
 
@@ -69,25 +69,25 @@ pod-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/
 
 * **DataCenter** using the default options
 
-![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_10-49-20.png)
+![DataCenter](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/single-cluster/diagram/2021-09-17_10-49-20.png)
 
 * **Servers** under GSLB(DNS) by referring:
 
     - **DataCenter** with **BIG-IP device**
 
-![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-20_14-17-02.png)
+![Servers](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/single-cluster/diagram/2021-09-20_14-17-02.png)
 
 * **Servers** under GSLB(DNS) by referring:
 
     - **External SelfIP**
 
-![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-20_14-17-58.png)
+![Servers](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/single-cluster/diagram/2021-09-20_14-17-58.png)
 
 * **Servers** under GSLB(DNS) by referring:
 
     - **Virtual Server Discovery enabled**
 
-![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-20_14-18-23.png)
+![Servers](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/single-cluster/diagram/2021-09-20_14-18-23.png)
     
 **Note** Virtual Server Discovery must be enabled for this solution to work. We plan to enhance this in a upcoming release of CIS
 
@@ -98,27 +98,27 @@ kubectl create -f vs-myapp.yaml
 kubectl create -f vs-mysite.yaml
 kubectl create -f customresourcedefinitions.yml
 ```
-crd-resources [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/edns/crd-example
+crd-resources [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/externaldns/single-cluster/crd-example
 
 Validate both **virtualservers** crd's are created
 
-![virtualservers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_13-39-20.png)
+![virtualservers](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/single-cluster/diagram/2021-09-17_13-39-20.png)
 
 Connect the **mysite.f5demo.com**
 
-![mysite](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_13-40-14.png)
+![mysite](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/single-cluster/diagram/2021-09-17_13-40-14.png)
 
 Connect the **myapp.f5demo.com**
 
-![myapp](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_13-39-58.png)
+![myapp](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/single-cluster/diagram/2021-09-17_13-39-58.png)
 
 Verify DataCenter and Server list could learn the new virtualservers LTM in the serverlist
 
-![serverlist](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_13-47-58.png)
+![serverlist](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/single-cluster/diagram/2021-09-17_13-47-58.png)
 
 Verify the virtualservers created in the servicelist
 
-![serverlist](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_13-50-05.png)
+![serverlist](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/single-cluster/diagram/2021-09-17_13-50-05.png)
 
 ## Step 4: Create the WideIP's using the ExternalDNS CRDs
 
@@ -135,7 +135,7 @@ The diagram below show the **VirtualServer** and **ExternalDNS CRD** used in thi
 
 * **dataServerName: /Common/big-ip-60-cluster** in the ExternalDNS CRD needs to match DataCenter Server name
 
-![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_10-25-22.png)
+![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/single-cluster/diagram/2021-09-17_10-25-22.png)
 
 Create the mysite and myapp EDNS CRDs
 
@@ -146,12 +146,12 @@ kubectl create -f edns-mysite.yaml
 
 Validate the WIDE IP list. You should see both Wide IP created for mysite and myapp and both green status
 
-![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-20_15-14-10.png)
+![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/single-cluster/diagram/2021-09-20_15-14-10.png)
 
 If the status for the Wide IP's show red then maybe the external DNS monitor has failed. Check the monitor
 
-![monitor](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-20_15-20-20.png)
+![monitor](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/single-cluster/diagram/2021-09-20_15-20-20.png)
 
 Also validate the Send String
 
-![sendstring](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-20_15-21-00.png)
+![sendstring](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/single-cluster/diagram/2021-09-20_15-21-00.png)
