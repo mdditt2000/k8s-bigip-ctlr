@@ -2,6 +2,8 @@
 
 ExternalDNS allows user to control DNS records dynamically via Kubernetes CRD resources in a DNS provider-agnostic way. This user-guide documents using F5 CIS with BIG-IP LTM and DNS on the same device for a single cluster as shown in the diagram
 
+Demo on YouTube [video]()
+
 ![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/single-cluster/diagram/2021-09-17_10-24-26.png)
 
 ## Prerequisites
@@ -144,14 +146,14 @@ kubectl create -f edns-myapp.yaml
 kubectl create -f edns-mysite.yaml
 ```
 
-Validate the WIDE IP list. You should see both Wide IP created for mysite and myapp and both green status
+Validate the **WIDE IP list**. You should see both Wide IP created for mysite and myapp and both green status
 
 ![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/single-cluster/diagram/2021-09-20_15-14-10.png)
 
-If the status for the Wide IP's show red then maybe the external DNS monitor has failed. Check the monitor
+If the status for the Wide IP's show red then maybe the **external DNS monitor** has failed. Check the monitor
 
 ![monitor](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/single-cluster/diagram/2021-09-20_15-20-20.png)
 
-Also validate the Send String
+Also validate the **Send String**
 
 ![sendstring](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/single-cluster/diagram/2021-09-20_15-21-00.png)
