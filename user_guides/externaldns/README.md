@@ -4,4 +4,4 @@
 
 ### User Guide for ExternalDNS for Multi-Cluster
 
-* [Multiple Clusters](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/eks-anywhere/servicetypelb/README.md)
+* [Multiple Clusters](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/multi-cluster/README.md)
