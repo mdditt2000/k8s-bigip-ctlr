@@ -2,9 +2,11 @@
 
 ExternalDNS allows user to control DNS records dynamically via Kubernetes CRD resources in a DNS provider-agnostic way. This user-guide documents using F5 CIS with BIG-IP LTM and DNS in a multi-site kubernetes deployment. 
 
-Looking at the diagram below there are two Data Centers **east** and **west**. Both Data Center have standalone BIG-IP LTM and DNS. The BIG-IP DNS devices are synchronized, to share Data Center, Server, Wide IP, and Virtual Server availability. Each Data Centers has Kubernetes deployed with duplicate applications. However Data Center **west** has a newer version of Kubernetes installed. Creating a second cluster with traffic distribution helps validation of newer kubernetes version, high availability, scaling etc. F5 CIS with BIG-IP LTM and DNS using ExternalDNS solves the multi-site challenges. 
+Looking at the diagram below there are two Data Centers **east** and **west**. Both Data Center have standalone BIG-IP LTM and DNS. The BIG-IP DNS devices are synchronized, to share Data Center, Server, Wide IP, and Virtual Server availability. Each Data Centers has Kubernetes deployed with duplicate applications. However Data Center **west** has a newer version of Kubernetes installed. Creating a second cluster with traffic distribution helps validation of newer kubernetes version, high availability, scaling etc. F5 CIS with BIG-IP LTM and DNS using ExternalDNS solves the multi-site challenges.
 
-![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-27_12-21-58.png)
+Demo on YouTube [video]()
+
+![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/multi-cluster/diagrams/2021-09-27_12-21-58.png)
 
 ## Prerequisites
 
@@ -75,8 +77,8 @@ kubectl create -f f5-bigip-node.yaml
 ```
 **Note** f5-bigip-node is required for Flannel
 
-* cis-deployment **east** [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/east/cis-deployment)
-* cis-deployment **west** [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/west/cis-deployment)
+* cis-deployment **east** [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/externaldns/multi-cluster/east/cis-deployment)
+* cis-deployment **west** [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/externaldns/multi-cluster/west/cis-deployment)
 
 ## Step 2: Deploy F5 Demo App for both Data Centers
 
@@ -86,8 +88,8 @@ Deploy the test F5 demo deployment and service. This is a simple application on 
 kubectl create -f pod-deployment
 ```
 
-* pod-deployment **east** [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/east/pod-deployment)
-* pod-deployment **west** [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/west/pod-deployment)
+* pod-deployment **east** [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/externaldns/multi-cluster/east/pod-deployment)
+* pod-deployment **west** [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/externaldns/multi-cluster/west/pod-deployment)
 
 ## Step 3: Create the VirtualServers for both Data Centers
 
@@ -95,15 +97,15 @@ kubectl create -f pod-deployment
 
 * **DataCenter** **east** for **Kubernetes v19** and **Kubernetes v20 clusters**
 
-![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_20-45-10.png)
+![DataCenter](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/multi-cluster/diagrams/2021-10-04_20-45-10.png)
 
 * **DataCenter** **west** for **Kubernetes v19** and **Kubernetes v20 clusters**
 
-![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_20-46-35.png)
+![DataCenter](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/multi-cluster/diagrams/2021-10-04_20-46-35.png)
 
 Example of **DataCenter** for both **east** amd **west**
 
-![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_20-54-11.png)
+![DataCenter](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/multi-cluster/diagrams/2021-10-04_20-54-11.png)
 
 **Note** CIS requires the **Server** for **east** amd **west** on both BIG-IP DNS devices
 
@@ -111,19 +113,19 @@ Example of **DataCenter** for both **east** amd **west**
 
     - **DataCenter** with **BIG-IP device**
 
-![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_20-38-58.png)
+![Servers](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/multi-cluster/diagrams/2021-10-04_20-38-58.png)
 
 * **Servers** under GSLB(DNS) by referring:
 
     - **External SelfIP**
 
-![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_21-00-01.png)
+![Servers](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/multi-cluster/diagrams/2021-10-04_21-00-01.png)
 
 * **Servers** under GSLB(DNS) by referring:
 
     - **Virtual Server Discovery enabled**
 
-![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_21-00-39.png)
+![Servers](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/multi-cluster/diagrams/2021-10-04_21-00-39.png)
     
 **Note** Virtual Server Discovery must be enabled for this solution to work. We plan to enhance this in a upcoming release of CIS
 
@@ -131,19 +133,19 @@ Example of **DataCenter** for both **east** amd **west**
 
     - **DataCenter** with **BIG-IP device**
 
-![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_21-04-25.png)
+![Servers](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/multi-cluster/diagrams/2021-10-04_21-04-25.png)
 
 * **Servers** under GSLB(DNS) by referring:
 
     - **External SelfIP**
 
-![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_21-05-00.png)
+![Servers](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/multi-cluster/diagrams/2021-10-04_21-05-00.png)
 
 * **Servers** under GSLB(DNS) by referring:
 
     - **Virtual Server Discovery enabled**
 
-![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_21-05-47.png)
+![Servers](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/multi-cluster/diagrams/2021-10-04_21-05-47.png)
     
 **Note** Virtual Server Discovery must be enabled for this solution to work. We plan to enhance this in a upcoming release of CIS
 
@@ -154,16 +156,16 @@ kubectl create -f vs-myapp.yaml
 kubectl create -f vs-mysite.yaml
 kubectl create -f customresourcedefinitions.yml
 ```
-* crd-resources **east** [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/east/crd-example)
-* crd-resources **west** [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/west/crd-example)
+* crd-resources **east** [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/externaldns/multi-cluster/east/crd-example)
+* crd-resources **west** [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/externaldns/multi-cluster/west/crd-example)
 
 Verify DataCenter and Server list could learn the new virtualservers LTM in the serverlist for **east**
 
-![virtualservers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_21-14-19.png)
+![virtualservers](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/multi-cluster/diagrams/2021-10-04_21-14-19.png)
 
 Verify DataCenter and Server list could learn the new virtualservers LTM in the serverlist for **west**
 
-![virtualservers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_21-14-55.png)
+![virtualservers](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/multi-cluster/diagrams/2021-10-04_21-14-55.png)
 
 If all the **virtualservers** are created, **green** and synchronized you can continue to **Step 4** and create the Wide IPs for both **east** and **west**
 
@@ -182,7 +184,7 @@ The diagram below show the **VirtualServer** and **ExternalDNS CRD** for **mysit
 
 * **dataServerName: /Common/east in the ExternalDNS CRD needs to match DataCenter Server name
 
-![mysite](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_21-34-30.png)
+![mysite](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/multi-cluster/diagrams/2021-10-04_21-34-30.png)
 
 Create the mysite and myapp EDNS CRDs for both **east** and **west*
 
@@ -191,35 +193,35 @@ kubectl create -f edns-myapp.yaml
 kubectl create -f edns-mysite.yaml
 ```
 
-* crd-resources **east** [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/east/crd-example)
-* crd-resources **west** [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/west/crd-example)
+* crd-resources **east** [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/externaldns/multi-cluster/east/crd-example)
+* crd-resources **west** [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/externaldns/multi-cluster/west/crd-example)
 
 Validate the WIDE IP list. You should see both Wide IP created for mysite and myapp and both green status
 
-![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_21-44-28.png)
+![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/multi-cluster/diagrams/2021-10-04_21-44-28.png)
 
 Validate the pool members for the WIDE IP list. You should see two members in the pool as shown in the diagram below
 
-![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_21-49-56.png)
+![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/multi-cluster/diagrams/2021-10-04_21-49-56.png)
 
 ## Step 5: Validating multi-site DNS availability
 
 **note** BIG-IP needs to listeners for both UDP and TCP for both **east**
 
-![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_22-08-45.png)
+![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/multi-cluster/diagrams/2021-10-04_22-08-45.png)
 
 **note** BIG-IP needs to listeners for both UDP and TCP for both **west**
 
-![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_22-11-50.png)
+![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/multi-cluster/diagrams/2021-10-04_22-11-50.png)
 
 **note** Setup the correct dedication for the NS records to point to the BIG-IP DNS. NS record for **mysite.f5demo.com** and **myapp.f5demo.com** are **east** and **west** BIG-IP DNS devices
 
-![delegation](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_22-20-36.png)
+![delegation](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/multi-cluster/diagrams/2021-10-04_22-20-36.png)
 
 Validate connectively to **mysite.f5demo.com** 
 
-![delegation](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_22-28-17.png)
+![delegation](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/multi-cluster/diagrams/2021-10-04_22-28-35.png)
 
 Validate connectively to **myapp.f5demo.com** 
 
-![delegation](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_22-28-17.png)
+![delegation](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/multi-cluster/diagrams/2021-10-04_22-28-17.png)
