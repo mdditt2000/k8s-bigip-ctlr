@@ -11,7 +11,7 @@ Demo on YouTube [video]()
 ## Prerequisites
 
 * Recommend AS3 version 3.30 [repo](https://github.com/F5Networks/f5-appsvcs-extension/releases/tag/v3.30.0)
-* CIS 2.6 [repo](coming)
+* CIS 2.6 [repo](https://github.com/F5Networks/k8s-bigip-ctlr/releases/tag/v2.6.0)
 * Clouddocs [documentation](https://clouddocs.f5.com/containers/latest/userguide/crd/externaldns.html)
 * Global DNS provisioned and synchronized between Data Centers
 
