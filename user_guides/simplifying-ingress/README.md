@@ -6,7 +6,7 @@ F5 Ingress solution provides you with modern, container application workloads th
 
 This architecture diagram demonstrates the simplified Kubernetes Ingress solution
 
-![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7/typelb/diagram/2021-10-15_14-05-41.png)
+![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/simplifying-ingress/diagram/2021-10-15_14-05-41.png)
 
 Demo on YouTube [video]()
 
@@ -29,13 +29,13 @@ Add BIG-IP credentials as Kubernetes Secrets and create the service account requ
     kubectl create clusterrolebinding k8s-bigip-ctlr-clusteradmin --clusterrole=cluster-admin --serviceaccount=kube-system:k8s-bigip-ctlr
     kubectl create -f bigip-ctlr-clusterrole.yaml
 
-cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7/typelb/cis/cis-deployment)
+cis-deployment [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/simplifying-ingress/cis/cis-deployment)
     
 ### Create CIS CRD schema
 
     kubectl create -f customresourcedefinition.yaml
 
-cis-crd-schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7/typelb/cis/cis-crd-schema/customresourcedefinition.yaml)
+cis-crd-schema [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/simplifying-ingress/cis/cis-crd-schema/customresourcedefinition.yaml)
 
 ### Update the bigip address, partition and other details(image, imagePullSecrets, etc) in CIS deployment manifest
 
@@ -60,13 +60,13 @@ cis-crd-schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/
 kubectl create -f f5-cis-deployment.yaml
 ```
 
-cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7/typelb/cis/cis-deployment/f5-cis-deployment.yaml)
+cis-deployment [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/simplifying-ingress/cis/cis-deployment/f5-cis-deployment.yaml)
 
 ### Configure BIG-IP as a node in the Kubernetes cluster. This is required for OVN Kubernetes using ClusterIP
 
     kubectl create -f f5-bigip-node.yaml
 
-bigip-node [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7/typelb/cis/cis-deployment/f5-bigip-node.yaml)
+bigip-node [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/simplifying-ingress/cis/cis-deployment/f5-bigip-node.yaml)
 
 **Step 2**
 
@@ -110,7 +110,7 @@ kubectl create -f f5-ipam-schema.yaml
 kubectl create -f f5-ipam-persitentvolume.yaml
 kubectl create -f f5-ipam-deployment.yaml
 ```
-ipam-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7/typelb/ipam-deployment)
+ipam-deployment [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/simplifying-ingress/ipam-deployment)
 
 **Step 3**
 
@@ -118,7 +118,7 @@ ipam-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master
 
 This diagram demonstrates the how CIS and IPAM work together for the **LoadBalancer Service type**
 
-![CRD](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7/typelb/diagram/2021-10-18_14-30-40.png)
+![CRD](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/simplifying-ingress/diagram/2021-10-18_14-30-40.png)
 
 Create NGINX IC custom resource definitions for VirtualServer and VirtualServerRoute, TransportServer and Policy resources:
 
@@ -162,7 +162,7 @@ Create a service for the Ingress Controller pods for ports 80 and 443 as follows
 
     kubectl apply -f nginx-config/nginx-service.yaml
 
-nginx-config [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7/typelb/nginx-config)
+nginx-config [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/simplifying-ingress/nginx-config)
 
 Validate that the EXTERNAL-IP is populated 
 
@@ -190,7 +190,7 @@ Create an Ingress resource:
 
     kubectl create -f cafe-ingress.yaml
 
-ingress-example [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7/typelb/ingress-example)
+ingress-example [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/simplifying-ingress/ingress-example)
 
 **Step 4**
 
@@ -198,14 +198,14 @@ ingress-example [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master
 
 Validate the external IP address on BIG-IP
 
-![CRD](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7/typelb/diagram/2021-10-18_14-50-41.png)
+![CRD](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/simplifying-ingress/diagram/2021-10-18_14-50-41.png)
 
 Connext to Cafe App for Coffee and Tea
 
 * cafe.example.com/coffee
 
-![CRD](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7/typelb/diagram/2021-10-18_14-53-34.png)
+![CRD](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/simplifying-ingress/diagram/2021-10-18_14-53-03.png)
 
 * cafe.example.com/tea
 
-![CRD](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7/typelb/diagram/2021-10-18_14-53-03.png)
+![CRD](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/simplifying-ingress/diagram/2021-10-18_14-53-34.png)
