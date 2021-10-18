@@ -3,6 +3,7 @@ F5 Container Ingress Services User Guides
 
 For guides on using CIS with Kubernetes and OpenShift see:
 
+* [Simplifying Ingress using F5 Technologies](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/simplifying-ingress#readme)
 * [Service Type LoadBalancer](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/servicetypelb/README.md)
 * [IPAM](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ipam/README.md)
 * [IPAM Integration with Infoblox](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ipam-infoblox/README.md)
@@ -18,3 +19,4 @@ For guides on using CIS with Kubernetes and OpenShift see:
 * [OpenShift 4.8 for Cluster BIG-IP Devices using OVN-Kubernetes Hybrid Overlay](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/openshift-4-8/cluster-ovn-hybird/README.md)
 * [EKS Anywhere](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/eks-anywhere/README.md)
 * [ExternalDNS](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/README.md)
+
