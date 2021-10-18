@@ -8,7 +8,7 @@ This architecture diagram demonstrates the simplified Kubernetes Ingress solutio
 
 ![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/simplifying-ingress/diagram/2021-10-15_14-05-41.png)
 
-Demo on YouTube [video]()
+Demo on YouTube [video](https://www.youtube.com/watch?v=wEOcAPQY104)
 
 On this page you’ll find:
 
