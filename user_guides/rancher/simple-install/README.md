@@ -2,7 +2,7 @@
 
 Using chart simplifies repeatable, versioned deployment of the CIS. This is the simplest way to install the CIS on Rancher cluster. Helm is a package manager for Kubernetes. Helm is Kubernetes version of yum or apt. Helm deploys something called charts, which you can think of as a packaged application. It is a collection of all your versioned, pre-configured application resources which can be deployed as one unit. This chart creates a Deployment for one Pod containing the k8s-bigip-ctlr, it's supporting RBAC, Service Account and Custom Resources Definition installations. The purpose of this user-guide is demonstrate the simplicity of CIS with Rancher using Helm Charts with custom-resources.
 
-Demo on YouTube [video]()simple
+Demo on YouTube [video]()
 
 ### Installing the Chart for the F5 CIS
 
@@ -16,7 +16,7 @@ Demo on YouTube [video]()simple
 
 * Install the Helm chart using the following command:
 
-    helm install -f https://raw.githubusercontent.com/mdditt2000/rancher/main/cis-deployment/cis-k8s-custom-resource-values.yaml f5-bigip-ctlr f5-stable/f5-bigip-ctlr
+    helm install -f https://raw.githubusercontent.com/mdditt2000/k8s-bigip-ctlr/main/user_guides/rancher/simple-install/cis-deployment/cis-k8s-custom-resource-values.yaml f5-bigip-ctlr f5-stable/f5-bigip-ctlr
 
 #### Creating the CIS deployment from the Helm Chart
 
@@ -27,7 +27,7 @@ secret/f5-bigip-ctlr-login created
 > helm repo add f5-stable https://f5networks.github.io/charts/stable
 "f5-stable" has been added to your repositories
 
-> helm install -f https://raw.githubusercontent.com/mdditt2000/rancher/main/cis-deployment/cis-k8s-custom-resource-values.yaml f5-bigip-ctlr f5-stable/f5-bigip-ctlr
+> helm install -f https://raw.githubusercontent.com/mdditt2000/k8s-bigip-ctlr/main/user_guides/rancher/simple-install/cis-deployment/cis-k8s-custom-resource-values.yaml f5-bigip-ctlr f5-stable/f5-bigip-ctlr
 creating 5 resource(s)
 beginning wait for 5 resources with timeout of 1m0s
 creating 5 resource(s)
@@ -53,14 +53,14 @@ Using Routes in OpenShift? No helm chart yet, but we do have great documentation
 
 View installed Apps from the Rancher dashboard as shown in the example
 
-![installed-apps](https://github.com/mdditt2000/rancher/blob/main/diagrams/2021-11-10_13-10-48.png)
+![installed-apps](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/rancher/simple-install/diagrams/2021-11-10_13-10-48.png)
 
 Validate that CIS is deployed and running from the Deployment tab in the Rancher Dashboard
 
-![validate](https://github.com/mdditt2000/rancher/blob/main/diagrams/2021-11-10_13-19-00.png)
+![validate](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/rancher/simple-install/diagrams/2021-11-10_13-19-00.png)
 
 Select the **Deployment: f5-bigip-ctlr** from the Deployment tab in the Rancher Dashboard
 
-![validate](https://github.com/mdditt2000/rancher/blob/main/diagrams/2021-11-10_13-19-00.png)
+![validate](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/rancher/simple-install/diagrams/2021-11-10_13-22-43.png)
 
 **Congratulations CIS is deployed in Rancher**
