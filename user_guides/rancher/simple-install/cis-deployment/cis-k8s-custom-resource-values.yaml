@@ -1,0 +1,26 @@
+bigip_login_secret: f5-bigip-ctlr-login
+rbac:
+  create: true
+serviceAccount:
+  create: true
+  name:
+namespace: kube-system
+args:
+  bigip_url: 192.168.200.91
+  bigip_partition: k8s
+  log_level: DEBUG
+  flannel_name: fl-vxlan
+  pool_member_type: cluster
+  insecure: true
+  as3_validation: true
+  custom_resource_mode: true
+image:
+  user: f5networks
+  repo: k8s-bigip-ctlr
+  pullPolicy: Always
+nodeSelector: {}
+tolerations: []
+livenessProbe: {}
+readinessProbe: {}
+resources: {}
+version: latest
