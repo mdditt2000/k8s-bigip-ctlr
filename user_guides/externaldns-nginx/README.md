@@ -6,7 +6,7 @@ ExternalDNS solution provides you with modern, container application workloads t
 
 This architecture diagram demonstrates the ExternalDNS with NGINX Ingress Controller using F5 CIS with BIG-IP
 
-![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/edns-multi-host/diagram/2022-01-13_10-37-44.png)
+![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns-nginx/diagram/2022-01-13_10-37-44.png)
 
 Demo [YouTube]()
 
@@ -64,7 +64,7 @@ kubectl create -f f5-bigip-node.yaml
 - f5-bigip-node is required for Flannel
 - bigip-ctlr-clusterrole is required for CIS permissions 
 
-cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/edns-multi-host/cis/cis-deployment)
+cis-deployment [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/externaldns-nginx/cis/cis-deployment)
 
 ## Step 2: F5 IPAM
 
@@ -162,7 +162,7 @@ Create the coffee and the tea VirtualServer CRD
 
 Validated VirtualServer on BIG-IP
 
-![VirtualServer](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/edns-multi-host/diagram/2022-01-13_14-29-16.png)
+![VirtualServer](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/edns-multi-host/diagram/2022-01-13_14-20-27.png)
 
 Create the coffee and the tea ExternalDNS CRD
 
@@ -186,4 +186,4 @@ externaldns.cis.f5.com/edns-tea      cafe.example.com   27h     2022-01-12T18:57
 
 Validated Wide IP on BIG-IP DNS
 
-![Wide IP](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/edns-multi-host/diagram/2022-01-13_14-20-27.png)
+![Wide IP](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/edns-multi-host/diagram/2022-01-13_14-29-16.png)
