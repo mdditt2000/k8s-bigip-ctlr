@@ -8,7 +8,7 @@ This architecture diagram demonstrates the ExternalDNS with NGINX Ingress Contro
 
 ![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns-nginx/diagram/2022-01-13_10-37-44.png)
 
-Demo [YouTube]()
+Demo [YouTube](https://youtu.be/XdFqcCZWe5U)
 
 This user-guide demonstrates a single Wide IP **cafe.example.com** which answers for both coffee and tea deployments. DNS has no layer 7 path awareness and therefore a DNS monitor is required to determine the health of the deployments. Recommendation would be to create a dedicated http status page for the DNS monitor, monitoring required deployments etc. IF the monitor detects the http status failure, the Wide IP is removed from BIG-IP DNS. Another option is to have a 1-1 mapping between the Wide IPand service. 
 
