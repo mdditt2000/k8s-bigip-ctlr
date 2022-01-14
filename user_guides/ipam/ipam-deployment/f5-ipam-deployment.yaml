@@ -22,8 +22,20 @@ spec:
         - --log-level=DEBUG
         command:
         - /app/bin/f5-ipam-controller
-        image:  amit49g/f5-ipam-ctlr:v1.4.1
+        image: f5networks/f5-ipam-controller:0.1.5
         imagePullPolicy: IfNotPresent
         name: f5-ipam-controller
+        terminationMessagePath: /dev/termination-log
+        volumeMounts:
+        - mountPath: /app/ipamdb
+          name: local-pv
+      securityContext:
+        fsGroup: 1200
+        runAsGroup: 1200
+        runAsUser: 1200
       serviceAccount: ipam-ctlr
       serviceAccountName: ipam-ctlr
+      volumes:
+      - name: local-pv
+        persistentVolumeClaim:
+          claimName: pvc-local

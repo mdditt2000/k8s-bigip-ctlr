@@ -1,6 +1,6 @@
-# F5 IPAM Controller User Guide
+# F5 IPAM Controller User Guide - Updated
 
-The F5 IPAM Controller is a Docker container that allocates IP addresses from an static list for hostnames. The F5 IPAM Controller watches CRD resources and consumes the hostnames within each resource.
+The F5 IPAM Controller is a Docker container that allocates IP addresses from an static list or Infoblox based on hostname. The F5 IPAM Controller watches CRD resources and consumes the hostname within each resource. **Note** This user-guide has been updated for CIS 2.7
 
 This diagram demonstrates the IPAM solution
 
@@ -10,14 +10,14 @@ Demo on YouTube [video](https://www.youtube.com/watch?v=s9iUZoRqYQs)
 
 ## Prerequisites
 
-* Recommend AS3 version 3.26 [repo](https://github.com/F5Networks/f5-appsvcs-extension/releases/tag/v3.26.0)
-* CIS 2.5 [repo](https://github.com/F5Networks/k8s-bigip-ctlr/releases/tag/v2.4.0)
-* F5 IPAM Controller [repo](https://github.com/F5Networks/f5-ipam-controller/releases/tag/v0.1.2)
+* Recommend AS3 version 3.30 [repo](https://github.com/F5Networks/f5-appsvcs-extension/releases/tag/v3.30.0)
+* CIS 2.7 [repo](https://github.com/F5Networks/k8s-bigip-ctlr/releases/tag/v2.7.0)
+* F5 IPAM Controller [repo](https://github.com/F5Networks/f5-ipam-controller/releases/tag/v0.1.6)
 * CloudDocs [documentation](https://clouddocs.f5.com/containers/latest/userguide/ipam/)
 
 ## Setup Options
 
-CIS 2.4 provides the following options for using the F5 IPAM controller
+Easy to use arguments when using the F5 IPAM controller
 
 * Defining the IPAM label in the virtualserver CRD which maps to the IP-Range. In my example I am using the following 
 
@@ -25,8 +25,6 @@ CIS 2.4 provides the following options for using the F5 IPAM controller
   - hostname "mysite.f5demo.com" and "myapp.f5demo.com"
 
 * Updating the IP status for the virtualserver CRD
-
-In CIS 2.4 the F5 IPAM Controller can:
 
 * Allocate IP address from static IP address pool based on the CIDR mentioned in a Kubernetes resource
 
@@ -51,13 +49,10 @@ args:
   - "--namespace=default"
   - "--pool-member-type=cluster"
   - "--flannel-name=fl-vxlan"
-  - "--log-level=DEBUG"
   - "--insecure=true"
   - "--custom-resource-mode=true"
   - "--as3-validation=true"
-  - "--log-as3-response=true"
   - "--ipam=true"
-  - "--share-nodes=true"
 ```
 
 Deploy CIS
