@@ -1,11 +1,12 @@
+# RBAC -  ServiceAccount, ClusterRole and ClusterRoleBindings for F5 IPAM Controller
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: ipam-ctlr-clusterrole
 rules:
   - apiGroups: ["fic.f5.com"]
-    resources: ["f5ipams","f5ipams/status"]
-    verbs: ["get", "list", "watch", "update", "create", "patch", "delete"]
+    resources: ["ipams","ipams/status"]
+    verbs: ["get", "list", "watch", "update", "patch"]
 ---
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
