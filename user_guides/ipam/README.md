@@ -57,7 +57,7 @@ kubectl create -f f5-bigip-node.yaml
 **note** f5-bigip-node is for Flannel CNI
 
 
-cis-deployment [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ipam/cis-deployment/f5-cluster-deployment.yaml)
+cis-deployment [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/ipam/cis-deployment)
 
 ## Step 2: Configure F5 IPAM Controller
 
