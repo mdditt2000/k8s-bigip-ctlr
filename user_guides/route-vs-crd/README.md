@@ -84,7 +84,7 @@ Routes [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides
 
 Validate OpenShift Routes using the OpenShift Dashboard
 
-![route](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/route-vs-crd/diagram/2022-01-27_14-39-54.png)
+![route](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/route-vs-crd/diagram/2022-01-27_16-53-47.png)
 
 Validate OpenShift Routes using the BIG-IP
 
