@@ -6,7 +6,7 @@ In this example we are using a cafe application with three endpoints; **tea,coff
 
 ![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/route-vs-crd/diagram/2022-01-26_14-39-29.png)
 
-Demo on YouTube [video]()
+Demo on YouTube [video](https://youtu.be/fDyUfB63QZc)
 
 ## Using OpenShift Route
 
