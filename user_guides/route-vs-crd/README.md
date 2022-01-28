@@ -4,7 +4,7 @@ This document compares the differences between OpenShift Routes and Custom Resou
 
 In this example we are using a cafe application with three endpoints; **tea,coffee and mocha** as shown in the diagram below
 
-![architecture](https://github.com/mdditt2000/openshift-4-9/blob/main/route-vs-crd/diagram/2022-01-26_14-39-29.png)
+![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/route-vs-crd/diagram/2022-01-26_14-39-29.png)
 
 Demo on YouTube [video]()
 
@@ -52,9 +52,9 @@ oc create -f bigip-ctlr-clusterrole.yaml
 oc create -f f5-bigip-ctlr-deployment.yaml
 ```
 
-CIS [repo](https://github.com/mdditt2000/openshift-4-9/tree/main/route-vs-crd/route/cis)
+CIS [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/route-vs-crd/route/cis)
 
-**Note** Do not forget the CNI [repo](https://github.com/mdditt2000/openshift-4-9/tree/main/route-vs-crd/route/cni)
+**Note** Do not forget the CNI [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/route-vs-crd/route/cni)
 
 ### Step 2: Creating OpenShift Routes
 
@@ -70,7 +70,7 @@ User-case for the OpenShift Routes:
 
 Diagram blow displays the example of **route-tea** with the **AS3 override** for the following use-case
 
-![route-as3-override](https://github.com/mdditt2000/openshift-4-9/blob/main/route-vs-crd/diagram/2022-01-27_11-23-54.png)
+![route-as3-override](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/route-vs-crd/diagram/2022-01-27_11-23-54.png)
 
 Create OpenShift Routes
 
@@ -80,23 +80,23 @@ oc create -f route-tea.yaml
 oc create -f route-coffee.yaml
 oc create -f route-mocha.yaml
 ```
-Routes [repo](https://github.com/mdditt2000/openshift-4-9/tree/main/route-vs-crd/route/ocp-route)
+Routes [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/route-vs-crd/route/ocp-route)
 
 Validate OpenShift Routes using the OpenShift Dashboard
 
-![route](https://github.com/mdditt2000/openshift-4-9/blob/main/route-vs-crd/diagram/2022-01-27_14-39-54.png)
+![route](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/route-vs-crd/diagram/2022-01-27_14-39-54.png)
 
 Validate OpenShift Routes using the BIG-IP
 
-![big-ip route](https://github.com/mdditt2000/openshift-4-9/blob/main/route-vs-crd/diagram/2022-01-27_11-36-07.png)
+![big-ip route](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/route-vs-crd/diagram/2022-01-27_11-36-07.png)
 
 Validate OpenShift Routes pool-members using the BIG-IP
 
-![big-ip pools](https://github.com/mdditt2000/openshift-4-9/blob/main/route-vs-crd/diagram/2022-01-27_11-38-40.png)
+![big-ip pools](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/route-vs-crd/diagram/2022-01-27_11-38-40.png)
 
 Validate OpenShift Routes by connecting to the Public IP
 
-![traffic](https://github.com/mdditt2000/openshift-4-9/blob/main/route-vs-crd/diagram/2022-01-27_11-44-57.png)
+![traffic](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/route-vs-crd/diagram/2022-01-27_11-44-57.png)
 
 ## Using Custom Resource Definitions
 
@@ -137,9 +137,9 @@ oc create -f bigip-ctlr-clusterrole.yaml
 oc create -f f5-bigip-ctlr-deployment.yaml
 ```
 
-CIS [repo](https://github.com/mdditt2000/openshift-4-9/tree/main/route-vs-crd/customresource/cis)
+CIS [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/route-vs-crd/customresource/cis)
 
-**Note** Do not forget the CNI [repo](https://github.com/mdditt2000/openshift-4-9/tree/main/route-vs-crd/route/cni)
+**Note** Do not forget the CNI [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/route-vs-crd/customresource/cni)
 
 ### Step 2: Creating Custom Resource Definitions
 
@@ -155,7 +155,7 @@ Similar User-case for the CRDs:
 
 Diagram below displays the example of **vs-tea** with the **dge-tls** and **cafe-policy** for the following use-case. The TLS, Policy CRD are referenced in the VirtualServer CRD as shown in the diagram below
 
-![crd-policy-tls](https://github.com/mdditt2000/openshift-4-9/blob/main/route-vs-crd/diagram/2022-01-27_13-37-29.png)
+![crd-policy-tls](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/route-vs-crd/diagram/2022-01-27_13-37-29.png)
 
 Create OpenShift CRDs
 
@@ -165,7 +165,7 @@ Create OpenShift CRDs
 oc create -f CustomResourceDefinition.yaml
 ```
 
-CRD Schema [repo](https://github.com/mdditt2000/openshift-4-9/blob/main/route-vs-crd/customresource/crd/crd-schema/customresourcedefinitions.yml)
+CRD Schema [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/route-vs-crd/customresource/crd/crd-schema/customresourcedefinitions.yml)
 
 Create OpenShift CRDs
 
@@ -177,7 +177,7 @@ oc create -f vs-coffee.yaml
 oc create -f vs-mocha.yaml
 ```
 
-CRD [repo](https://github.com/mdditt2000/openshift-4-9/tree/main/route-vs-crd/customresource/crd)
+CRD [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/route-vs-crd/customresource/crd)
 
 Validate OpenShift Routes using from OpenShift
 
@@ -199,12 +199,12 @@ tlsprofile.cis.f5.com/edge-tls   68s
 
 Validate OpenShift Routes using the BIG-IP
 
-![big-ip CRD](https://github.com/mdditt2000/openshift-4-9/blob/main/route-vs-crd/diagram/2022-01-27_14-47-04.png)
+![big-ip CRD](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/route-vs-crd/diagram/2022-01-27_14-47-04.png)
 
 Validate OpenShift CRD pool-members using the BIG-IP
 
-![big-ip pools](https://github.com/mdditt2000/openshift-4-9/blob/main/route-vs-crd/diagram/2022-01-27_14-51-23.png)
+![big-ip pools](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/route-vs-crd/diagram/2022-01-27_14-51-23.png)
 
 Validate OpenShift CRD by connecting to the Public IP
 
-![traffic](https://github.com/mdditt2000/openshift-4-9/blob/main/route-vs-crd/diagram/2022-01-27_11-44-57.png)
+![traffic](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/route-vs-crd/diagram/2022-01-27_11-44-57.png)

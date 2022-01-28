@@ -3,7 +3,7 @@
   metadata:
     labels:
       name: cafe-coffee
-    name: coffee-coffee
+    name: cafe-coffee
     namespace: default
     annotations:
       # annotations
