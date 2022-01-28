@@ -1,0 +1,24 @@
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cafe-override
+  namespace: default
+  labels:
+    f5type: virtual-server
+    overrideAS3: "true" # set to true to process this configMap. For staging set to false.
+data:
+  template: |
+    {
+        "declaration": {
+            "OpenShift": {
+                "Shared": {
+                    "https_ose_vserver": {
+                        "profileHTTP": {
+                            "bigip": "/Common/Custom_HTTP"
+                        }
+                    }
+                }
+            }
+        }
+    }
