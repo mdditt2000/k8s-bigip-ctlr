@@ -6,7 +6,7 @@ ExternalDNS solution provides you with modern, container application workloads t
 
 This architecture diagram demonstrates the ExternalDNS with NGINX Ingress Controller using F5 CIS with BIG-IP for ten applications
 
-![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/per-application-failover/diagram/2022-01-31_14-03-56.png)
+![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/per-application-failover/diagram/2022-01-31_14-03-56.png)
 
 Demo [YouTube]()
 
@@ -62,7 +62,7 @@ kubectl create -f f5-bigip-node.yaml
 - f5-bigip-node is required for Flannel
 - bigip-ctlr-clusterrole is required for CIS permissions 
 
-cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/per-application-failover/cis/cis-deployment)
+cis-deployment [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/per-application-failover/cis/cis-deployment)
 
 ## Step 2: Nginx-Controller Installation
 
@@ -92,7 +92,7 @@ Create a service for the Ingress Controller pods for ports 80 and 443 as follows
 
     kubectl apply -f nginx-config/nginx-service.yaml
 
-nginx-config [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/edns-multi-host/nginx-config)
+nginx-config [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/per-application-failover/nginx-config)
 
 ## Step 3: Deploy the Cafe Applications
 
@@ -141,7 +141,7 @@ smoothie-ingress      <none>   smoothie.example.com                80, 443   21h
 tea-ingress           <none>   tea.example.com                     80, 443   3d20h
 ```
 
-ingress-example [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/per-application-failover/ingress-example)
+ingress-example [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/per-application-failover/ingress-example)
 
 ## Step 4: Create TLSProfile CRDs for re-encryptions
 
@@ -154,7 +154,7 @@ The diagram below demonstrates the combination mapping of the VirtualServer, TLS
 - Re-use the same **virtualServerAddress: "10.192.75.117"** for all cafe application
 - Hostname load balancing based on the HOST **tea.example.com** and **PATH /tea**
 
-![combo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/per-application-failover/diagram/2022-02-01_12-31-07.png)
+![combo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/per-application-failover/diagram/2022-02-01_12-31-07.png)
 
 Create the **cafe** TLSProfile CRDs
 
@@ -171,7 +171,7 @@ kubectl create -f reencrypt-smoothie.yaml
 Kubectl create -f reencrypt-tea.yaml.yaml
 ```
 
-TLSProfile [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/per-application-failover/cis/cafe/reencrypt)
+TLSProfile [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/per-application-failover/cis/cafe/reencrypt)
 
 Create the **cafe** VirtualServer CRDs
 
@@ -188,7 +188,7 @@ kubectl create -f vs-smoothie.yaml
 Kubectl create -f vs-tea.yaml.yaml
 ```
 
-VirtualServer [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/per-application-failover/cis/cafe/virtualserver)
+VirtualServer [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/per-application-failover/cis/cafe/virtualserver)
 
 Validated the **VirtualServer** and **TLSProfile** CRDs in Kubernetes
 
@@ -222,7 +222,7 @@ tlsprofile.cis.f5.com/reencrypt-tea           20h
 
 Review LTM load balancing profiles on BIG-IP LTM
 
-![BIG-IP LTM](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/per-application-failover/diagram/2022-02-01_11-42-23.png)
+![BIG-IP LTM](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/per-application-failover/diagram/2022-02-01_11-42-23.png)
 
 Create the **cafe** ExternalDNS CRDs
 
@@ -239,7 +239,7 @@ kubectl create -f vs-smoothie.yaml
 Kubectl create -f vs-tea.yaml.yaml
 ```
 
-ExternalDNS [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/per-application-failover/cis/cafe/externaldns) 
+ExternalDNS [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/per-application-failover/cis/cafe/externaldns) 
 
 Validated ExternalDNS CRDs
 
@@ -260,21 +260,21 @@ edns-tea           tea.example.com           19h   2022-01-31T23:50:45Z
 
 Validated Wide IP on BIG-IP DNS
 
-![Wide IP](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/per-application-failover/diagram/2022-01-31_15-55-49.png)
+![Wide IP](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/per-application-failover/diagram/2022-01-31_15-55-49.png)
 
 Validated DNS monitor for application **tea.example.com**
 
-![Wide IP](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/per-application-failover/diagram/2022-02-01_12-50-26.png)
+![Wide IP](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/per-application-failover/diagram/2022-02-01_12-50-26.png)
 
 ## Step 5: Connect to Multiple Applications
 
 In this example we connecting to multiple applications based on their FQDN. The BIG-IP DNS is designated **nameserver** for the **A recorded**
 
-![DNS](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/per-application-failover/diagram/2022-02-01_12-55-20.png)
+![DNS](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/per-application-failover/diagram/2022-02-01_12-55-20.png)
 
 Connect to the Public IP via the FQDN and application Path. Example below of /tea, /coffee and /mocha
 
-![traffic](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/per-application-failover/diagram/2022-02-01_13-02-20.png)
+![traffic](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/per-application-failover/diagram/2022-02-01_13-02-20.png)
 
 ## Step 6: Fail Application POD in Kubernetes
 
@@ -285,8 +285,8 @@ kubectl scale deploy/tea --replicas=0
 kubectl scale deploy/coffee --replicas=0
 kubectl scale deploy/mocha --replicas=0
 ```
-![failure](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/per-application-failover/diagram/2022-02-01_13-13-04.png)
+![failure](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/per-application-failover/diagram/2022-02-01_13-13-04.png)
 
 Demonstrate the failed monitor
 
-![monitor](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/per-application-failover/diagram/2022-02-01_13-17-24.png)
+![monitor](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/per-application-failover/diagram/2022-02-01_13-17-24.png)
