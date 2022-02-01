@@ -4,7 +4,7 @@ F5 Container Ingress Services User Guides
 For guides on using CIS with Kubernetes and OpenShift see:
 
 * [ExternalDNS for NGINX Ingress Controller using F5 CIS with BIG-IP DNS](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/externaldns-nginx#readme)
-* [Per Application Failover using ExternalDNS]()
+* [Per Application Failover using ExternalDNS](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/per-application-failover#readme)
 * [Simplifying Ingress using F5 Technologies](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/simplifying-ingress#readme)
 * [Service Type LoadBalancer](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/servicetypelb/README.md)
 * [IPAM](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ipam/README.md)
