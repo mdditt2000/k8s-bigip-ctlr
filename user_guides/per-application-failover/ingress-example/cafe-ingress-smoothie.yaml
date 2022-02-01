@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: smoothie-ingress
+  # use annotations with k8s version < 1.18.0
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  # ingressClassName: nginx # use only with k8s version >= 1.18.0
+  tls:
+  - hosts:
+    - smoothie.example.com
+    secretName: cafe-secret
+  rules:
+  - host: smoothie.example.com
+    http:
+      paths:
+      - path: /smoothie
+        backend:
+          serviceName: smoothie-svc
+          servicePort: 80

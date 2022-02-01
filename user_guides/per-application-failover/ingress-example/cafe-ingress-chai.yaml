@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: chai-ingress
+  # use annotations with k8s version < 1.18.0
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  # ingressClassName: nginx # use only with k8s version >= 1.18.0
+  tls:
+  - hosts:
+    - chai.example.com
+    secretName: cafe-secret
+  rules:
+  - host: chai.example.com
+    http:
+      paths:
+      - path: /chai
+        backend:
+          serviceName: chai-svc
+          servicePort: 80

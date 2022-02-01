@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: tea-ingress
+  # use annotations with k8s version < 1.18.0
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  # ingressClassName: nginx # use only with k8s version >= 1.18.0
+  tls:
+  - hosts:
+    - tea.example.com
+    secretName: cafe-secret
+  rules:
+  - host: tea.example.com
+    http:
+      paths:
+      - path: /tea
+        backend:
+          serviceName: tea-svc
+          servicePort: 80

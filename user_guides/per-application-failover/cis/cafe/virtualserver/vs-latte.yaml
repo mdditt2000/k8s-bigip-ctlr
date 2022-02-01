@@ -1,0 +1,25 @@
+apiVersion: "cis.f5.com/v1"
+kind: VirtualServer
+metadata:
+  name: vs-latte
+  namespace: nginx-ingress
+  labels:
+    f5cr: "true"
+spec:
+  host: latte.example.com
+  hostGroup: "cafe"
+  virtualServerAddress: "10.192.75.117"
+  virtualServerHTTPSPort: 443
+  tlsProfileName: reencrypt-latte
+  httpTraffic: redirect
+  snat: auto
+  pools:
+  - monitor:
+      interval: 20
+      recv: ""
+      send: "GET /latte HTTP/1.1\r\nHost: latte.example.com\r\n"
+      timeout: 10
+      type: https
+    path: /latte
+    service: nginx-ingress
+    servicePort: 443
