@@ -143,7 +143,7 @@ tea-ingress           <none>   tea.example.com                     80, 443   3d2
 
 ingress-example [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/per-application-failover/ingress-example)
 
-## Step 4: Create TLSProfile CRDs for re-encryptions
+## Step 4: Create VirtualServer, TLSProfile, ExternalDNS CRDs
 
 The diagram below demonstrates the combination mapping of the VirtualServer, TLSProfile, ExternalDNS CRDs for application **tea.example.com**:
 
@@ -227,16 +227,16 @@ Review LTM load balancing profiles on BIG-IP LTM
 Create the **cafe** ExternalDNS CRDs
 
 ```
-kubectl create -f vs-brew.yaml
-Kubectl create -f vs-chai.yaml
-kubectl create -f vs-coffee.yaml
-Kubectl create -f vs-flatwhite.yaml
-kubectl create -f vs-frappuccino.yaml
-Kubectl create -f vs-latte.yaml
-kubectl create -f vs-macchiato.yaml
-Kubectl create -f vs-mocha.yaml
-kubectl create -f vs-smoothie.yaml
-Kubectl create -f vs-tea.yaml.yaml
+kubectl create -f edns-brew.yaml
+Kubectl create -f edns-chai.yaml
+kubectl create -f edns-coffee.yaml
+Kubectl create -f edns-flatwhite.yaml
+kubectl create -f edns-frappuccino.yaml
+Kubectl create -f edns-latte.yaml
+kubectl create -f edns-macchiato.yaml
+Kubectl create -f edns-mocha.yaml
+kubectl create -f edns-smoothie.yaml
+Kubectl create -f edns-tea.yaml.yaml
 ```
 
 ExternalDNS [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/per-application-failover/cis/cafe/externaldns) 
@@ -244,7 +244,7 @@ ExternalDNS [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_g
 Validated ExternalDNS CRDs
 
 ```
-kubectl get externaldns -n nginx-ingress
+❯ kubectl get externaldns -n nginx-ingress
 NAME               DOMAINNAME                AGE   CREATED ON
 edns-brew          brew.example.com          20h   2022-01-31T23:40:18Z
 edns-chai          chai.example.com          20h   2022-01-31T23:17:07Z
