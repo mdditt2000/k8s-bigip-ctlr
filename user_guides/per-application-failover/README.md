@@ -8,7 +8,7 @@ This architecture diagram demonstrates the ExternalDNS with NGINX Ingress Contro
 
 ![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/per-application-failover/diagram/2022-01-31_14-03-56.png)
 
-Demo [YouTube]()
+Demo [YouTube](https://www.youtube.com/watch?v=raAktVlQSfM)
 
 This user-guide demonstrates ten applications, each application having a unique Public Wide IP's **HOST name** which answers for the deployment in Kubernetes. DNS has no layer 7 path awareness and therefore a DNS monitor is required to determine the health of the deployments. Each ExternalDNS CRD would specify the DNS monitor on BIG-IP. Recommended to work with your F5 Solution Architect to discuss DNS monitor scaling. If the monitor detects the http status failure, the Wide IP is removed from BIG-IP DNS.
 
