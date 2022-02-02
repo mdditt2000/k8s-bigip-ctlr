@@ -25,15 +25,21 @@ spec:
               properties:
                 host:
                   type: string
-                  pattern: '^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$'
+                  pattern: '^(([a-zA-Z0-9\*]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$'
+                hostGroup:
+                  type: string
+                  pattern: '^([A-z0-9-_+])*([A-z0-9])$'
                 httpTraffic:
                   type: string
-                cidr:
+                ipamLabel:
                   type: string
                 snat:
                   type: string
                 tlsProfileName:
                   type: string
+                policyName:
+                  type: string
+                  pattern: '^([A-z0-9-_+])*([A-z0-9])$'
                 rewriteAppRoot:
                   type: string
                   pattern: '^\/([A-z0-9-_+]+\/)*([A-z0-9]+\/?)*$'
@@ -81,7 +87,7 @@ spec:
                         pattern: '^([A-z0-9-_+])*([A-z0-9])$'
                       nodeMemberLabel:
                         type: string
-                        pattern: '^[a-zA-Z0-9][-A-Za-z0-9_.]{0,61}[a-zA-Z0-9]=[a-zA-Z0-9][-A-Za-z0-9_.]{0,61}[a-zA-Z0-9]$'
+                        pattern: '^[a-zA-Z0-9][-A-Za-z0-9_.\/]{0,61}[a-zA-Z0-9]=[a-zA-Z0-9][-A-Za-z0-9_.]{0,61}[a-zA-Z0-9]$'
                       servicePort:
                         type: integer
                         minimum: 1
@@ -121,6 +127,15 @@ spec:
                   type: integer
                   minimum: 1
                   maximum: 65535
+            status:
+              type: object
+              properties:
+                vsAddress:
+                  type: string
+                  default: None
+                status:
+                  type: string
+                  default: Pending
       additionalPrinterColumns:
         - name: host
           type: string
@@ -134,18 +149,28 @@ spec:
           type: string
           description: Http Traffic Termination
           jsonPath: .spec.httpTraffic
-        - name: cidr
-          type: string
-          description: Subnet of virtual server
-          jsonPath: .spec.cidr
-        - name: virtualServerAddress
+        - name: IPAddress
           type: string
           description: IP address of virtualServer
           jsonPath: .spec.virtualServerAddress
+        - name: ipamLabel
+          type: string
+          description: ipamLabel for virtual server
+          jsonPath: .spec.ipamLabel
+        - name: IPAMVSAddress
+          type: string
+          description: IP address of virtualServer
+          jsonPath: .status.vsAddress
+        - name: STATUS
+          type: string
+          description: status of VirtualServer
+          jsonPath: .status.status
         - name: Age
           type: date
           jsonPath: .metadata.creationTimestamp
-
+      subresources:
+        status: {}
+          
 ---
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
@@ -176,7 +201,7 @@ spec:
                   type: array
                   items:
                     type: string
-                    pattern: '^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$'
+                    pattern: '^(([a-zA-Z0-9\*]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$'
                 tls:
                   type: object
                   properties:
@@ -228,6 +253,9 @@ spec:
                 virtualServerName:
                   type: string
                   pattern: '^([A-z0-9-_+])*([A-z0-9])$'
+                policyName:
+                  type: string
+                  pattern: '^([A-z0-9-_+])*([A-z0-9])$'
                 mode: 
                   type: string
                   enum: [standard, performance]
@@ -241,6 +269,12 @@ spec:
                     type: string
                     pattern: '^\/([A-z0-9-_+]+\/)*([A-z0-9-_]+\/?)*$'
                   type: array
+                iRules:
+                  type: array
+                  items:
+                    type: string
+                ipamLabel:
+                  type: string
                 serviceAddress:
                   type: array
                   maxItems: 1
@@ -287,9 +321,17 @@ spec:
                       - service
                       - servicePort
               required:
-                - virtualServerAddress
                 - virtualServerPort
                 - pool
+            status:
+              type: object
+              properties:
+                vsAddress:
+                  type: string
+                  default: None
+                status:
+                  type: string
+                  default: Pending
       additionalPrinterColumns:
       - name: virtualServerAddress
         type: string
@@ -307,19 +349,33 @@ spec:
         type: string
         description: Port of service
         jsonPath: .spec.pool.servicePort
+      - name: ipamLabel
+        type: string
+        description: ipamLabel for transport server
+        jsonPath: .spec.ipamLabel
+      - name: IPAMVSAddress
+        type: string
+        description: IP address of transport server
+        jsonPath: .status.vsAddress
+      - name: STATUS
+        type: string
+        description: status of TransportServer
+        jsonPath: .status.status
       - name: Age
         type: date
         jsonPath: .metadata.creationTimestamp
+      subresources:
+        status: { }
 ---
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
-  name: externaldnss.cis.f5.com
+  name: externaldnses.cis.f5.com
 spec:
   group: cis.f5.com
   names:
     kind: ExternalDNS
-    plural: externaldnss
+    plural: externaldnses
     shortNames:
       - edns
     singular: externaldns
@@ -349,9 +405,6 @@ spec:
                   items:
                     type: object
                     properties:
-                      name:
-                        type: string
-                        pattern: '^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$'
                       dataServerName:
                         type: string
                       dnsRecordType:
@@ -364,7 +417,7 @@ spec:
                         properties:
                           type:
                             type: string
-                            enum: [http, https]
+                            enum: [http, https, tcp]
                           send:
                             type: string
                           recv:
@@ -375,10 +428,8 @@ spec:
                             type: integer
                         required:
                           - type
-                          - send
                           - interval
                     required:
-                      - name
                       - dataServerName
               required:
                 - domainName
@@ -389,6 +440,9 @@ spec:
           jsonPath: .spec.domainName
         - name: Age
           type: date
+          jsonPath: .metadata.creationTimestamp
+        - name: CREATED ON
+          type: string
           jsonPath: .metadata.creationTimestamp
 ---
 apiVersion: apiextensions.k8s.io/v1
@@ -419,6 +473,8 @@ spec:
                 virtualServerAddress:
                   type: string
                   pattern: '^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$'
+                ipamLabel:
+                  type: string
                 iRules:
                   type: array
                   items:
@@ -430,3 +486,106 @@ spec:
                         type: string
                       type: object
                   type: object
+            status:
+              type: object
+              properties:
+                vsAddress:
+                  type: string
+      additionalPrinterColumns:
+        - name: IPAMVSAddress
+          type: string
+          description: IP address of virtualServer
+          jsonPath: .status.vsAddress
+        - name: Age
+          type: date
+          jsonPath: .metadata.creationTimestamp
+      subresources:
+        status: { }
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: policies.cis.f5.com
+spec:
+  group: cis.f5.com
+  names:
+    kind: Policy
+    shortNames:
+      - plc
+    singular: policy
+    plural: policies
+  scope: Namespaced
+  versions:
+    -
+      name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                l7Policies:
+                  type: object
+                  properties:
+                    waf:
+                      type: string
+                      pattern: '^\/([A-z0-9-_+]+\/)+([A-z0-9]+\/?)*$'
+                l3Policies:
+                  type: object
+                  properties:
+                    dos:
+                      type: string
+                      pattern: '^\/([A-z0-9-_+]+\/)+([A-z0-9]+\/?)*$'
+                    firewallPolicy:
+                      type: string
+                      pattern: '^\/([A-z0-9-_+]+\/)+([A-z0-9]+\/?)*$'
+                ltmPolicies:
+                  type: object
+                  properties:
+                    insecure:
+                      type: string
+                      pattern: '^\/([A-z0-9-_+]+\/)+([A-z0-9]+\/?)*$'
+                    secure:
+                      type: string
+                      pattern: '^\/([A-z0-9-_+]+\/)+([A-z0-9]+\/?)*$'
+                    priority:
+                      type: string
+                      enum: [low, high]
+                iRules:
+                  type: object
+                  properties:
+                    insecure:
+                      type: string
+                      pattern: '^\/([A-z0-9-_+]+\/)+([A-z0-9]+\/?)*$'
+                    secure:
+                      type: string
+                      pattern: '^\/([A-z0-9-_+]+\/)+([A-z0-9]+\/?)*$'
+                    priority:
+                      type: string
+                      enum: [ low, high ]
+                profiles:
+                  type: object
+                  properties:
+                    tcp:
+                      type: string
+                      pattern: '^\/([A-z0-9-_+]+\/)+([A-z0-9-]+\/?)*$'
+                    udp:
+                      type: string
+                      pattern: '^\/([A-z0-9-_+]+\/)+([A-z0-9-]+\/?)*$'
+                    http:
+                      type: string
+                      pattern: '^\/([A-z0-9-_+]+\/)+([A-z0-9-]+\/?)*$'
+                    http2:
+                      type: string
+                      pattern: '^\/([A-z0-9-_+]+\/)+([A-z0-9-]+\/?)*$'
+                    rewriteProfile:
+                      type: string
+                      pattern: '^\/([A-z0-9-_+]+\/)+([A-z0-9]+\/?)*$'
+                    logProfiles:
+                      items:
+                        type: string
+                        pattern: '^\/([A-z0-9-_+]+\/)*([A-z0-9-_\s]+\/?)*$'
+                      type: array
