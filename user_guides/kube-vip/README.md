@@ -6,7 +6,7 @@ Using type LoadBalancer with NGINX Ingress Controller this allow a virtual IP to
 
 ![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/kube-vip/diagram/2022-02-10_11-13-59.png)
 
-Demo [YouTube]()
+Demo [YouTube](https://www.youtube.com/watch?v=9TQXO6Ao-IQ)
 
 This user-guide demonstrates a virtual IP which is updated by the kube-vip Cloud Provider. Kube-vip Cloud Provider monitors the Nginx-Ingress Service which is of type LoadBalancer and update the EXTERNAL-IP with the virtual IP. This virtual IP can be advertised to the BIG-IP BPG and redistributed to the network. 
 
