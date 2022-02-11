@@ -23,4 +23,5 @@ For guides on using CIS with Kubernetes and OpenShift see:
 * [ExternalDNS](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/externaldns/README.md)
 * [Rancher](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/rancher/simple-install#readme)
 * [OpenShift Routes verse Custom Resource Definitions](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/route-vs-crd#readme)
+* [Kube-Vip and F5 BIG-IP with NGINX Ingress Controller](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/kube-vip/README.md)
 
