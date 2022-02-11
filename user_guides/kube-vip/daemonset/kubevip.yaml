@@ -1,0 +1,7 @@
+apiVersion: v1
+data: 
+  cidr-nginx-ingress: 192.168.200.118
+kind: ConfigMap
+metadata: 
+  name: kubevip
+  namespace: kube-system
