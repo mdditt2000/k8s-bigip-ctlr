@@ -4,7 +4,7 @@ The purpose of this document is to demonstrate Kube-VIP using BGP with NGINX Ing
 
 Using type LoadBalancer with NGINX Ingress Controller this allow a virtual IP to load balancer all traffic across the NGINX cluster to the applications pods. This virtual IP can be advertised by BIG-IP using BPG or other routing protocols. This architecture diagram demonstrates the kube-VIP using BGP with NGINX Ingress Controller and F5 BIG-IP
 
-![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/kube-vip/diagram/2022-02-10_11-13-59.png)
+![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/kube-vip/diagram/2022-02-10_11-13-59.png)
 
 Demo [YouTube]()
 
@@ -14,7 +14,7 @@ This user-guide demonstrates a virtual IP which is updated by the kube-vip Cloud
 
 Add BGP to route-domain
 
-![bgp](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/kube-vip/diagram/2022-02-10_13-56-44.png)
+![bgp](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/kube-vip/diagram/2022-02-10_13-56-44.png)
 
 Access the IMI Shell
 
@@ -68,7 +68,7 @@ kubectl apply -f https://kube-vip.io/manifests/rbac.yaml
 kubectl create -f kube-vip-ds.yaml
 ``` 
 
-kube-vip-daemonset [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/edns-multi-host/cis/cis-deployment)
+kube-vip-daemonset [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/kube-vip/daemonset)
 
 ```
 ❯ kubectl logs -f kube-vip-ds-tjttm -n kube-system
@@ -153,7 +153,7 @@ spec:
   type: LoadBalancer
 ```
 
-nginx-config [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/kube-vip/nginx-config)
+nginx-config [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/kube-vip/nginx-config)
 
 ## Step 5: Deploy the Cafe Application
 
@@ -171,7 +171,7 @@ Create an Ingress resource:
 
     kubectl create -f cafe-ingress.yaml
 
-ingress-example [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/kube-vip/ingress-example)
+ingress-example [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/kube-vip/ingress-example)
 
 ## Step 6: Expose a Service
 
@@ -247,6 +247,6 @@ Vty connection is timed out.
  
 ## Step 7: Connect to the Virtual IP
 
-![traffic](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/kube-vip/diagram/2022-02-11_14-03-10.png)
+![traffic](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/kube-vip/diagram/2022-02-11_14-03-10.png)
 
 
