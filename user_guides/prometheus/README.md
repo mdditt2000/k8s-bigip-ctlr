@@ -147,6 +147,13 @@ must be Prometheus in the Pull Consumer class as shown
     }
 }
 ```
+Save the above contents in a file (say, prometheus.json for example) and execute the below command. Replace the 'username' and '<f5-loadbalancer-hostname/ip-address>' with the appropriate values.
+
+```
+curl -sku <username> -X POST -H 'Content-Type:application/json' -d '@prometheus.json' \
+ https://<f5-loadbalancer-hostname/ip-address>/mgmt/shared/telemetry/declare
+ ```
+
 The Prometheus Pull Consumer outputs the telemetry data according to the Prometheus data
 model specification configured in Prometheus
 
