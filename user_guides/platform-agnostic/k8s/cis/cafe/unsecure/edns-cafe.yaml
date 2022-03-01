@@ -1,0 +1,26 @@
+apiVersion: "cis.f5.com/v1"
+kind: ExternalDNS
+metadata:
+  name: edns-cafe
+  namespace: default
+  labels:
+    f5cr: "true"
+spec:
+  domainName: cafe.example.com
+  dnsRecordType: A
+  loadBalanceMethod: round-robin
+  pools:
+  - dnsRecordType: A
+    loadBalanceMethod: round-robin
+    dataServerName: /Common/k8s
+    monitors:
+    - interval: 10
+      recv: ""
+      send: "GET /tea HTTP/1.1\r\nHost: cafe.example.com\r\n"
+      timeout: 31
+      type: http
+    - interval: 10
+      recv: ""
+      send: "GET /coffee HTTP/1.1\r\nHost: cafe.example.com\r\n"
+      timeout: 31
+      type: http
