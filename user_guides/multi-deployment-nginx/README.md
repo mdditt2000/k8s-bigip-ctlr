@@ -6,7 +6,7 @@ Today, organizations are increasingly deploying multiple container environment. 
 
 In this user-guide, we have deployed an OpenShift and Kubernetes container environments running identical applications front-ended by NGINX Ingress Controller. BIG-IP is platform-agnostic, using DNS to distribute traffic between the OpenShift and Kubernetes clusters. This simple but powerful approach enables users the flexibility to complete an container environment proof of concept or migrating applications between environments. Since CIS uses the Kubernetes API the resource definitions for OpenShift and Kubernetes are identical except for the public IPs. Diagram below represents the OpenShift and Kubernetes environments.
 
-![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/diagram/2022-03-03_14-01-55.png)
+![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-deployment-nginx/diagram/2022-02-28_11-11-06.png)
 
 Demo on YouTube [video]()
 
@@ -18,7 +18,7 @@ This user-guide demonstrates an application having a Wide IP's HOST name **cafe.
 * BIG-IP LTM and DNS configured on the same device
 * Configure BIG-IP DNS iQuery so that BIG-IP systems can communicate with each other for Data Center **ocp** and **k8s**
 
-![iQuery](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-02-28_11-11-06.png)
+![iQuery](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-deployment/diagram/2022-02-28_11-11-06.png)
 
 ## OpenShift Container Environments
 
@@ -63,19 +63,19 @@ oc create -f bigip-ctlr-clusterrole.yaml
 oc create -f f5-bigip-ctlr-deployment.yaml
 ```
 
-cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/multi-deployment-nginx/ocp/cis/cis-deployment)
+cis-deployment [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/multi-deployment-nginx/ocp/cis/cis-deployment)
 
-**Note** Do not forget the OpenShift-SDN CNI [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/multi-deployment-nginx/ocp/cni)
+**Note** Do not forget the OpenShift-SDN CNI [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-deployment-nginx/ocp/cni/f5-openshift-hostsubnet-01.yaml)
 
 ### Step 2: Deploy NGINX Ingress Operator on OpenShift
 
 Recommend following [NGINX blog](https://www.nginx.com/blog/getting-started-nginx-ingress-operator-red-hat-openshift/)
 
-nginx-config [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/multi-deployment-nginx/ocp/nginx-config)
+nginx-config [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/multi-deployment-nginx/ocp/nginx-config)
 
 #### Validate NGINX Ingress Operator on OpenShift
 
-![operator](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/diagram/2022-03-02_14-33-05.png)
+![operator](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-deployment-nginx/diagram/2022-03-02_14-33-05.png)
 
 ```
 # oc get deployment -n nginx-ingress
@@ -144,15 +144,15 @@ kubectl create -f bigip-ctlr-clusterrole.yaml
 kubectl create -f f5-bigip-ctlr-deployment.yaml
 ```
 
-cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/multi-deployment/k8s/cis/cis-deployment)
+cis-deployment [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/multi-deployment-nginx/k8s/cis/cis-deployment)
 
-**Note** Do not forget the Flannel CNI [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/k8s/cni/f5-bigip-node.yaml)
+**Note** Do not forget the Flannel CNI [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-deployment-nginx/k8s/cni/f5-bigip-node.yaml)
 
 ### Step 4: Deploy NGINX Ingress Operator on Kubernetes
 
 Deploy the following manifest and schema
 
-nginx-config [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/multi-deployment-nginx/k8s/nginx-config)
+nginx-config [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/multi-deployment-nginx/k8s/nginx-config)
 
 ## Creating Custom Resource Definitions
 
@@ -160,11 +160,11 @@ nginx-config [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/ci
 
 OpenShift deployment is updated to the support the API changes in 1.22
 
-ingress-example [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/multi-deployment-nginx/ocp/ingress-example)
+ingress-example [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/multi-deployment-nginx/ocp/ingress-example)
 
 Kubernetes deployment is still using beta API for IngressClass
 
-ingress-example [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/multi-deployment-nginx/k8s/ingress-example)
+ingress-example [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/multi-deployment-nginx/k8s/ingress-example)
 
 ### Step 6: Creating VirtualServer, TLS and ExternalDNS CRDs using OpenShift
 
@@ -178,7 +178,7 @@ Use-case for the CRDs:
 
 Diagram below displays the example of **vs-tea** with the **edns-cafe** for the following use-case
 
-![crd-ocp](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/diagram/2022-03-08_11-08-49.png)
+![crd-ocp](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-deployment-nginx/diagram/2022-03-08_11-08-49.png)
 
 #### Create CRDs Schema in OpenShift
 
@@ -188,7 +188,7 @@ Diagram below displays the example of **vs-tea** with the **edns-cafe** for the 
 oc create -f CustomResourceDefinition.yaml
 ```
 
-CRD Schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/ocp/cis/cafe/cis-crd-schema/customresourcedefinitions.yml)
+CRD Schema [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-deployment-nginx/ocp/cis/cafe/cis-crd-schema/customresourcedefinitions.yml)
 
 #### Create VirtualServer, TLSProfile and ExternalDNS CRDs in OpenShift
 
@@ -199,7 +199,7 @@ oc create -f vs-coffee.yaml
 oc create -f edns-cafe.yaml
 ```
 
-CRD [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/multi-deployment-nginx/ocp/cis/cafe/secure)
+CRD [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/multi-deployment-nginx/ocp/cis/cafe/secure)
 
 #### Validate CRD
 
@@ -220,11 +220,11 @@ externaldns.cis.f5.com/edns-cafe   cafe.example.com   5d    2022-03-03T18:31:29Z
 
 #### Validate CRD using the BIG-IP
 
-![big-ip CRD](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/diagram/2022-03-08_11-16-43.png)
+![big-ip CRD](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-deployment-nginx/diagram/2022-03-08_11-16-43.png)
 
 #### Validate CRD policy for cafe.example.com on BIG-IP
 
-![big-ip pools](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/diagram/2022-03-08_11-17-14.png)
+![big-ip pools](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-deployment-nginx/diagram/2022-03-08_11-17-14.png)
 
 ### Step 7: Creating VirtualServer, TLS and ExternalDNS CRDs using Kubernetes
 
@@ -238,7 +238,7 @@ Use-case for the CRDs:
 
 Diagram below displays the example of **vs-tea** with the **edns-cafe** for the following use-case
 
-![crd-k8s](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/diagram/2022-03-08_11-09-16.png)
+![crd-k8s](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-deployment-nginx/diagram/2022-03-08_11-09-16.png)
 
 #### Create CRDs Schema in Kubernetes
 
@@ -248,7 +248,7 @@ Diagram below displays the example of **vs-tea** with the **edns-cafe** for the 
 kubectl create -f CustomResourceDefinition.yaml
 ```
 
-CRD Schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/k8s/cis/cafe/cis-crd-schema/customresourcedefinitions.yml)
+CRD Schema [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-deployment-nginx/k8s/cis/cafe/cis-crd-schema/customresourcedefinitions.yml)
 
 #### Create VirtualServer and ExternalDNS CRDs in Kubernetes
 
@@ -259,7 +259,7 @@ oc create -f vs-coffee.yaml
 oc create -f edns-cafe.yaml
 ```
 
-CRD [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/multi-deployment-nginx/k8s/cis/cafe/secure)
+CRD [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/multi-deployment-nginx/k8s/cis/cafe/secure)
 
 #### Validate CRD
 
@@ -278,27 +278,27 @@ externaldns.cis.f5.com/edns-cafe   cafe.example.com   5d2h   2022-03-03T18:27:10
 
 #### Validate CRD using the BIG-IP
 
-![big-ip CRD](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/diagram/2022-03-08_12-43-28.png)
+![big-ip CRD](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-deployment-nginx/diagram/2022-03-08_12-43-28.png)
 
 #### Validate the BIG-IP GLSB Pools
 
-![big-ip pools](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/diagram/2022-03-08_12-43-46.png)
+![big-ip pools](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-deployment-nginx/diagram/2022-03-08_12-43-46.png)
 
 ### Step 8: Validate the BIG-IP Wide IPs and DNS Failover
 
 #### Validate the BIG-IP GSLB Wide IP
 
-![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/diagram/2022-03-08_12-45-58.png)
+![wide-ip](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-deployment-nginx/diagram/2022-03-08_12-45-58.png)
 
 #### Validate the BIG-IP GLSB Pools
 
 Each pool represents a container environment. In this user-guide we have a **ocp** and **k8s** pools
 
-![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/diagram/2022-03-08_12-48-19.png)
+![wide-ip](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-deployment-nginx/diagram/2022-03-08_12-48-19.png)
 
 #### Validate the **ocp** Data Center GLSB Pool on BIG-IP
 
-![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/diagram/2022-03-08_12-52-47.png)
+![wide-ip](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-deployment-nginx/diagram/2022-03-08_12-52-47.png)
 
 **Note** availability shows green. Monitors are able to successfully complete the health checks
 
@@ -306,11 +306,11 @@ Each pool represents a container environment. In this user-guide we have a **ocp
 
 This is the public IP returned by the BIG-IP DNS to the clients DNS query
 
-![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/diagram/2022-03-08_12-53-05.png)
+![wide-ip](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-deployment-nginx/diagram/2022-03-08_12-53-05.png)
 
 #### Validate the **k8s** Data Center GLSB Pool on BIG-IP
 
-![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/diagram/2022-03-08_12-51-40.png)
+![wide-ip](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-deployment-nginx/diagram/2022-03-08_12-51-40.png)
 
 **Note** availability shows green. Monitors are able to successfully complete the health checks
 
@@ -318,7 +318,7 @@ This is the public IP returned by the BIG-IP DNS to the clients DNS query
 
 This is the public IP returned by the BIG-IP DNS to the clients DNS query
 
-![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/diagram/2022-03-08_12-52-00.png)
+![wide-ip](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-deployment-nginx/diagram/2022-03-08_12-52-00.png)
 
 #### Replica the **k8s** pods to zero
 
@@ -328,10 +328,10 @@ Replica the nginx-ingress pods in the Kubernetes container environment to zero. 
 kubectl scale --current-replicas=2 --replicas=0 deployment/nginx-ingress -n nginx-ingress
 ```
 
-![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/diagram/2022-03-08_13-00-25.png)
+![wide-ip](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-deployment-nginx/diagram/2022-03-08_13-00-25.png)
 
 #### Connect to the Public IP
 
 **Note** All traffic will connect to the **ocp** cluster. I can verify this by the server address
 
-![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/diagram/2022-03-08_13-04-13.png)
+![wide-ip](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-deployment-nginx/diagram/2022-03-08_13-04-13.png)
