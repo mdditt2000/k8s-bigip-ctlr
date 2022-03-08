@@ -70,7 +70,7 @@ cis-deployment [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/use
 
 ### Step 2: Deploy CIS
 
-The biggest benefit for using CRDs is their no limitations on how many Public IPs **Virtual Server** create on BIG-IP. However to maintain similarity with Routes we using HOST Header Load balancing to determine the backend application. In this example the backend is **/tea,/coffee and /mocha** with the same Public IP address 10.192.125.65
+The benefit for using CRDs is no limitations on how many Public IPs **Virtual Server** create on BIG-IP.
 
 Add the following parameters to THE CIS deployment
 
