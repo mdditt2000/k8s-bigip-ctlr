@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-bigip-ctlr-deployment
+  namespace: kube-system
+spec:
+  # DO NOT INCREASE REPLICA COUNT
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-bigip-ctlr-deployment
+  template:
+    metadata:
+      labels:
+        app: k8s-bigip-ctlr-deployment
+    spec:
+      # Name of the Service Account bound to a Cluster Role with the required
+      # permissions
+      containers:
+        - name: k8s-bigip-ctlr
+          image: "quay.io/f5networks/k8s-bigip-ctlr-devel:d9e0c06ef47f57feb3ed6c837c1dae6ba8f8619e"
+          env:
+            - name: BIGIP_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  # Replace with the name of the Secret containing your login
+                  # credentials
+                  name: bigip-login
+                  key: username
+            - name: BIGIP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  # Replace with the name of the Secret containing your login
+                  # credentials
+                  name: bigip-login
+                  key: password
+          command: ["/app/bin/k8s-bigip-ctlr"]
+          args: [
+            # See the k8s-bigip-ctlr documentation for information about
+            # all config options
+            # https://clouddocs.f5.com/containers/latest/
+              "--bigip-username=$(BIGIP_USERNAME)",
+              "--bigip-password=$(BIGIP_PASSWORD)",
+              "--bigip-url=192.168.200.60",
+              "--bigip-partition=k8s",
+              "--gtm-bigip-username=$(BIGIP_USERNAME)",
+              "--gtm-bigip-password=$(BIGIP_PASSWORD)",
+              "--gtm-bigip-url=192.168.200.60",
+              "--namespace=nginx-ingress",
+              "--pool-member-type=cluster",
+              "--flannel-name=fl-vxlan",
+              "--log-level=DEBUG",
+              "--insecure=true",
+              "--custom-resource-mode=true",
+              "--as3-validation=true",
+              "--log-as3-response=true",
+          ]
+      serviceAccountName: bigip-ctlr
