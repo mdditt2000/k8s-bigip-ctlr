@@ -195,7 +195,7 @@ demo application [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/u
 
 Add the **Public-IP** and **Host** to the IngressLink CRD. Host is **Wide-IP** that will match the ExternalDNS crd as shown below in the diagram
 
-![crd]https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ingresslink-externaldns/diagram/2022-03-10_17-10-00.png)
+![crd](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ingresslink-externaldns/diagram/2022-03-10_17-10-00.png)
 
 #### Create the IngressLink CRD
 
