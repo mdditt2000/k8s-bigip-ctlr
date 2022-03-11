@@ -17,7 +17,7 @@ This user-guide documents IngressLink with ExternalDNS. BIG-IP LTM and DNS are c
 
 ![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ingresslink-externaldns/diagram/2022-03-10_16-44-07.png)
 
-Demo on YouTube [video]()
+Demo on YouTube [video](https://youtu.be/mKyG8NB8jZU)
 
 On this page you’ll find:
 
