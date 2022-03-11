@@ -11,11 +11,11 @@ F5 IngressLink is integration between BIG-IP and NGINX technologies. F5 IngressL
 * Aligning priorities and **minimize conflict** between teams while **enabling multi-tenancy** in Kubernetes
 * Save time and **reduce errors** with declarative deployment and simplify integration between BIG-IP and NGINX
 
-<img src="https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/ingresslink-externaldns/diagram/2022-03-10_14-50-09.png" width="428" height="441">
+<img src="https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ingresslink-externaldns/diagram/2022-03-10_14-50-09.png" width="428" height="441">
 
 This user-guide documents IngressLink with ExternalDNS. BIG-IP LTM and DNS are configured on the same device for a single cluster as shown in the diagram. However BIG-IP LTM and DNS can be on dedicated devices for multiple sites,clusters and Data Centers. This architecture diagram demonstrates IngressLink with ExternalDNS
 
-![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/ingresslink-externaldns/diagram/2022-03-10_16-44-07.png)
+![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ingresslink-externaldns/diagram/2022-03-10_16-44-07.png)
 
 Demo on YouTube [video]()
 
@@ -48,7 +48,7 @@ Proxy Protocol is required by NGINX to provide the applications PODs with the or
 * In the Name field, type name as "Proxy_Protocol_iRule".
 * In the Definition field, Copy the definition from "Proxy_Protocol_iRule" file. Click Finished.
 
-proxy_protocol_iRule [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/ingresslink-externaldns/big-ip/proxy-protocal/irule)
+proxy_protocol_iRule [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ingresslink-externaldns/big-ip/proxy-protocal/irule)
 
 **Step 2**
 
@@ -66,7 +66,7 @@ Create CRD schema
 
     kubectl create -f customresourcedefinition.yaml
 
-cis-crd-schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/ingresslink-externaldns/cis/cis-crd-schema/customresourcedefinitions.yml)
+cis-crd-schema [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ingresslink-externaldns/cis/cis-crd-schema/customresourcedefinitions.yml)
 
 Update the bigip address, partition and other details(image, imagePullSecrets, etc) in CIS deployment file and Install CIS Controller in ClusterIP mode as follows:
 
@@ -109,7 +109,7 @@ Additionally, if you are deploying the CIS in Cluster Mode you need to have foll
 kubectl create -f f5-bigip-ctlr-deployment.yaml
 ```
 
-cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/ingresslink-externaldns/cis/cis-deployment)
+cis-deployment [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/ingresslink-externaldns/cis/cis-deployment)
 
 #### Verify CIS deployment
 
@@ -167,7 +167,7 @@ Verify NGINX-Ingress deployment
 NAME            READY   UP-TO-DATE   AVAILABLE   AGE
 nginx-ingress   4/4     4            4           5h33m
 ```
-nginx-config [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/ingresslink-externaldns/nginx-config)
+nginx-config [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/ingresslink-externaldns/nginx-config)
 
 ## Deploy the Cafe Application
 
@@ -187,7 +187,7 @@ Create an Ingress resource:
 
     kubectl create -f cafe-ingress.yaml
 
-demo application [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/ingresslink-externaldns/ingress-example)
+demo application [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/ingresslink-externaldns/ingress-example)
 
 ## Create an IngressLink and ExternalDNS CRD
 
@@ -195,7 +195,7 @@ demo application [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/maste
 
 Add the **Public-IP** and **Host** to the IngressLink CRD. Host is **Wide-IP** that will match the ExternalDNS crd as shown below in the diagram
 
-![crd](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/ingresslink-externaldns/diagram/2022-03-10_17-10-00.png)
+![crd]https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ingresslink-externaldns/diagram/2022-03-10_17-10-00.png)
 
 #### Create the IngressLink CRD
 
@@ -208,15 +208,15 @@ ingresslink.cis.f5.com/vs-ingresslink created
 
 #### Validate the Public IP address on BIG-IP
 
-![crd](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/ingresslink-externaldns/diagram/2022-03-10_17-20-43.png)
+![crd](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ingresslink-externaldns/diagram/2022-03-10_17-20-43.png)
 
 #### Validate the BIG-IP Pools
 
-![crd](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/ingresslink-externaldns/diagram/2022-03-10_17-21-36.png)
+![crd](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ingresslink-externaldns/diagram/2022-03-10_17-21-36.png)
 
 #### Validate the Proxy-Protocol iRule
 
-![crd](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/ingresslink-externaldns/diagram/2022-03-10_17-22-03.png)
+![crd](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ingresslink-externaldns/diagram/2022-03-10_17-22-03.png)
 
 #### Create the ExternalDNS CRD
 
@@ -225,7 +225,7 @@ ingresslink.cis.f5.com/vs-ingresslink created
 externaldns.cis.f5.com/edns-cafe created
 ```
 
-crd-resource [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/ingresslink-externaldns/cis/crd-resource)
+crd-resource [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/ingresslink-externaldns/cis/crd-resource)
 
 #### Validate the ExternalDNS CRD in Kubernetes
 
@@ -241,11 +241,11 @@ externaldns.cis.f5.com/edns-cafe   cafe.example.com   4h12m   2022-03-10T21:17:3
 
 #### Validate the Wide-IP on BIG0-IP DNS
 
-![crd](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/ingresslink-externaldns/diagram/2022-03-10_17-31-50.png)
+![crd](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ingresslink-externaldns/diagram/2022-03-10_17-31-50.png)
 
 #### Validate the Wide-IP Pool on BIG0-IP DNS
 
-![crd](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/ingresslink-externaldns/diagram/2022-03-10_17-40-00.png)
+![crd](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ingresslink-externaldns/diagram/2022-03-10_17-40-00.png)
 
 **Step 6**
 
@@ -253,4 +253,4 @@ externaldns.cis.f5.com/edns-cafe   cafe.example.com   4h12m   2022-03-10T21:17:3
 
 Connect to the host via the browser
 
-![traffic](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/ingresslink-externaldns/diagram/2022-03-10_17-43-16.png)
+![traffic](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ingresslink-externaldns/diagram/2022-03-10_17-43-16.png)

@@ -3,7 +3,7 @@ F5 Container Ingress Services User Guides
 
 For guides on using CIS with Kubernetes and OpenShift see:
 
-* [F5 IngressLink with ExternalDNS - Coming Soon!]()
+* [F5 IngressLink with ExternalDNS](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/ingresslink-externaldns#readme)
 * [Multi-Cluster OpenShift/Kubernetes using BIG-IP DNS Failover](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/multi-deployment#readme)
 * [Multi-Cluster OpenShift/Kubernetes using BIG-IP DNS Failover with Nginx Ingress Controller](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-deployment-nginx/README.md)
 * [ExternalDNS for NGINX Ingress Controller using F5 CIS with BIG-IP DNS](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/externaldns-nginx#readme)
