@@ -8,7 +8,7 @@ In this user-guide, we have deployed an OpenShift and Kubernetes container envir
 
 ![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-deployment/diagram/2022-02-28_09-39-06.png)
 
-Demo on YouTube [video]()
+Demo on YouTube [video](https://youtu.be/Xge7UaaLq6k)
 
 This user-guide demonstrates an application having a Wide IP's HOST name **cafe.example.com**  which answers using **round-robin** for the OpenShift or Kubernetes environments. DNS has no layer seven path awareness and therefore DNS monitors are required to determine the health of the applications **/coffee** and **/tea**. Each ExternalDNS CRD specifies the DNS monitors on BIG-IP. Recommended to work with your F5 Solution Architect to discuss DNS monitoring and scaling. If a monitor detects the http status failure, the Wide IP is removed from the DNS query.
 
