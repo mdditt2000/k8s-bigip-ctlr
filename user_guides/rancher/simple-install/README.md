@@ -12,7 +12,7 @@ Demo on YouTube [video](https://youtu.be/51zatEVLBEM)
 
 * Add the CIS chart repository in Helm using following command:
 
-    helm repo add f5-stable https://f5networks.github.io/charts/stable
+    helm repo add f5-stable https://github.com/F5Networks/k8s-bigip-ctlr/tree/master/helm-charts/f5-bigip-ctlr
 
 * Install the Helm chart using the following command:
 
