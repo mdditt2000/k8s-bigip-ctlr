@@ -1,4 +1,4 @@
-# OpenShift OVN-Kubernetes with F5 BIG-IP Standalone requiring no Tunnels
+# OpenShift OVN-Kubernetes with F5 BIG-IP Standalone Requiring NO Tunnels
 
 This document demonstrates how to use **OVN-Kubernetes with F5 BIG-IP Routes** to Ingress traffic without using an Overlay. Using OVN-Kubernetes with F5 BIG-IP Routes removes the complexity of creating VXLAN tunnels or using Calico. This document demonstrates **Standalone BIG-IP working with OVN-Kubernetes**. Diagram below demonstrates a OpenShift 4.11 Cluster with three masters and three worker nodes. The three applications; **tea,coffee and mocha** are deployed in the **cafe** namespace. As you can see from the diagram below the **cafe** namespace requires an annotation for the BIG-IP self-ip. 
 
