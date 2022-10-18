@@ -58,13 +58,13 @@ tmsh create /net route 10.128.2.0/23 gw 10.192.125.177
 ```
 View static routes created on BIG-IP
 
-![routes](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ovn-kubernetes-standalone/diagram/2022-10-12_13-30-34.png)
+![routes](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ovn-kubernetes-ha/diagram/2022-10-12_13-30-34.png)
 
 **Note:** Manually sync the BIG-IP so the routes are deployed on the standby
 
 ### Step 4: Configure egress from OpenShift cluster to BIG-IP
 
-Configure egress from OpenShift cluster to BIG-IP using k8s.ovn.org/routing-external-gws annotation on namespace where the application is deployed as shown in the diagram above
+Configure egress from OpenShift cluster to BIG-IP using k8s.ovn.org/routing-external-gws annotation on namespace where the application is deployed as shown in the diagram above. Use the BIG-IP floating self-IP address for the **routing-external-gws: 10.192.125.62**
 
 ```
 apiVersion: v1
@@ -76,11 +76,11 @@ metadata:
     kubernetes.io/metadata.name: default
   name: cafe
 ```
-routing-external-gws [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ovn-kubernetes-standalone/demo-app/cafe/name-cafe.yaml)
+routing-external-gws [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ovn-kubernetes-ha/demo-app/cafe/name-cafe.yaml)
 
 **Setup complete!** Deploy CIS and create OpenShift Routes
 
-### Step 5: Deploy CIS
+### Step 5: Deploy CIS for each BIG-IP
 
 F5 Controller Ingress Services (CIS) called **Next Generation Routes Controller**. Next Generation Routes Controller extended F5 CIS to use multiple Virtual IP addresses. Before F5 CIS could only manage one Virtual IP address per CIS instance.
 
@@ -89,6 +89,8 @@ Add the following parameters to the CIS deployment
 * Routegroup specific config for each namespace is provided as part of extendedSpec through ConfigMap.
 * ConfigMap info is passed to CIS with argument --route-spec-configmap="namespace/configmap-name"
 * Controller mode should be set to openshift to enable multiple VIP support(--controller-mode="openshift")
+
+### BIG-IP 01
 
 ```
 args: [
@@ -110,15 +112,38 @@ args: [
 ]
 ```
 
+### BIG-IP 02
+
+```
+args: [
+  # See the k8s-bigip-ctlr documentation for information about
+  # all config options
+  # https://clouddocs.f5.com/containers/latest/
+  "--bigip-username=$(BIGIP_USERNAME)",
+  "--bigip-password=$(BIGIP_PASSWORD)",
+  "--bigip-url=10.192.125.61",
+  "--bigip-partition=OpenShift",
+  "--namespace=cafe",
+  "--pool-member-type=cluster",
+  "--insecure=true",
+  "--manage-routes=true",
+  "--route-spec-configmap="kube-system/global-cm"
+  "--controller-mode="openshift"
+  "--as3-validation=true",
+  "--log-as3-response=true",
+]
+```
+
 Deploy CIS in OpenShift
 
 ```
 oc create secret generic bigip-login -n kube-system --from-literal=username=admin --from-literal=password=<secret>
 oc create -f bigip-ctlr-clusterrole.yaml
-oc create -f f5-bigip-ctlr-deployment.yaml
+oc create -f f5-bigip-ctlr-01-deployment.yaml
+oc create -f f5-bigip-ctlr-02-deployment.yaml
 ```
 
-CIS [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/ovn-kubernetes-standalone/next-gen-route/cis)
+CIS [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/ovn-kubernetes-ha/next-gen-route/cis)
 
 ### Step 6: Deploy Global ConfigMap
 
@@ -149,7 +174,7 @@ Deploy global ConfigMap
 ```
 oc create -f global-cm.yaml
 ```
-ConfigMap [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ovn-kubernetes-standalone/next-gen-route/route/global-cm.yaml)
+ConfigMap [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ovn-kubernetes-ha/next-gen-route/route/global-cm.yaml)
 
 ### Step 6 Creating OpenShift Routes for cafe.example.com
 
@@ -166,20 +191,20 @@ oc create -f route-coffee-edge.yaml
 oc create -f route-mocha-edge.yaml
 ```
 
-Routes [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/ovn-kubernetes-standalone/next-gen-route/route/cafe/secure)
+Routes [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/ovn-kubernetes-ha/next-gen-route/route/cafe/secure)
 
 Validate OpenShift Routes using the BIG-IP
 
-![big-ip route](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ovn-kubernetes-standalone/diagram/2022-06-07_15-35-21.png)
+![big-ip route](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ovn-kubernetes-ha/diagram/2022-06-07_15-35-21.png)
 
 Validate OpenShift Virtual IP using the BIG-IP
 
-![big-ip pools](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ovn-kubernetes-standalone/diagram/2022-06-07_15-37-33.png)
+![big-ip pools](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ovn-kubernetes-ha/diagram/2022-06-07_15-37-33.png)
 
 Validate OpenShift Routes policies on the BIG-IP
 
-![traffic](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ovn-kubernetes-standalone/diagram/2022-06-07_15-38-08.png)
+![traffic](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ovn-kubernetes-ha/diagram/2022-06-07_15-38-08.png)
 
 Validate OpenShift Routes policies by connecting to the Public IP
 
-![traffic](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ovn-kubernetes-standalone/diagram/2022-10-12_13-46-30.png)
+![traffic](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ovn-kubernetes-ha/diagram/2022-10-12_13-46-30.png)
