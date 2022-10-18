@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-bigip-ctlr-02-deployment
+  namespace: kube-system
+spec:
+  # DO NOT INCREASE REPLICA COUNT
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-bigip-ctlr-02-deployment
+  template:
+    metadata:
+      labels:
+        app: k8s-bigip-ctlr-02-deployment
+    spec:
+      # Name of the Service Account bound to a Cluster Role with the required
+      # permissions
+      containers:
+        - name: cntr-ingress-svcs
+          image: registry.connect.redhat.com/f5networks/cntr-ingress-svcs:latest
+          env:
+            - name: BIGIP_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  # Replace with the name of the Secret containing your login
+                  # credentials
+                  name: bigip-login
+                  key: username
+            - name: BIGIP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  # Replace with the name of the Secret containing your login
+                  # credentials
+                  name: bigip-login
+                  key: password
+          command: ["/app/bin/k8s-bigip-ctlr"]
+          args: [
+            # See the k8s-bigip-ctlr documentation for information about
+            # all config options
+            # https://clouddocs.f5.com/containers/latest/
+              "--bigip-username=$(BIGIP_USERNAME)",
+              "--bigip-password=$(BIGIP_PASSWORD)",
+              "--bigip-url=10.192.125.61",
+              "--bigip-partition=OpenShift",
+              "--namespace=cafe",
+              "--pool-member-type=cluster",
+              "--log-level=DEBUG",
+              "--insecure=true",
+              "--route-spec-configmap=kube-system/global-cm",
+              "--controller-mode=openshift",
+              "--as3-validation=true",
+              "--log-as3-response=true",
+          ]
+      serviceAccountName: bigip-ctlr
