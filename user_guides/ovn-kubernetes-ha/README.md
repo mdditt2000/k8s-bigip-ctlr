@@ -4,7 +4,7 @@ This document demonstrates how to use **OVN-Kubernetes with F5 BIG-IP HA Routes*
 
 ![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ovn-kubernetes-ha/diagram/2022-10-18_14-57-50.png)
 
-Demo on YouTube [video]()
+Demo on YouTube [video](https://youtu.be/Hzz_UFzU7UA)
 
 ### Step 1: Deploy OpenShift using OVNKubernetes
 
@@ -144,6 +144,15 @@ oc create -f f5-bigip-ctlr-02-deployment.yaml
 ```
 
 CIS [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/ovn-kubernetes-ha/next-gen-route/cis)
+
+Validate both CIS instances are running 
+
+```
+# oc get pod -n kube-system
+NAME                                            READY   STATUS    RESTARTS   AGE
+k8s-bigip-ctlr-01-deployment-7cc8b7cf94-2csz7   1/1     Running   0          16s
+k8s-bigip-ctlr-02-deployment-5c8d8c4676-hjwpr   1/1     Running   0          16s
+```
 
 ### Step 6: Deploy Global ConfigMap
 
