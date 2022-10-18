@@ -60,7 +60,7 @@ View static routes created on BIG-IP
 
 ![routes](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ovn-kubernetes-standalone/diagram/2022-10-12_13-30-34.png)
 
-### Step 4: Configure BIG-IP Routes
+### Step 4: Configure egress from OpenShift cluster to BIG-IP
 
 Configure egress from OpenShift cluster to BIG-IP using k8s.ovn.org/routing-external-gws annotation on namespace where the application is deployed as shown in the diagram above
 

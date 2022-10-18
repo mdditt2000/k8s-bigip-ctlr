@@ -2,7 +2,7 @@
 
 This document demonstrates how to use **OVN-Kubernetes with F5 BIG-IP HA Routes** to Ingress traffic without using an Overlay. Using OVN-Kubernetes with F5 BIG-IP Routes removes the complexity of creating VXLAN tunnels or using Calico. This document demonstrates **High Availability (HA) BIG-IP's working with OVN-Kubernetes**. Diagram below demonstrates a OpenShift 4.11 Cluster with three masters and three worker nodes. The three applications; **tea,coffee and mocha** are deployed in the **cafe** namespace. As you can see from the diagram below the **cafe** namespace requires an annotation for the BIG-IP self-ip. 
 
-![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ovn-kubernetes-standalone/diagram/2022-10-12_12-48-49.png)
+![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ovn-kubernetes-ha/diagram/2022-10-18_14-57-50.png)
 
 Demo on YouTube [video]()
 
@@ -62,7 +62,7 @@ View static routes created on BIG-IP
 
 **Note:** Manually sync the BIG-IP so the routes are deployed on the standby
 
-### Step 4: Configure BIG-IP Routes
+### Step 4: Configure egress from OpenShift cluster to BIG-IP
 
 Configure egress from OpenShift cluster to BIG-IP using k8s.ovn.org/routing-external-gws annotation on namespace where the application is deployed as shown in the diagram above
 
