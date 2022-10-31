@@ -215,12 +215,6 @@ Add label **app=nginxingress-nginx-ingress** to the **nginxingress-nginx-ingress
 
 ![service](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ingresslink-on-openshift/diagram/2022-10-31_11-14-49.png)
 
-### Step 5: Add egress from OpenShift cluster to BIG-IP
-
-Add annotation on **nginx-ingress** namespace for egress from OpenShift cluster to BIG-IP using k8s.ovn.org/routing-external-gws annotation. Use the BIG-IP floating self-IP address for the **routing-external-gws: 10.192.125.62**
-
-![name-space](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ingresslink-on-openshift/diagram/2022-10-31_11-19-38.png)
-
 ## Deploy the Cafe Application
 
 ### Step 1: Configure Load Balancing for the Cafe Application
