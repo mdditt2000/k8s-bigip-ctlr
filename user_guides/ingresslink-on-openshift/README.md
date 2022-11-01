@@ -1,4 +1,4 @@
-# Easy F5/NGINX Integrating using OpenShift 4.11
+# Easy F5/NGINX Integration using OpenShift 4.11
 
 The purpose of this document is to demonstrate how easy it is to integration **F5 BIG-IP and NGINX technologies using OpenShift 4.11**. This guide simplifies the solution by providing examples and step by step guidance using **Operators and OVN-Kubernetes**
 
@@ -6,7 +6,7 @@ F5 BIG-IP and NGINX provides a solutions called **IngressLink** that use both **
 
 ![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ingresslink-on-openshift/diagram/2022-10-24_13-38-38.png)
 
-* Demo on YouTube [video]()
+* Demo on YouTube [video](https://youtu.be/cpg7rfOBJrk)
 * KubeCon presentation at RedHat Booth [presentation](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ingresslink-on-openshift/presentation/KubeCon%202022%20Overview.pptx)
 
 On this page you’ll find:
