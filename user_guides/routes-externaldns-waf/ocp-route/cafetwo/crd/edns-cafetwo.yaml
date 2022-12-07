@@ -1,0 +1,31 @@
+apiVersion: "cis.f5.com/v1"
+kind: ExternalDNS
+metadata:
+  name: edns-cafetwo
+  namespace: cafetwo
+  labels:
+    f5cr: "true"
+spec:
+  domainName: cafetwo.example.com
+  dnsRecordType: A
+  loadBalanceMethod: round-robin
+  pools:
+  - dnsRecordType: A
+    loadBalanceMethod: round-robin
+    dataServerName: /Common/ocp.f5demo.com
+    monitors:
+    - interval: 10
+      recv: ""
+      send: "GET /tea HTTP/1.1\r\nHost: cafetwo.example.com\r\n"
+      timeout: 31
+      type: https
+    - interval: 10
+      recv: ""
+      send: "GET /coffee HTTP/1.1\r\nHost: cafetwo.example.com\r\n"
+      timeout: 31
+      type: https
+    - interval: 10
+      recv: ""
+      send: "GET /mocha HTTP/1.1\r\nHost: cafetwo.example.com\r\n"
+      timeout: 31
+      type: https

@@ -1,0 +1,28 @@
+{
+    "class": "ADC",
+    "schemaVersion": "3.40.0",
+    "id": "GSLB_Common",
+    "Common": {
+        "class": "Tenant",
+        "Shared": {
+            "class": "Application",
+            "template": "shared",
+            "Default_DC": {
+                "class": "GSLB_Data_Center"
+            },
+            "ocp.f5demo.com": {
+                "class": "GSLB_Server",
+                "dataCenter": {
+                    "use": "Default_DC"
+                },
+                "devices": [
+                    {
+                        "address": "10.192.125.60"
+                    }
+                ],
+                "virtualServerDiscoveryMode": "enabled",
+                "exposeRouteDomainsEnabled": true
+            }
+        }
+    }
+}
