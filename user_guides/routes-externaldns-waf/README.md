@@ -4,7 +4,7 @@ This document demonstrates how F5 Controller Ingress Services (CIS) can advance 
 
 In this example we are using multiple hosts **cafeone** and **cafetwo** with three endpoints; **tea,coffee and mocha** as shown in the diagram below. Wide-IPs for Hosts **cafeone.example.com** and **cafetwo.example.com** are created on F5 GTM using ExternalDNS CRDs. All application will be protected using F5 WAF. All the Routes, ExternalDNS and WAF is managed from the OpenShift API.
 
-![architecture](https://github.com/mdditt2000/openshift-4-11/blob/main/next-gen-routes-2-11/diagram/2022-12-06_15-50-57.png)
+![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/routes-externaldns-waf/diagram/2022-12-06_15-50-57.png)
 
 Demo on YouTube [video]()
 
@@ -51,7 +51,7 @@ oc create -f bigip-ctlr-clusterrole.yaml
 oc create -f f5-bigip-ctlr-deployment.yaml
 ```
 
-CIS [repo](https://github.com/mdditt2000/openshift-4-11/tree/main/next-gen-routes-2-11/cis)
+CIS [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/routes-externaldns-waf/cis)
 
 ### Step 2: Deploy Global ConfigMap
 
@@ -108,7 +108,7 @@ oc create -f route-tea-edge.yaml
 oc create -f route-coffee-edge.yaml
 oc create -f route-mocha-edge.yaml
 ```
-Routes [repo](https://github.com/mdditt2000/openshift-4-11/tree/main/next-gen-routes-2-11/ocp-route/cafeone/route)
+Routes [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/routes-externaldns-waf/ocp-route/cafeone/route)
 
 Create OpenShift Routes for **cafetwo.example.com**
 
@@ -117,15 +117,15 @@ oc create -f route-tea-edge.yaml
 oc create -f route-coffee-edge.yaml
 oc create -f route-mocha-edge.yaml
 ```
-Routes [repo](https://github.com/mdditt2000/openshift-4-11/tree/main/next-gen-routes-2-11/ocp-route/cafetwo/route)
+Routes [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/routes-externaldns-waf/ocp-route/cafetwo)
 
 Validate OpenShift Routes for cafeone
 
-![openshift](https://github.com/mdditt2000/openshift-4-11/blob/main/next-gen-routes-2-11/diagram/2022-12-06_16-49-29.png)
+![openshift](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/routes-externaldns-waf/diagram/2022-12-06_16-49-29.png)
 
 Validate OpenShift Virtual IPs for **cafeone** and **cafetwo** using the BIG-IP
 
-![big-ip](https://github.com/mdditt2000/openshift-4-11/blob/main/next-gen-routes-2-11/diagram/2022-12-06_16-50-18.png)
+![big-ip](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/routes-externaldns-waf/diagram/2022-12-06_16-50-18.png)
 
 ### Step 4: Creating Wide-IPs on GTM
 
@@ -135,7 +135,7 @@ Validate OpenShift Virtual IPs for **cafeone** and **cafetwo** using the BIG-IP
 
 In this example I created the GTM global objects using AS3
 
-AS3 [repo](https://github.com/mdditt2000/openshift-4-11/blob/main/next-gen-routes-2-11/bigip-gslb-common/bigip-gslb-common.json)
+AS3 [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/routes-externaldns-waf/bigip-gslb-common/bigip-gslb-common.json)
 
 Create Wide-IP for **cafeone.example.com**
 
@@ -144,7 +144,7 @@ Create Wide-IP for **cafeone.example.com**
 externaldns.cis.f5.com/edns-cafe created
 ```
 
-ExternalDNS [repo](https://github.com/mdditt2000/openshift-4-11/tree/main/next-gen-routes-2-11/ocp-route/cafeone/crd)
+ExternalDNS [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/routes-externaldns-waf/ocp-route/cafeone/crd/edns-cafeone.yaml)
 
 Create Wide-IP for **cafetwo.example.com**
 
@@ -153,11 +153,11 @@ Create Wide-IP for **cafetwo.example.com**
 externaldns.cis.f5.com/edns-cafe created
 ```
 
-ExternalDNS [repo](https://github.com/mdditt2000/openshift-4-11/tree/main/next-gen-routes-2-11/ocp-route/cafetwo/crd)
+ExternalDNS [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/routes-externaldns-waf/ocp-route/cafetwo/crd/edns-cafetwo.yaml)
 
 Validate Wide-IPs on the BIG-IP
 
-![WIDE-IP](https://github.com/mdditt2000/openshift-4-11/blob/main/next-gen-routes-2-11/diagram/2022-12-06_17-03-01.png)
+![WIDE-IP](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/routes-externaldns-waf/diagram/2022-12-06_17-03-01.png)
 
 ### Step 4: Enable WAF Protection for the OpenShift Cluster
 
@@ -214,18 +214,18 @@ Create PolicyCRD
 # oc create -f policy-cafe.yaml
 ```
 
-PolicyCRD [repo](https://github.com/mdditt2000/openshift-4-11/blob/main/next-gen-routes-2-11/ocp-route/cafeone/crd/policy-cafe.yaml)
+PolicyCRD [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/routes-externaldns-waf/ocp-route/cafeone/crd/policy-cafe.yaml)
 
 Validate WAF Policy on the BIG-IP
 
-![WAF](https://github.com/mdditt2000/openshift-4-11/blob/main/next-gen-routes-2-11/diagram/2022-12-06_17-39-38.png)
+![WAF](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/routes-externaldns-waf/diagram/2022-12-06_17-39-38.png)
 
 ### Step 5: Prevent Malicious traffic from OpenShift Cluster
 
 Enable a XSS attacks and make sure WAF blocks the Malicious traffic
 
-![WAF](https://github.com/mdditt2000/openshift-4-11/blob/main/next-gen-routes-2-11/diagram/2022-12-06_17-45-12.png)
+![WAF](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/routes-externaldns-waf/diagram/2022-12-06_17-45-12.png)
 
 Validate Request Logging on BIG-IP 
 
-![Block](https://github.com/mdditt2000/openshift-4-11/blob/main/next-gen-routes-2-11/diagram/2022-12-06_17-50-16.png)
+![Block](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/routes-externaldns-waf/diagram/2022-12-06_17-50-16.png)
