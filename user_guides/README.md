@@ -3,7 +3,7 @@ F5 Container Ingress Services User Guides
 
 For guides on using CIS with Kubernetes and OpenShift see:
 
-* [Advancing OpenShift Routes using ExternalDNS and WAF](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ingresslink-on-openshift/README.md)
+* [Advancing OpenShift Routes using ExternalDNS and WAF](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/routes-externaldns-waf#readme)
 * [Easy F5/NGINX Integration using OpenShift 4.11](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ingresslink-on-openshift/README.md)
 * [OpenShift OVN-Kubernetes using F5 BIG-IP HA with NO Tunnels](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/ovn-kubernetes-ha#readme)
 * [OpenShift OVN-Kubernetes using F5 BIG-IP Standalone with NO Tunnels](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/ovn-kubernetes-standalone#readme)
