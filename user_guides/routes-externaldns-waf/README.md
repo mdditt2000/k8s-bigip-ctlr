@@ -6,7 +6,7 @@ In this example we are using multiple hosts **cafeone** and **cafetwo** with thr
 
 ![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/routes-externaldns-waf/diagram/2022-12-06_15-50-57.png)
 
-Demo on YouTube [video]()
+Demo on YouTube [video](https://youtu.be/ZJDw8i_ZegM)
 
 ## Using CIS Next Generation OpenShift Route
 
