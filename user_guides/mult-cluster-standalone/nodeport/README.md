@@ -2,7 +2,9 @@
 
 This document demonstrates OpenShift Multi-Cluster using F5 BIG-IP. This document focuses on **standalone deployment** using **NodePort**. Container Ingress Services (CIS) is only deployed in OpenShift 4.11 cluster as shown in the diagram
 
-![architecture](https://github.com/mdditt2000/openshift-4-11/blob/main/mulit-cluster/diagram/2023-06-14_15-14-41.png)
+![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/mult-cluster-standalone/nodeport/diagram/2023-06-14_15-14-41.png)
+
+Demo on YouTube [video](https://youtu.be/cNKQ51JhMpY)
 
 ## Why OpenShift Multi-Cluster
 
@@ -56,7 +58,7 @@ Deploy CIS and RBAC for OpenShift 4-11 and OpenShift 4-13
 # oc create -f f5-bigip-ctlr-deployment.yaml
 deployment.apps/k8s-bigip-ctlr-deployment created
 ```
-CIS deployment [repo](https://github.com/mdditt2000/openshift-4-11/tree/main/mulit-cluster/openshift-4-11/cis)
+CIS deployment [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/mult-cluster-standalone/nodeport/openshift-4-11/cis)
 
 **OpenShift-4-13 Cluster**
 
@@ -66,13 +68,13 @@ Create RBAC for CIS. This RBAC is created in OpenShift-4-13
 # oc create -f external-cluster-rabc.yaml
 ```
 
-RBAC [repo](https://github.com/mdditt2000/openshift-4-11/blob/main/mulit-cluster/openshift-4-13/cis/external-cluster-rabc.yaml)
+RBAC [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/mult-cluster-standalone/nodeport/openshift-4-13/cis/external-cluster-rabc.yaml)
 
 #### Step 3 Deploy Cafe application in both Clusters
 
 Deploy the Cafe Pods, Services using NodePort in **OpenShift-4-11**
 
-Cafe App [repo](https://github.com/mdditt2000/openshift-4-11/tree/main/mulit-cluster/openshift-4-11/demo-app/cafeone)
+Cafe App [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/mult-cluster-standalone/nodeport/openshift-4-11/demo-app/cafeone)
 
 View Service in **OpenShift-4-11**
 
@@ -89,7 +91,7 @@ tea-svc      NodePort   172.30.28.31     <none>        8080:32257/TCP   38h
 
 Deploy the Cafe Pods, Services using NodePort in **OpenShift-4-13**
 
-Cafe App [repo](https://github.com/mdditt2000/openshift-4-13/tree/main/mulit-cluster/openshift-4-13/demo-app/cafeone)
+Cafe App [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/mult-cluster-standalone/nodeport/openshift-4-13/demo-app/cafeone)
 
 View Service in **OpenShift-4-13**
 
@@ -113,4 +115,4 @@ cafe-mocha-edge    cafeone.example.com ... 1 more   /mocha    mocha-svc    8080 
 cafe-tea-edge      cafeone.example.com ... 1 more   /tea      tea-svc      8080                 None
 ```
 
-Cafe Routes [repo](https://github.com/mdditt2000/openshift-4-11/tree/main/mulit-cluster/openshift-4-11/ocp-route/cafeone/nonsecure)
+Cafe Routes [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/mult-cluster-standalone/nodeport/openshift-4-11/ocp-route/cafeone/nonsecure)
