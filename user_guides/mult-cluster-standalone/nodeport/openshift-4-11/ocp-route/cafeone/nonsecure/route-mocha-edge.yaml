@@ -1,0 +1,19 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    virtual-server.f5.com/multiClusterServices: '[{"clusterName": "openshift-4-13", "svcName":
+          "mocha-svc", "namespace": "cafeone", "port": 8080 }]'
+    # you can define either service port or target port in the port value
+  labels:
+    f5type: systest
+  name: cafe-mocha-edge
+  namespace: cafeone
+spec:
+  host: cafeone.example.com
+  path: "/mocha"
+  port:
+    targetPort: 8080
+  to:
+    kind: Service
+    name: mocha-svc

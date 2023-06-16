@@ -1,0 +1,70 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    virtual-server.f5.com/multiClusterServices: '[{"clusterName": "openshift-4-13", "svcName":
+          "mocha-svc", "namespace": "cafeone", "port": 8080 }]'
+    # you can define either service port or target port in the port value
+  labels:
+    f5type: systest
+  name: cafe-mocha-edge
+  namespace: cafeone
+spec:
+  host: cafeone.example.com
+  path: "/mocha"
+  tls:
+    certificate: |
+      -----BEGIN CERTIFICATE-----
+      MIIDDjCCAfYCCQCkcGa98TFEFDANBgkqhkiG9w0BAQsFADBCMQswCQYDVQQGEwJV
+      UzELMAkGA1UECAwCQ08xDDAKBgNVBAcMA0JETzELMAkGA1UECwwCY2ExCzAJBgNV
+      BAoMAkY1MB4XDTIzMDUzMTA4MzUwMFoXDTIzMDYwMzA4MzUwMFowUDELMAkGA1UE
+      BhMCVVMxCzAJBgNVBAgMAkNPMQwwCgYDVQQHDANCRE8xCzAJBgNVBAoMAkY1MRkw
+      FwYDVQQDDBBweXRlc3QtZm9vLTEuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8A
+      MIIBCgKCAQEA1qSoNjXGkGQ8qNo8ijWnVKol8o7JrX+2DEChQEboYb9o5CQcxcAi
+      lqux9XiLzZacsyv7jlq1pvCJQYd+pOU77+Yhr7HrUcehgsgCRHIKmJTS73Ee8+BQ
+      0m9Rh3PXIlog0i93s/RuInyAxbXkB38iZV7Qh0BlYqDYhwKeWzomaN6chI/Cj6MV
+      NeOxwCvzs7fUOHEuAdOfcglgWvWst2jWYL5jPSeaCGnG4L2NFjQqDGoQd6vDBXMU
+      o24BL6Tnax7J0ZmtKj9NjvU2pirwlgDTSwREdl6VsNSGejvlwYDd+VLNKWTrK7FE
+      HjljxCU2rZK9JUDdD3CekpCrNaKPjB9y3QIDAQABMA0GCSqGSIb3DQEBCwUAA4IB
+      AQCtofbkAft6arCUmtLGH5EwQGBLRHvrmDlXxjZisAbGYDMDBl9tXOCoRE/NbRki
+      QYgTbyoTLPHo+99ZA1i+N9RpZ8A9tRrhSAOPsLya2IyViLly4YyR2LXc213OBVp1
+      Q0z5ntctTS6j41CclJBLgRTu5sXV1P9K/nWHenjvwoWcautsxaeA5UUjcOt/L+tf
+      87xUJvUnVrsFBSmVm8REueB88n5fW2RtXZW06k3hXMMu47wBdzNxEOOXG93vo+L/
+      Rp/TjMoBohBJPnLcKblM7dnGmhCPvOrQ3EOxtUsudAsT/YTUmxENtOocTAmMOTJ1
+      iEF3P2wDUyY0aCRioQHla2Bd
+      -----END CERTIFICATE-----      
+      key: |
+      -----BEGIN RSA PRIVATE KEY-----
+      MIIEowIBAAKCAQEA1qSoNjXGkGQ8qNo8ijWnVKol8o7JrX+2DEChQEboYb9o5CQc
+      xcAilqux9XiLzZacsyv7jlq1pvCJQYd+pOU77+Yhr7HrUcehgsgCRHIKmJTS73Ee
+      8+BQ0m9Rh3PXIlog0i93s/RuInyAxbXkB38iZV7Qh0BlYqDYhwKeWzomaN6chI/C
+      j6MVNeOxwCvzs7fUOHEuAdOfcglgWvWst2jWYL5jPSeaCGnG4L2NFjQqDGoQd6vD
+      BXMUo24BL6Tnax7J0ZmtKj9NjvU2pirwlgDTSwREdl6VsNSGejvlwYDd+VLNKWTr
+      K7FEHjljxCU2rZK9JUDdD3CekpCrNaKPjB9y3QIDAQABAoIBAQCZBkzSUSZeHMhO
+      TUBp/HRuXNuvAPNxmSItvAn6LFNSFMdwFvrYVPGT35aA/c8V5DGVX175j1wAR25j
+      ZHj6kF9Z2gTcIIk3BY71ESjkqTU6sKdtg4VgsuSMEkbavdB7sivCDYtWpYW7Wm3o
+      BpQqcA4SnTUnp9ZgKXIVVt2VBnEJw5QaRoHpGt/u0whSKMrvvede3py4IBMhTCbj
+      uw7lsiDGKcaS4FnxoqMZgm1Q+K5EHebPLQyw8ChO7M+zTo4SqyVAsH0XX6hZYeCw
+      o4a+g4EcQ+fFD27gthcNj1HpcI9Hi61951EfbfhmcYhrp6e58b9P5hHUNciMjU4C
+      NjlAEx2BAoGBAP4Kz2LA5bBeD/D+LOQLWVR3GW2WkgkUM0M/lCZZzWPpYIyJw8UX
+      EtWPmvjefAZW2yPTQ43PBCfxXD03JoLBK1nwgTry51FO8lOnHoDwUlJG+Plko/0n
+      AM1Jjdo3muSazxfLq4Fjzo596y5OlQrzDxHFLSelmRfHEuSijk5E/ybhAoGBANhM
+      HkCLw7SkcFmvFPSC5Jlyr1ZZuszTpuTPUgP8gEB0+YMm35VwphhdnROAHVqF8xD5
+      RKTM0EJrz2vPsefX4CPbkCIAvu8F9X7RrjGJMGCMQ/Jq59ZNsbBC2hxjYhaVS3W2
+      U+3d6qIYroQF5Kl0RnBn2u+KKOXiAXfgGPm2s1d9AoGAezF40lXizL1Ak8hespPC
+      VRCQdzFOTjLKjTD2wgZIcMwKsvxXwGrpCkFikI8rq9NQ37Wii9E5HbmQ1mq5NS1B
+      vZLAyHpkrGxRXTmstDBWa2nZcO9aCvhwDh0+OfU/Gt7r0IlG+S8SSs1LUCBxbGbk
+      BuUMea53aC10vwUJZ3FUHmECgYAlnHbWOnd5fe6babp3GhuuIyciGNBGtbcbqoFU
+      eB/FFZIdoDDYx5HaQs0BixGPoCM4HGA3V/YO1rhmwuLosb0j/xX9E6wf3CVoPAXS
+      T0y+PSXDjZtqxG/Veop6zT1NOAC7I01M233lWe1ev7eXT8S/3w9O//NEphwjQDCX
+      m5Fr8QKBgDvKuI7mu5pJUG2lFYrE9rjFPgM5ctzzEkVyODJoFCUHsJeuMZUl2Y1S
+      4kEl6GtEU9zb1zejANiskIha7vSfeFCPwgvGD3cOJ2M0pepNJiV5vB/TaWOXtuCV
+      GbfVHo2UE47+tu8NOWeob2+VyjuNybbrP6+tP4Zd8qCepZbP1GPk
+      -----END RSA PRIVATE KEY-----
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  port:
+    targetPort: 8080
+  to:
+    kind: Service
+    name: mocha-svc

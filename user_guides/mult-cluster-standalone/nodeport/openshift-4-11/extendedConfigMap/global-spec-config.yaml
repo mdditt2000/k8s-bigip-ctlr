@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    f5nr: "true"
+  name: global-spec-config
+  namespace: kube-system
+data:
+  extendedSpec: |
+    multiClusterConfigs:
+    - clusterName: openshift-4-13
+      secret: default/openshift-4-13
+    extendedRouteSpec:
+    - allowOverride: false
+      namespace: cafeone
+      vserverAddr: 10.192.125.65
+      vserverName: cafeone
