@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    f5nr: "true"
+  name: global-spec-config
+  namespace: kube-system
+data:
+  extendedSpec: |
+    highAvailabilityCIS:
+      primaryCluster:
+        clusterName: openshift-4-11
+        secret: default/openshift-4-11
+    externalClustersConfig:
+    - clusterName: openshift-4-13
+      secret: default/openshift-4-13
+    extendedRouteSpec:
+    - namespace: cafeone
+      vserverAddr: 10.192.125.65
+      vserverName: cafeone
+      allowOverride: false
+    - namespace: nginx-ingress
+      vserverAddr: 10.192.125.66
+      vserverName: nginx-ingress-vs
+      allowOverride: false

@@ -1,0 +1,19 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    virtual-server.f5.com/multiClusterServices: '[{"clusterName": "openshift-4-13", "svcName":
+          "nginxingress-sample-nginx-ingress-controller", "namespace": "nginx-ingress", "port": 80 }]'
+    # you can define either service port or target port in the port value
+  labels:
+    f5type: systest
+  name: nginx-ingress-route-80
+  namespace: nginx-ingress
+spec:
+  host: cafe.example.com
+  path: "/"
+  port:
+    targetPort: 80
+  to:
+    kind: Service
+    name: nginxingress-sample-nginx-ingress-controller
