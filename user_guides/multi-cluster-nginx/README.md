@@ -2,7 +2,7 @@
 
 This document demonstrates how **NGINX Ingress Controller** can help scale, secure, and provide visibility into OpenShift in a **multi-cluster world**. The YouTube demo demonstrates OpenShift Multi-Cluster using F5 BIG-IP and Container Ingress Services (CIS) and NGINX IC. This document focuses on **standalone deployment** using **ClusterIP**. CIS is only deployed in OpenShift 4.11 cluster as shown in the diagram. However CIS can also be deployed in multi-cluster using **active/standby** or **active/active**. This will be covered in another demo
 
-![architecture](https://github.com/mdditt2000/openshift-4-11/blob/main/multi-cluster-nginx/diagram/2023-08-16_11-51-42.png)
+![architecture](hhttps://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-cluster-nginx/diagram/2023-08-16_11-51-42.png)
 
 
 YouTube [Demo]()
@@ -86,7 +86,7 @@ Deploy CIS and RBAC for OpenShift 4-11 and OpenShift 4-13
 # oc create -f f5-bigip-ctlr-deployment.yaml
 deployment.apps/k8s-bigip-ctlr-deployment created
 ```
-CIS deployment [repo](https://github.com/mdditt2000/openshift-4-11/blob/main/multi-cluster-nginx/openshift-4-11/cis/f5-bigip-ctlr-deployment.yaml)
+CIS deployment [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/multi-cluster-nginx/openshift-4-11/cis)
 
 **OpenShift-4-13 Cluster**
 
@@ -96,7 +96,7 @@ Create RBAC for CIS. This RBAC is created in OpenShift-4-13
 # oc create -f external-cluster-rabc.yaml
 ```
 
-RBAC [repo](https://github.com/mdditt2000/openshift-4-11/blob/main/multi-cluster-nginx/openshift-4-13/cis/external-cluster-rabc.yaml)
+RBAC [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-cluster-nginx/openshift-4-13/cis/external-cluster-rabc.yaml)
 
 #### Step 3 Deploy NGINX Ingress Controller in both Clusters
 
@@ -128,7 +128,19 @@ nginxingress-sample-nginx-ingress-controller                ClusterIP   172.30.6
 
 #### Step 3 Deploy OpenShift Route for NGINX-Ingress traffic
 
-Create routes in **OpenShift-4-11**
+**Note:** Global ConfigMap creates the gateway **BIG-IP** configuration from HA, Public IP Addresses required for Hostname. 
+
+Create global ConfigMap in **OpenShift-4-11**
+
+```
+# oc get configmap global-cm -n default
+NAME        DATA   AGE
+global-cm   1      2d
+```
+
+Global ConfigMap [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-cluster-nginx/openshift-4-11/extendedConfigMap/global-spec-config.yaml)
+
+Create Route in **OpenShift-4-11**
 
 ```
 [root@ocp-installer openshift-4-11]# oc get route -n nginx-ingress
@@ -136,8 +148,8 @@ NAME                      HOST/PORT                     PATH   SERVICES         
 nginx-ingress-route-443   cafe.example.com ... 1 more          nginxingress-sample-nginx-ingress-controller   443    passthrough/Redirect   None
 ```
 
-Cafe Routes [repo](https://github.com/mdditt2000/openshift-4-11/blob/main/multi-cluster-nginx/openshift-4-11/ocp-route/nginx-ingress/nginx-ingress-route-443.yaml)
+Cafe Routes [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-cluster-nginx/openshift-4-11/ocp-route/nginx-ingress/nginx-ingress-route-443.yaml)
 
 BIG-IP Pools members show the Pods from both **OpenShift-4-11** and **OpenShift-4-13**
 
-![pods](https://github.com/mdditt2000/openshift-4-11/blob/main/multi-cluster-nginx/diagram/2023-08-17_09-23-05.png)
+![pods](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-cluster-nginx/diagram/2023-08-17_09-23-05.png)
