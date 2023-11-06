@@ -3,6 +3,7 @@ F5 Container Ingress Services User Guides
 
 For guides on using CIS with Kubernetes and OpenShift see:
 
+* [Kubernetes Multi-Cluster](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/k8s-multi-cluster#readme)
 * [OpenShift Ingress in a Multi-Cluster World with NGINX + BIG-IP](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-cluster-nginx/README.md)
 * [OpenShift Multi-cluster Standalone using ClusterIP](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/mult-cluster-standalone/clusterip/README.md)
 * [OpenShift Multi-cluster Standalone using NodePort](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/mult-cluster-standalone/nodeport/README.md)
