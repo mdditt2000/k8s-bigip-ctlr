@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    f5nr: "true"
+  name: global-spec-config
+  namespace: kube-system
+data:
+  extendedSpec: |
+    mode: ratio
+    highAvailabilityCIS:
+      primaryCluster:
+        clusterName: kubeconfig-1-27
+        secret: default/kubeconfig-1-27
+    externalClustersConfig:
+    - clusterName: kubeconfig-1-28
+      secret: default/kubeconfig-1-28
