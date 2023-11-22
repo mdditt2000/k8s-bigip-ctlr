@@ -2,7 +2,7 @@
 
 This repo documents how to reduce complexity for your Kubernetes apps with the Gateway API-conformant NGINX Gateway Fabric. Also using F5 BIG-IP and Container Ingress Services (CIS) to as the public entry point to the clusters as shown in the diagram below:
 
-Demo on YouTube [video]()
+Demo on YouTube [video](https://youtu.be/fwEA6vTC1r0)
 
 ![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/nginx-gateway-fabric/diagram/2023-11-22_10-16-55.png)
 
