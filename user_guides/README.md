@@ -3,6 +3,7 @@ F5 Container Ingress Services User Guides
 
 For guides on using CIS with Kubernetes and OpenShift see:
 
+* [NGINX Gateway API Fabric with F5 BIG-IP](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/nginx-gateway-fabric/README.md)
 * [Multi-Cluster Kubernetes using A/B Deployment](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/k8s-multi-cluster-ab/README.md)
 * [Kubernetes Multi-Cluster](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/k8s-multi-cluster#readme)
 * [OpenShift Ingress in a Multi-Cluster World with NGINX + BIG-IP](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-cluster-nginx/README.md)
