@@ -1,0 +1,19 @@
+apiVersion: "cis.f5.com/v1"
+kind: VirtualServer
+metadata:
+  name: nginx-gateway-80
+  namespace: nginx-gateway
+  labels:
+    f5cr: "true"
+spec:
+  virtualServerAddress: 10.192.75.121
+  host: cafe.example.com
+  pools:
+  - path: /
+    service: nginx-gateway
+    servicePort: 80
+    extendedServiceReferences:
+        - clusterName: kubeconfig-1-28
+          namespace: nginx-gateway
+          port: 80
+          serviceName: nginx-gateway
