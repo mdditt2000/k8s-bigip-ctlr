@@ -1,6 +1,6 @@
 # Multi-Cluster NGINX Gateway API Fabric with F5 BIG-IP
 
-This repo documents how to reduce complexity for your Kubernetes apps with the Gateway API-conformant NGINX Gateway Fabric. Also using F5 BIG-IP and Container Ingress Services (CIS) to as the public entry point to the multiple Kubernetes clusters as shown in the diagram below:
+This repo documents how to reduce complexity for your Kubernetes apps with the **Gateway API-conformant NGINX Gateway Fabric**. Also using F5 BIG-IP and Container Ingress Services (CIS) to as the **public entry point to the multiple Kubernetes clusters** as shown in the diagram below:
 
 Demo on YouTube [video]()
 
