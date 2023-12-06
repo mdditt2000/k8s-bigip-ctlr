@@ -4,7 +4,7 @@ This repo documents how to reduce complexity for your Kubernetes apps with the G
 
 Demo on YouTube [video]()
 
-![diagram](https://github.com/mdditt2000/multi-cluster/blob/main/multi-cluster-nginx-gateway-fabric/diagram/2023-12-06_15-03-42.png)
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-cluster-nginx-gateway-fabric/diagram/2023-12-06_15-03-42.png)
 
 The link walks you through how to install NGINX Gateway Fabric on a generic Kubernetes cluster with some changes
 
@@ -67,7 +67,7 @@ spec:
 ```
 Since NGINX Gateway Fabric is set to 2 replicas in both blusters, BIG-IP will see 2 pods per cluster. Total of 4 pods in the BIG-IP pool as shown below. 
 
-![pool](https://github.com/mdditt2000/multi-cluster/blob/main/multi-cluster-nginx-gateway-fabric/diagram/2023-12-06_14-44-45.png)
+![pool](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-cluster-nginx-gateway-fabric/diagram/2023-12-06_14-44-45.png)
 
 
 
