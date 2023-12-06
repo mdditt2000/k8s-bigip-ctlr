@@ -6,7 +6,7 @@ Demo on YouTube [video]()
 
 ![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-cluster-nginx-gateway-fabric/diagram/2023-12-06_15-03-42.png)
 
-The link walks you through how to install NGINX Gateway Fabric on a generic Kubernetes cluster with some changes
+The link walks you through how to install NGINX Gateway Fabric on a Kubernetes multi-cluster with some changes
 
 * Install NGINX Gateway Fabric [docs](https://docs.nginx.com/nginx-gateway-fabric/installation/)
 
