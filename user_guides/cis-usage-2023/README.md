@@ -8,12 +8,12 @@ Container Network Interface (CNI) by percent
 
 Container Network Interface (CNI) by deployments
 
-* [CNI-deployment](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/cis-usage-2023/diagram/2023-12-12_12-53-06.png)
+* [CNI Deployments](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/cis-usage-2023/diagram/2023-12-12_12-53-06.png)
 
 Config type usages by percent
 
-* [config-percent](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/cis-usage-2023/diagram/2023-12-12_12-55-28.png)
+* [Config](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/cis-usage-2023/diagram/2023-12-12_12-55-28.png)
 
 Config type by deployments
 
-* [config-deployment](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/cis-usage-2023/diagram/2023-12-12_12-57-11.png)
+* [Config Deployment](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/cis-usage-2023/diagram/2023-12-12_12-57-11.png)
