@@ -1,11 +1,13 @@
-### User Guide for F5 IngressLink Deployed in EKS Anywhere
+# How was Container Ingress Services used in 2023
 
-* [NodePort deployment](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/eks-anywhere/ingresslink/README.md)
+Container Network Interface (CNI) by percent
 
-### User Guide for Service Type Load-balancer Deployment in EKS Anywhere
+* [CNI](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/cis-usage-2023/diagram/2023-12-12_12-49-00.png)
 
-* [NodePort deployment](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/eks-anywhere/servicetypelb/README.md)
+Container Network Interface (CNI) based on deployments
 
-### User Guide for F5 CIS deployed in EKS Anywhere
+* [CNI-Deployment](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/cis-usage-2023/diagram/2023-12-12_12-53-06.png)
 
-* [NodePort deployment](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/eks-anywhere/nodeport/README.md)
+Config type usages by percent
+
+* [config-percent]()
